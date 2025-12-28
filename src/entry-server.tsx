@@ -5,8 +5,8 @@ export default createHandler(() => (
   <StartServer
     document={({ assets, children, scripts }) => (
       <html lang="en">
+        {/* suppress HtmlRequiredTitleElement */}
         <head>
-          <title>TASBox</title>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
