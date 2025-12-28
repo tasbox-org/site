@@ -11,4 +11,3 @@ app.config.timestamp_*.js
 # Environment
 .env
 .env*.local
-
