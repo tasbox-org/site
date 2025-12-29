@@ -1,0 +1,160 @@
+---
+slug: monthly-update-june-2025
+title: Monthly Update - June 2025
+authors: derpius
+tags: [monthly-updates, developer-preview]
+---
+
+User interfaces, graphical improvements, our own language and more of PhysX exposed to Lua - Here's what's been happening in TASBox this month 🚀
+
+![Main Menu UI and GMan leaning against trolley with text "Monthly Update June 2025" overlaid](social.png)
+
+<!-- truncate -->
+
+## Foreword
+
+The first installment of what I hope to make a regular monthly development update,
+covering any significant changes that have happened during the month.
+
+Lots has happened since the last blog post, and we're almost at the point where building simple physics-based games and addons is practical.
+
+There's still a long way to go until TASBox is ready for a closed playtest, but it's really starting to take shape.
+
+## User Interface
+
+Since the last post I've primarily worked on building almost fully custom UI rendering into TASBox.
+Where many sandbox games out there opt to use web renderers (CEF, Awesomium, Ultralight, etc.),
+I didn't want the increased overhead and possibility for vulnerabilities that integrating a browser engine entails.
+
+What I've gone with I think people will really like, especially if you're coming from React/Solid.js:
+
+```moonjuice
+def { .Container, .Text } = UI
+
+def Button = UI.createComponent(fn(props, children)
+  fn() {
+    Container({
+      .onClick = props.onClick,
+      .style = {
+        .fontSize = 30,
+        .backgroundColour = Colour.fromHex("#FFF"),
+        .cornerRadius = 10,
+        .padding = 5,
+      },
+      .styleHovered = {
+        .backgroundColour = Colour.fromHex("#DDD")
+      }
+    }, fn() { children } end)
+  } end
+end)
+
+def App = UI.createComponent(fn()
+  def count, setCount = State.createSignal(0)
+
+  fn() {
+    Container({
+      .style = {
+        .fontSize = 30,
+        .textColour = Colour.fromHex("#FFA010"),
+        .alignY = UI.ChildAlignment.Centre,
+        .gap = 10,
+        .padding = 10,
+      }
+    }, fn() {
+      Text({ "Count is: ", count }),
+      Button({ .onClick = fn() setCount(count() + 1) end }, fn() {
+        Text({ "Increment" })
+      } end)
+    } end)
+  } end
+end)
+
+UI.render(App, UI.SCREEN)
+```
+
+This simple example will render a counter, and display the incremented count every time the user clicks the button ([image](ui-simple-example.png)).
+
+We've already used this framework to build an initial main menu, as a sort of launcher where you can view and play your installed games:
+
+<video width="100%" controls>
+  <source src="/video/blog/2025-06-15-monthly-update/main-menu-demo.mp4" type="video/mp4" />
+</video>
+
+## MoonJuice
+
+Another major change is the introduction of our own functional programming-oriented language to fill some gaps in Luau's feature set,
+and provide a more ergonomic experience when working with TASBox's APIs.
+The name comes from a combination of _Lua_ and _Elixir_, the two languages which inspired it.
+
+You can see a great example of the syntax above for the UI example, so I won't repeat it here.
+Instead, here's a list of the key features in MoonJuice at the moment:
+
+- Interoperates with Luau seamlessly - Include Lua scripts from MoonJuice and vice versa
+- Transpiles to Luau
+- Table unpacking:\
+  `def { .foo, .bar = baz } = { .foo = 1, .bar = 2 }`
+- Implicit returns - Last expression of a code block implicitly returns its value
+- Everything\* is an expression:\
+  `def x = if someCondition then 1 else 2 end`
+- Pipe operator:\
+  `someVariable |> fnWithOneParam |> fnWithTwoParams("secondParam")`
+
+_\*Some small exceptions, such as `def` for variable declaration_
+
+There's a lot more that I want to do with MoonJuice (such as a JSX-style syntax for UI),
+and there's still some bugs / core missing features,
+but we're already using it for the majority of package code in place of Lua because it's so much nicer to write.
+
+## Graphical Improvements
+
+A bit of a smaller change than the previous two in terms of dev effort and getting us towards the playtest,
+but I think people will really appreciate it:
+
+<video width="100%" controls>
+  <source src="/video/blog/2025-06-15-monthly-update/graphics-demo.mp4" type="video/mp4" />
+</video>
+
+I got sick of looking at the dull dot-product diffuse shading we had as a placeholder, so I decided to port my BSDF from VisTrace.
+I won't bore you with the details of how it works (maybe I'll write a dedicated blog post on it at some point),
+but it's what gives the realistic looking specular and diffuse lighting in the video above.
+
+The BSDF by itself wasn't really selling it though,
+so I added extremely rudimentary ambient lighting by taking a second sample in the surface normal's direction.
+This avoids the even less realistic and dim look we were getting from a single distance light.
+
+A contribution from PotatoOS is also visible above,
+which is the addition of normal map support providing a more visually detailed surface on any assets which have the texture.
+
+## Physics API Additions
+
+Last but certainly not least, we have a few updates to physics in TASBox.
+
+### Character Controllers
+
+The PhysX kinematic character controller library has been exposed to Lua,
+allowing you to create characters which interact with the 3D world:
+
+<video width="100%" controls>
+  <source src="/video/blog/2025-06-15-monthly-update/character-controllers.mp4" type="video/mp4" />
+</video>
+
+### Scene Queries
+
+All three types of scene queries in PhysX - raycast, sweep and overlap - have been exposed too.
+This lets you build weapons, character interactions and more by performing intersection tests with the scene using rays and shapes.
+
+Here's a demo using a sphere sweep query to apply force to whatever entity the player is looking at when they press the left mouse button:
+
+<video width="100%" controls>
+  <source src="/video/blog/2025-06-15-monthly-update/scene-queries.mp4" type="video/mp4" />
+</video>
+
+### Articulations for Ragdolls
+
+The internal representation of ragdolls in the physics simulation has changed from rigid bodies + joints to
+[reduced coordinate articulations](https://nvidia-omniverse.github.io/PhysX/physx/5.4.2/docs/Articulations.html).
+This provides much greater simulation stability for the ragdoll's joints, especially when under extreme stress as in the video below:
+
+<video width="100%" controls>
+  <source src="/video/blog/2025-06-15-monthly-update/articulations.mp4" type="video/mp4" />
+</video>

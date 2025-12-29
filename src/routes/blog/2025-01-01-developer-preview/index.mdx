@@ -1,0 +1,60 @@
+---
+slug: developer-preview
+title: Developer Preview
+authors: derpius
+tags: [developer-preview]
+---
+
+The TASBox developer preview is starting now!
+
+![GMan playermodel bust over a missing texture floor](social.png)
+
+Read more to see how to join and what to expect from the first closed testing phase.
+
+<!-- truncate -->
+
+## Can I take part?
+
+For this first phase we're looking for Lua developers to build games and addons, and to collaborate on designing the Lua API.
+We're also looking for C++ developers to help build the TASBox engine and implement the Lua API.
+
+You don't need to be an expert in either language, and there's no expectations of time commitment (you won't lose access for inactivity).
+
+## How do I join?
+
+Join the TASBox Discord [here](https://discord.gg/SsPhgMc7ce), give yourself the `Developer Preview Waitlist` role,
+and post a link to your GitHub in the `#dev-chat` channel.
+A brief description of your experience and what you're planning to do is ideal but not required.
+
+If added to the preview, you'll be invited to https://github.com/tasbox-org and will have **read-only** access to https://github.com/tasbox-org/TASBox.
+If you know C++ and want to work on the engine, you'll be added to a team with write access instead.
+
+:::important
+
+**Please do not share the code or builds.**
+
+TASBox will be free and open source on release,
+but until then we don't want people to get bad first impressions from an unfinished game.
+
+You are allowed (and encouraged) to make your games/addons public, as well any screenshots or videos!
+
+:::
+
+## What can I expect?
+
+It's still early days for TASBox - only ~7 months of active development at the time of writing - so not too much right now.
+
+As it stands we have the following core functionalities:
+
+- Game and Addon loading system (collectively referred to as _Packages_)
+- Luau scripting environment with sandboxing
+- Support for Source 1 assets, including mostly-stable ragdolls and mounting games from a user's Steam library
+- PhysX 5 with support for the PhysX Visual Debugger on debug builds (can connect from Lua)
+- Basic Vulkan renderer with skeletal meshes and textures
+- A number of core Lua APIs implemented, including but not limited to:
+  - Reading user input
+  - Sandboxing code
+  - Listening to events (tick, button presses, etc.)
+  - Basic interactions with entities (create, destroy, get/set a subset of components, custom components)
+
+We're looking forward to building the rest of TASBox together with you!
