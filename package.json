@@ -15,7 +15,7 @@
     "hast-util-to-string": "^3.0.1",
     "refractor": "^5.0.0",
     "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^4.0.1",
+    "remark-gfm": "^3.0.1",
     "solid-js": "^1.9.5",
     "solid-mdx": "^0.0.7",
     "solid-styled": "^0.12.0",
