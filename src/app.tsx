@@ -2,15 +2,14 @@ import { MetaProvider } from "@solidjs/meta";
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
-
 import { StyleRegistry, css } from "solid-styled";
+import { Navbar } from "#components/common/navbar";
 
 function GlobalStyles() {
   css`
     @global {
       body {
-        font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-          sans-serif;
+        font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       }
 
       a {
@@ -60,8 +59,7 @@ export default function App() {
         <MetaProvider>
           <StyleRegistry auto>
             <GlobalStyles />
-            <a href="/public">Index</a>
-            <a href="/about">About</a>
+            <Navbar />
             <Suspense>{props.children}</Suspense>
           </StyleRegistry>
         </MetaProvider>
