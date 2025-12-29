@@ -39,6 +39,7 @@ export default defineConfig({
     resolve: {
       alias: {
         "#components": path.resolve(import.meta.dirname, "./src/components"),
+        "#theme": path.resolve(import.meta.dirname, "./src/theme"),
       },
     },
   },
