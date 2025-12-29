@@ -4,9 +4,11 @@ import solidStyled from "unplugin-solid-styled";
 import { blogPostsPlugin } from "./config/blog-posts-plugin";
 import remarkFrontmatter from "remark-frontmatter";
 import { mdxPrism } from "./config/mdx-prism";
+import remarkGfm from "remark-gfm";
 
 /* @ts-ignore */
-import mdx from "@vinxi/plugin-mdx";
+import pkg from "@vinxi/plugin-mdx";
+const { default: mdx } = pkg;
 
 export default defineConfig({
   extensions: ["mdx", "md"],
@@ -22,7 +24,7 @@ export default defineConfig({
         jsx: true,
         jsxImportSource: "solid-js",
         providerImportSource: "solid-mdx",
-        remarkPlugins: [remarkFrontmatter],
+        remarkPlugins: [remarkFrontmatter, remarkGfm],
         rehypePlugins: [mdxPrism],
       }),
       blogPostsPlugin(),
