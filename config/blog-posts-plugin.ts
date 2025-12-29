@@ -2,12 +2,24 @@ import type { Plugin } from "vite";
 import path from "node:path";
 import fs from "node:fs";
 import { readSync } from "to-vfile";
-import { matter } from "vfile-matter";
+import { matter as parseMatter } from "vfile-matter";
 
 const BLOG_DIRECTORY = "src/routes/blog";
 const DATA_DIRECTORY = "src/data";
 
 const OUTPUT_FILE = path.join(DATA_DIRECTORY, "blog-posts.json");
+
+const normaliseStringArray = (value: unknown): string[] => {
+  if (!value) {
+    return [];
+  }
+
+  if (!Array.isArray(value)) {
+    return [value.toString()];
+  }
+
+  return value.map((v) => v.toString());
+};
 
 const isBlogPost = (directory: string): boolean => {
   if (!fs.statSync(directory).isDirectory()) {
@@ -20,9 +32,15 @@ const isBlogPost = (directory: string): boolean => {
 
 const toBlogPost = (directory: string): object => {
   const file = readSync(path.join(directory, "index.mdx"));
-  matter(file);
+  parseMatter(file);
 
-  return file.data.matter as object;
+  const matter = file.data.matter as any;
+
+  return {
+    ...matter,
+    authors: normaliseStringArray(matter.authors),
+    tags: normaliseStringArray(matter.tags),
+  };
 };
 
 const processFiles = () => {
