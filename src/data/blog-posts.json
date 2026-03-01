@@ -2,6 +2,8 @@
   {
     "slug": "developer-preview",
     "title": "Developer Preview",
+    "description": "The TASBox developer preview is starting now!",
+    "thumbnailAltText": "GMan playermodel bust over a missing texture floor",
     "authors": [
       "derpius"
     ],
@@ -12,6 +14,8 @@
   {
     "slug": "daxa",
     "title": "TASBox x Daxa",
+    "description": "The TASBox renderer is now powered by [Daxa](https://daxa.dev/)!",
+    "thumbnailAltText": "Daxa logo",
     "authors": [
       "derpius"
     ],
@@ -23,6 +27,8 @@
   {
     "slug": "monthly-update-june-2025",
     "title": "Monthly Update - June 2025",
+    "description": "User interfaces, graphical improvements, our own language and more of PhysX exposed to Lua 🚀",
+    "thumbnailAltText": "Main Menu UI and GMan leaning against trolley with text \"Monthly Update June 2025\" overlaid",
     "authors": [
       "derpius"
     ],
@@ -34,6 +40,8 @@
   {
     "slug": "monthly-update-august-2025",
     "title": "Monthly Update - July/August 2025",
+    "description": "A belated update on what's been happening with TASBox, but hopefully the wait is worth it... Source 1 BSP maps are now supported!",
+    "thumbnailAltText": "Screenshot of gm_construct with text \"Monthly Update July/August 2025\" overlaid",
     "authors": [
       "derpius"
     ],
@@ -45,6 +53,8 @@
   {
     "slug": "monthly-update-september-2025",
     "title": "Monthly Update - September 2025",
+    "description": "A more faithful recreation of the Source player controller, improved support for BSPs, and more!",
+    "thumbnailAltText": "Screenshot of surf_kitsune and plastic cube with metalness-roughness texture. The text \"Monthly Update September 2025\" is overlaid",
     "authors": [
       "derpius"
     ],
@@ -56,6 +66,8 @@
   {
     "slug": "monthly-update-october-2025",
     "title": "Monthly Update - October 2025",
+    "description": "What's better than a singleplayer sandbox game? A multiplayer one. Keep reading to see how we're implementing multiplayer in TASBox...",
+    "thumbnailAltText": "Two windows of TASBox opened side-by-side, showing the same scene from two different angles. The text \"Monthly Update October 2025\" is overlaid",
     "authors": [
       "derpius"
     ],
@@ -67,6 +79,8 @@
   {
     "slug": "monthly-update-november-2025",
     "title": "Monthly Update - November 2025",
+    "description": "This month, I've implemented two major networking features which bring multiplayer to an almost playable state...",
+    "thumbnailAltText": "Window showing TASBox on gm_construct with many ragdolls spawned in. The text \"Monthly Update November 2025\" is overlaid",
     "authors": [
       "derpius"
     ],
@@ -78,6 +92,8 @@
   {
     "slug": "monthly-update-december-2025",
     "title": "Monthly Update - December 2025",
+    "description": "Steamworks, Steam Input and Steam Deck - TASBox is coming to Steam!",
+    "thumbnailAltText": "TASBox running on Steam Deck. The text \"Monthly Update December 2025\" is overlaid",
     "authors": [
       "derpius"
     ],
@@ -89,6 +105,8 @@
   {
     "slug": "monthly-update-january-2026",
     "title": "Monthly Update - January 2026",
+    "description": "Happy new year! Rich text editing, a networking API, and a number of fixes/improvements this month in TASBox",
+    "thumbnailAltText": "Screenshot of TASBox with a rich text editor showing. The text \"Monthly Update January 2026\" is overlaid",
     "authors": [
       "derpius"
     ],
