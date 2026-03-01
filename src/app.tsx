@@ -3,7 +3,7 @@ import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import { StyleRegistry, css } from "solid-styled";
-import { Navbar } from "#components/common/navbar";
+import { Layout } from "#components/common/layout";
 
 function GlobalStyles() {
   css`
@@ -59,8 +59,9 @@ export default function App() {
         <MetaProvider>
           <StyleRegistry auto>
             <GlobalStyles />
-            <Navbar />
-            <Suspense>{props.children}</Suspense>
+            <Layout>
+              <Suspense>{props.children}</Suspense>
+            </Layout>
           </StyleRegistry>
         </MetaProvider>
       )}
