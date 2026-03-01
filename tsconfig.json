@@ -15,7 +15,8 @@
     "paths": {
       "~/*": ["./src/*"],
       "#components/*": ["./src/components/*"],
-      "#theme/*": ["./src/theme/*"]
+      "#theme/*": ["./src/theme/*"],
+      "#data/*": ["./src/data/*"]
     }
   }
 }
