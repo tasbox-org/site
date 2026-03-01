@@ -1,11 +1,12 @@
 import { Title } from "@solidjs/meta";
-import { Component } from "solid-js";
+import { Component, For } from "solid-js";
+import { blogPosts } from "#data/blog-posts";
 
-const Blog: Component = () => (
+const BlogList: Component = () => (
   <main>
-    <Title>TASBox Blog</Title>
-    <p>TODO</p>
+    <Title>TASBox - Blog</Title>
+    <For each={blogPosts}>{(post) => <a href={`/blog/${post.slug}`}>{post.title}</a>}</For>
   </main>
 );
 
-export default Blog;
+export default BlogList;
