@@ -1,0 +1,29 @@
+developer-preview:
+  label: Developer Preview
+  permalink: /developer-preview
+  description: Updates and information regarding the Closed Developer Preview
+
+closed-playtest:
+  label: Closed Playtest
+  permalink: /closed-playtest
+  description: Updates and information regarding the Closed Playtest
+
+release:
+  label: Public Release
+  permalink: /release
+  description: Updates and information regarding the Public Release of TASBox
+
+monthly-updates:
+  label: Monthly Updates
+  permalink: /monthly-updates
+  description: Updates covering everything that's happened in TASBox each month
+
+renderer:
+  label: Renderer
+  permalink: /renderer
+  description: Posts about TASBox's renderer
+
+lua-api:
+  label: Lua API
+  permalink: /lua-api
+  description: Posts about TASBox's Lua API

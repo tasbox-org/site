@@ -1,0 +1,26 @@
+derpius:
+  name: Derpius
+  title: Lead Developer
+  url: https://github.com/Derpius
+  image_url: https://github.com/Derpius.png
+  page: true
+  socials:
+    github: Derpius
+
+potato:
+  name: Jason
+  title: Developer
+  url: https://github.com/yogwoggf
+  image_url: https://github.com/yogwoggf.png
+  page: false
+  socials:
+    github: yogwoggf
+
+vurv:
+  name: Vurv
+  title: Developer
+  url: https://github.com/Vurv78
+  image_url: https://github.com/Vurv78.png
+  page: false
+  socials:
+    github: Vurv78
