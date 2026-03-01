@@ -74,5 +74,27 @@
       "monthly-updates",
       "developer-preview"
     ]
+  },
+  {
+    "slug": "monthly-update-december-2025",
+    "title": "Monthly Update - December 2025",
+    "authors": [
+      "derpius"
+    ],
+    "tags": [
+      "monthly-updates",
+      "developer-preview"
+    ]
+  },
+  {
+    "slug": "monthly-update-january-2026",
+    "title": "Monthly Update - January 2026",
+    "authors": [
+      "derpius"
+    ],
+    "tags": [
+      "monthly-updates",
+      "developer-preview"
+    ]
   }
 ]
