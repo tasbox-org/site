@@ -30,7 +30,7 @@ const transformers = {
   },
 } as const;
 
-export const FileRoutesPlus = () => {
+export const FileRoutesPlus = (): any[] => {
   const routes = (<FileRoutes />) as unknown as RouteDefinition[];
 
   return routes.map((route) => {
