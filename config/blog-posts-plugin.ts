@@ -86,6 +86,7 @@ const blogPostDirectoryRegex = /^\/?(?<blogPost>\d{4}-\d{2}-\d{2}-(\w+-)*\w+)/;
 
 export const blogPostsStaticAssetCopy = () =>
   viteStaticCopy({
+    structured: false,
     targets: [
       {
         src: path.join(BLOG_DIRECTORY, "**", "*.png"),
@@ -113,15 +114,9 @@ export const blogPostsStaticAssetCopy = () =>
             throw new Error(`Blog post does not have slug: ${blogPostDirectory}`);
           }
 
-          const newRelativeFileDirectory = path.join(
-            "/",
-            relativeFileDirectory.replace(blogPostDirectoryRegex, blogPost.slug)
-          );
+          const newRelativeFileDirectory = relativeFileDirectory.replace(blogPostDirectoryRegex, blogPost.slug);
 
-          return path.join(
-            path.relative(relativeFileDirectory, newRelativeFileDirectory),
-            `${fileName}.${fileExtension}`
-          );
+          return path.join(newRelativeFileDirectory, `${fileName}.${fileExtension}`);
         },
       },
     ],
