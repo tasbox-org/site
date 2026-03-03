@@ -84,40 +84,42 @@ export const blogPostsGenerator = (): Plugin => ({
 
 const blogPostDirectoryRegex = /^\/?(?<blogPost>\d{4}-\d{2}-\d{2}-(\w+-)*\w+)/;
 
+const renameStaticAsset = (fileName: string, fileExtension: string, fullPath: string): string => {
+  const absoluteBlogDirectory = path.resolve(BLOG_DIRECTORY);
+  const { dir: absoluteFileDirectory } = path.parse(fullPath);
+
+  const relativeFileDirectory = absoluteFileDirectory.replace(absoluteBlogDirectory, "");
+  const blogPostDirectory = blogPostDirectoryRegex.exec(relativeFileDirectory)?.groups?.blogPost;
+
+  if (blogPostDirectory === undefined) {
+    throw new Error(`Failed to transform blog post static asset: ${fullPath}`);
+  }
+
+  const blogPosts = readBlogPosts();
+  const blogPost = blogPosts.find((post) => post.filesystemPath === blogPostDirectory);
+
+  if (blogPost === undefined) {
+    throw new Error(`Unable to find blog post for folder: ${blogPostDirectory} (full asset path: ${fullPath})`);
+  }
+
+  if (!("slug" in blogPost)) {
+    throw new Error(`Blog post does not have slug: ${blogPostDirectory}`);
+  }
+
+  const newRelativeFileDirectory = relativeFileDirectory.replace(blogPostDirectoryRegex, blogPost.slug);
+
+  return path.join(newRelativeFileDirectory, `${fileName}.${fileExtension}`);
+};
+
 export const blogPostsStaticAssetCopy = () =>
   viteStaticCopy({
     structured: false,
     targets: [
       {
-        src: path.join(BLOG_DIRECTORY, "**", "*.png"),
+        src: path.join(BLOG_DIRECTORY, "**", "*.{png,mp4}"),
         dest: "blog",
         overwrite: true,
-        rename: (fileName, fileExtension, fullPath) => {
-          const absoluteBlogDirectory = path.resolve(BLOG_DIRECTORY);
-          const { dir: absoluteFileDirectory } = path.parse(fullPath);
-
-          const relativeFileDirectory = absoluteFileDirectory.replace(absoluteBlogDirectory, "");
-          const blogPostDirectory = blogPostDirectoryRegex.exec(relativeFileDirectory)?.groups?.blogPost;
-
-          if (blogPostDirectory === undefined) {
-            throw new Error(`Failed to transform blog post static asset: ${fullPath}`);
-          }
-
-          const blogPosts = readBlogPosts();
-          const blogPost = blogPosts.find((post) => post.filesystemPath === blogPostDirectory);
-
-          if (blogPost === undefined) {
-            throw new Error(`Unable to find blog post for folder: ${blogPostDirectory} (full asset path: ${fullPath})`);
-          }
-
-          if (!("slug" in blogPost)) {
-            throw new Error(`Blog post does not have slug: ${blogPostDirectory}`);
-          }
-
-          const newRelativeFileDirectory = relativeFileDirectory.replace(blogPostDirectoryRegex, blogPost.slug);
-
-          return path.join(newRelativeFileDirectory, `${fileName}.${fileExtension}`);
-        },
+        rename: renameStaticAsset,
       },
     ],
   });
