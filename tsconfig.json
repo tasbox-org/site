@@ -16,7 +16,8 @@
       "~/*": ["./src/*"],
       "#components/*": ["./src/components/*"],
       "#theme/*": ["./src/theme/*"],
-      "#data/*": ["./src/data/*"]
+      "#data/*": ["./src/data/*"],
+      "#hooks/*": ["./src/hooks/*"]
     }
   }
 }

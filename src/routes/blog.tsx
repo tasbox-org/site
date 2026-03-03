@@ -1,10 +1,11 @@
 import { RouteSectionProps } from "@solidjs/router";
-import { Meta, Title } from "@solidjs/meta";
+import { Base, Meta, Title } from "@solidjs/meta";
 import { blogPosts } from "#data/blog-posts";
 import { For } from "solid-js";
 
 // @ts-ignore
 import { MDXProvider } from "solid-mdx";
+import { getUrl } from "#hooks/get-url";
 
 const pathRegex = /\/?blog\/(?<slug>[\w\-]+)\/?/;
 
@@ -12,7 +13,8 @@ const BlogPost = (props: RouteSectionProps) => {
   const slug = () => pathRegex.exec(props.location.pathname)?.groups?.slug;
   const post = () => blogPosts.find((post) => post.slug === slug());
 
-  const rootUrl = () => `https://tasbox.dev/blog/${slug()}`;
+  const rootUrl = () => `${getUrl().origin}/blog/${slug()}/`;
+  console.log(rootUrl());
   const rootImageUrl = () => `${rootUrl()}/social.png`;
 
   return (
@@ -30,6 +32,7 @@ const BlogPost = (props: RouteSectionProps) => {
       {/* TODO: Add article published time (same as shown below) */}
       <For each={post()?.authors}>{(author) => <Meta name="article:author" content={author} />}</For>
       <For each={post()?.tags}>{(tag) => <Meta name="article:tag" content={tag} />}</For>
+      <Base href={rootUrl()} />
 
       <header>
         <h1>{post()?.title}</h1>

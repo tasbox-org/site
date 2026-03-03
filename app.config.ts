@@ -43,6 +43,7 @@ export default defineConfig({
         "#components": path.resolve(import.meta.dirname, "./src/components"),
         "#theme": path.resolve(import.meta.dirname, "./src/theme"),
         "#data": path.resolve(import.meta.dirname, "./src/data"),
+        "#hooks": path.resolve(import.meta.dirname, "./src/hooks"),
       },
     },
   },
