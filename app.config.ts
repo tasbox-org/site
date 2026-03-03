@@ -1,7 +1,7 @@
 import { defineConfig } from "@solidjs/start/config";
 import type { PluginOption } from "vite";
 import solidStyled from "unplugin-solid-styled";
-import { blogPostsPlugin } from "./config/blog-posts-plugin";
+import { blogPostsGenerator, blogPostsStaticAssetCopy } from "./config/blog-posts-plugin";
 import remarkFrontmatter from "remark-frontmatter";
 import { mdxPrism } from "./config/mdx-prism";
 import remarkGfm from "remark-gfm";
@@ -9,6 +9,7 @@ import path from "node:path";
 
 /* @ts-ignore */
 import pkg from "@vinxi/plugin-mdx";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 const { default: mdx } = pkg;
 
 export default defineConfig({
@@ -34,7 +35,8 @@ export default defineConfig({
         remarkPlugins: [remarkFrontmatter, remarkGfm],
         rehypePlugins: [mdxPrism],
       }),
-      blogPostsPlugin(),
+      blogPostsGenerator(),
+      blogPostsStaticAssetCopy(),
     ],
     resolve: {
       alias: {
