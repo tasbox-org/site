@@ -1,9 +1,9 @@
 import { MetaProvider } from "@solidjs/meta";
 import { Router } from "@solidjs/router";
-import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import { StyleRegistry, css } from "solid-styled";
 import { Layout } from "#components/common/layout";
+import { FileRoutesPlus } from "#components/common/file-routes-plus";
 
 function GlobalStyles() {
   css`
@@ -66,7 +66,7 @@ export default function App() {
         </MetaProvider>
       )}
     >
-      <FileRoutes />
+      <FileRoutesPlus />
     </Router>
   );
 }

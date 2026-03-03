@@ -9,7 +9,8 @@
     ],
     "tags": [
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2025-01-01-developer-preview"
   },
   {
     "slug": "daxa",
@@ -22,7 +23,8 @@
     "tags": [
       "developer-preview",
       "renderer"
-    ]
+    ],
+    "filesystemPath": "2025-04-20-daxa"
   },
   {
     "slug": "monthly-update-june-2025",
@@ -35,7 +37,8 @@
     "tags": [
       "monthly-updates",
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2025-06-15-monthly-update"
   },
   {
     "slug": "monthly-update-august-2025",
@@ -48,7 +51,8 @@
     "tags": [
       "monthly-updates",
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2025-09-02-monthly-update"
   },
   {
     "slug": "monthly-update-september-2025",
@@ -61,7 +65,8 @@
     "tags": [
       "monthly-updates",
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2025-09-25-monthly-update"
   },
   {
     "slug": "monthly-update-october-2025",
@@ -74,7 +79,8 @@
     "tags": [
       "monthly-updates",
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2025-11-03-monthly-update"
   },
   {
     "slug": "monthly-update-november-2025",
@@ -87,7 +93,8 @@
     "tags": [
       "monthly-updates",
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2025-12-07-monthly-update"
   },
   {
     "slug": "monthly-update-december-2025",
@@ -100,7 +107,8 @@
     "tags": [
       "monthly-updates",
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2025-12-30-monthly-update"
   },
   {
     "slug": "monthly-update-january-2026",
@@ -113,6 +121,7 @@
     "tags": [
       "monthly-updates",
       "developer-preview"
-    ]
+    ],
+    "filesystemPath": "2026-02-08-monthly-update"
   }
 ]

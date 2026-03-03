@@ -1,6 +1,7 @@
 import JsonPosts from "./blog-posts.json";
 
 interface BlogPost {
+  filesystemPath: string;
   slug: string;
   title: string;
   description: string;
