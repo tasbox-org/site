@@ -1,4 +1,4 @@
-import { createAsync, query, redirect, RouteSectionProps } from "@solidjs/router";
+import { RouteSectionProps } from "@solidjs/router";
 import { Meta, Title } from "@solidjs/meta";
 import { blogPosts } from "#data/blog-posts";
 import { For } from "solid-js";
@@ -6,24 +6,14 @@ import { For } from "solid-js";
 // @ts-ignore
 import { MDXProvider } from "solid-mdx";
 
-// Not async, but can't find any other way to force a redirect on load...
-const getPost = query(async (slug: string | undefined) => {
-  const post = blogPosts.find((post) => post.slug === slug);
-  if (post === undefined) {
-    return redirect("/not-found");
-  }
-
-  return post;
-}, "blogPost");
-
 const pathRegex = /\/?blog\/(?<slug>[\w\-]+)\/?/;
 
 const BlogPost = (props: RouteSectionProps) => {
-  const slug = pathRegex.exec(props.location.pathname)?.groups?.slug;
-  const post = createAsync(() => getPost(slug));
+  const slug = () => pathRegex.exec(props.location.pathname)?.groups?.slug;
+  const post = () => blogPosts.find((post) => post.slug === slug());
 
-  const rootUrl = `https://tasbox.dev/blog/${slug}`;
-  const rootImageUrl = `${rootUrl}/social.png`;
+  const rootUrl = () => `https://tasbox.dev/blog/${slug()}`;
+  const rootImageUrl = () => `${rootUrl()}/social.png`;
 
   return (
     // TODO: Sidebar with all posts sorted by release
@@ -32,9 +22,9 @@ const BlogPost = (props: RouteSectionProps) => {
       <Meta name="description" content={post()?.description} />
       <Meta name="og:title" content={post()?.title} />
       <Meta name="og:description" content={post()?.description} />
-      <Meta name="og:image" content={rootImageUrl} />
+      <Meta name="og:image" content={rootImageUrl()} />
       <Meta name="og:image:alt" content={post()?.thumbnailAltText} />
-      <Meta name="og:url" content={rootUrl} />
+      <Meta name="og:url" content={rootUrl()} />
       <Meta name="og:site_name" content="TASBox" />
       <Meta name="og:type" content="article" />
       {/* TODO: Add article published time (same as shown below) */}
