@@ -14,7 +14,6 @@ const BlogPost = (props: RouteSectionProps) => {
   const post = () => blogPosts.find((post) => post.slug === slug());
 
   const rootUrl = () => `${getUrl().origin}/blog/${slug()}/`;
-  console.log(rootUrl());
   const rootImageUrl = () => `${rootUrl()}/social.png`;
 
   return (
