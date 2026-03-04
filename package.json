@@ -2,20 +2,21 @@
   "name": "@tasbox/site",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start"
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite preview"
   },
   "dependencies": {
     "@mdx-js/mdx": "^2.3.0",
+    "@mdx-js/rollup": "^3.1.1",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
-    "@solidjs/start": "^1.0.11",
-    "@vinxi/plugin-mdx": "^3.7.2",
+    "@solidjs/start": "^2.0.0-alpha.2",
+    "@solidjs/vite-plugin-nitro-2": "^0.1.0",
     "hast-util-to-string": "^3.0.1",
     "refractor": "^5.0.0",
     "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^3.0.1",
+    "remark-gfm": "^4.0.1",
     "solid-js": "^1.9.5",
     "solid-mdx": "^0.0.7",
     "solid-styled": "^0.12.0",
@@ -23,7 +24,7 @@
     "unist-util-visit": "^5.0.0",
     "unplugin-solid-styled": "^0.12.0",
     "vfile-matter": "^5.0.1",
-    "vinxi": "^0.5.11"
+    "vite": "^7.3.1"
   },
   "engines": {
     "node": ">=22"
