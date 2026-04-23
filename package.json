@@ -12,7 +12,6 @@
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^2.0.0-alpha.2",
-    "@solidjs/vite-plugin-nitro-2": "^0.1.0",
     "@tasbox-org/docs": "^1.0.3",
     "hast-util-to-string": "^3.0.1",
     "refractor": "^5.0.0",
@@ -21,18 +20,20 @@
     "solid-js": "^1.9.5",
     "solid-mdx": "^0.0.7",
     "solid-styled": "^0.12.0",
-    "to-vfile": "^8.0.0",
     "unist-util-visit": "^5.0.0",
-    "unplugin-solid-styled": "^0.12.0",
-    "vfile-matter": "^5.0.1",
-    "vite": "^7.3.1"
+    "unplugin-solid-styled": "^0.12.0"
   },
   "engines": {
     "node": ">=22"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.13",
+    "@solidjs/vite-plugin-nitro-2": "^0.1.0",
     "@types/node": "^25.0.3",
-    "prettier": "^3.7.4",
+    "to-vfile": "^8.0.0",
+    "typescript": "^6.0.3",
+    "vfile-matter": "^5.0.1",
+    "vite": "^7.3.1",
     "vite-plugin-static-copy": "^3.2.0"
   }
 }
