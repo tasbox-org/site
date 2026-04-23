@@ -1,5 +1,5 @@
 import { Title } from "@solidjs/meta";
-import Counter from "~/components/Counter";
+import Counter from "#components/Counter";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Counter />
       <p>
         Visit{" "}
-        <a href="https://start.solidjs.com" target="_blank">
+        <a href="https://start.solidjs.com" target="_blank" rel="noopener">
           start.solidjs.com
         </a>{" "}
         to learn how to build SolidStart apps.
