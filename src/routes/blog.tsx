@@ -1,13 +1,12 @@
-import { RouteSectionProps } from "@solidjs/router";
 import { Base, Meta, Title } from "@solidjs/meta";
-import { blogPosts } from "#data/blog-posts";
+import type { RouteSectionProps } from "@solidjs/router";
 import { For } from "solid-js";
-
-// @ts-ignore
+// @ts-expect-error
 import { MDXProvider } from "solid-mdx";
+import { blogPosts } from "#data/blog-posts";
 import { getUrl } from "#hooks/get-url";
 
-const pathRegex = /\/?blog\/(?<slug>[\w\-]+)\/?/;
+const pathRegex = /\/?blog\/(?<slug>[\w-]+)\/?/;
 
 const BlogPost = (props: RouteSectionProps) => {
   const slug = () => pathRegex.exec(props.location.pathname)?.groups?.slug;
@@ -42,7 +41,7 @@ const BlogPost = (props: RouteSectionProps) => {
       <p>{post()?.description}</p>
       <img src="social.png" alt={post()?.thumbnailAltText} />
 
-      {/* TODO: Custom markdown components. See https://github.com/andi23rosca/andi.dev/blob/main/src/components/Markdown.tsx */}
+      {/* TODO: Custom Markdown components. See https://github.com/andi23rosca/andi.dev/blob/main/src/components/Markdown.tsx */}
       <MDXProvider>{props.children}</MDXProvider>
 
       <footer>TODO prev/next buttons, tags, and link to edit on github</footer>

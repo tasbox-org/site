@@ -1,4 +1,4 @@
-import { ParentComponent } from "solid-js";
+import type { ParentComponent } from "solid-js";
 import { Navbar } from "#components/common/navbar";
 
 // TODO: Add skip link to main content

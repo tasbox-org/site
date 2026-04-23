@@ -1,5 +1,5 @@
+import type { RouteDefinition } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { RouteDefinition } from "@solidjs/router";
 import { blogPosts } from "#data/blog-posts";
 
 const transformBlogRoute = (route: RouteDefinition): RouteDefinition => {
@@ -30,7 +30,7 @@ const transformers = {
   },
 } as const;
 
-export const FileRoutesPlus = (): any[] => {
+export const FileRoutesPlus = (): RouteDefinition[] => {
   const routes = (<FileRoutes />) as unknown as RouteDefinition[];
 
   return routes.map((route) => {

@@ -1,6 +1,6 @@
 import { Title } from "@solidjs/meta";
-import { Component } from "solid-js";
 import { event } from "@tasbox-org/docs";
+import type { Component } from "solid-js";
 
 const Docs: Component = () => (
   <main>

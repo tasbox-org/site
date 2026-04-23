@@ -1,4 +1,4 @@
-import JsonPosts from "./blog-posts.json";
+import JsonPosts from "./blog-posts.json" with { type: "json" };
 
 interface BlogPost {
   filesystemPath: string;
