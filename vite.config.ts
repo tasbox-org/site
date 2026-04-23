@@ -1,13 +1,16 @@
-import { solidStart } from "@solidjs/start/config";
-import { defineConfig } from "vite";
-import solidStyled from "unplugin-solid-styled";
-import { blogPostsGenerator, blogPostsStaticAssetCopy } from "./config/blog-posts-plugin";
-import remarkFrontmatter from "remark-frontmatter";
-import { mdxPrism } from "./config/mdx-prism";
-import remarkGfm from "remark-gfm";
 import path from "node:path";
-import { nitroV2Plugin } from "@solidjs/vite-plugin-nitro-2";
 import mdx from "@mdx-js/rollup";
+import { solidStart } from "@solidjs/start/config";
+import { nitroV2Plugin } from "@solidjs/vite-plugin-nitro-2";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
+import solidStyled from "unplugin-solid-styled";
+import { defineConfig } from "vite";
+import {
+  blogPostsGenerator,
+  blogPostsStaticAssetCopy,
+} from "./config/blog-posts-plugin";
+import { mdxPrism } from "./config/mdx-prism";
 
 export default defineConfig({
   plugins: [
@@ -45,6 +48,7 @@ export default defineConfig({
       "#theme": path.resolve(import.meta.dirname, "./src/theme"),
       "#data": path.resolve(import.meta.dirname, "./src/data"),
       "#hooks": path.resolve(import.meta.dirname, "./src/hooks"),
+      "#types": path.resolve(import.meta.dirname, "./src/types"),
     },
   },
 });

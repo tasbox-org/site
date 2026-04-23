@@ -17,7 +17,8 @@
       "#components/*": ["./src/components/*"],
       "#theme/*": ["./src/theme/*"],
       "#data/*": ["./src/data/*"],
-      "#hooks/*": ["./src/hooks/*"]
+      "#hooks/*": ["./src/hooks/*"],
+      "#types/*": ["./src/types/*"]
     }
   }
 }
