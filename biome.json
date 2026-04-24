@@ -20,6 +20,17 @@
           "fix": "safe",
           "level": "error"
         }
+      },
+      "style": {
+        "useConsistentCurlyBraces": "error"
+      },
+      "suspicious": {
+        "noUnknownAtRules": {
+          "level": "warn",
+          "options": {
+            "ignore": ["global"]
+          }
+        }
       }
     }
   },
@@ -33,6 +44,7 @@
       "jsxQuoteStyle": "double",
       "semicolons": "always",
       "arrowParentheses": "always"
-    }
+    },
+    "experimentalEmbeddedSnippetsEnabled": true
   }
 }
