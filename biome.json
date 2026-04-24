@@ -13,7 +13,15 @@
     "lineWidth": 120
   },
   "linter": {
-    "enabled": true
+    "enabled": true,
+    "rules": {
+      "correctness": {
+        "noUnusedImports": {
+          "fix": "safe",
+          "level": "error"
+        }
+      }
+    }
   },
   "assist": {
     "enabled": true
