@@ -6,4 +6,22 @@
   --spacing-8: calc((8 / 16) * 1rem);
   --spacing-13: calc((13 / 16) * 1rem);
   --spacing-21: calc((21 / 16) * 1rem);
+
+  --navbar-height: calc((60.8 / 16) * 1rem);
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  min-height: 100%;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
 }

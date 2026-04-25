@@ -3,3 +3,7 @@
   top: 0;
   z-index: 999;
 }
+
+#main-content {
+  flex-grow: 1;
+}
