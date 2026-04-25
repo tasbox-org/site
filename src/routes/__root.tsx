@@ -2,7 +2,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/solid-r
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools";
 import { HydrationScript, Suspense } from "solid-js/web";
 
-const RootLayout = () => (
+const RootShell = () => (
   <html lang="en">
     <head>
       <HeadContent />
@@ -34,5 +34,5 @@ export const Route = createRootRoute({
       { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
-  component: RootLayout,
+  shellComponent: RootShell,
 });
