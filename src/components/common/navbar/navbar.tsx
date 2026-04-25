@@ -8,16 +8,16 @@ export const Navbar: Component = () => {
     <div class={styles.navbar}>
       <a href="/">TASBox</a>
       <nav>
-        <ul>
-          <li>
+        <ul class={styles.list}>
+          <li class={styles.listItem}>
             <ButtonNavLink href="/">About</ButtonNavLink>
           </li>
-          <li>
+          <li class={styles.listItem}>
             <ButtonNavLink href="/docs" match="/docs/*">
               Docs
             </ButtonNavLink>
           </li>
-          <li>
+          <li class={styles.listItem}>
             <ButtonNavLink href="/blog" match="/blog/*">
               Blog
             </ButtonNavLink>

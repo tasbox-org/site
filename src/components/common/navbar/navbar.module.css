@@ -11,7 +11,7 @@
   border-bottom: var(--spacing-1) solid var(--colour-border);
 }
 
-ul {
+.list {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,6 +20,6 @@ ul {
   gap: var(--spacing-13);
 }
 
-li {
+.list-item {
   list-style: none;
 }
