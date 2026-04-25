@@ -6,7 +6,7 @@ import style from "./docs.module.css";
 const DocsLayout = (props: ParentProps) => (
   <div class={style.container}>
     <DocsSidebar
-      level="primary"
+      variant="primary"
       sections={[
         {
           title: "Guides",

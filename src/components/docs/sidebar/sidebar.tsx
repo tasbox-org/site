@@ -11,7 +11,7 @@ export interface DocsSidebarSection {
 }
 
 export interface DocsSidebarProps {
-  level: "primary" | "secondary";
+  variant: "primary" | "secondary";
   isSearchable?: boolean;
   sections: DocsSidebarSection[];
 }
