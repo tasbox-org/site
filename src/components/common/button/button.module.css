@@ -8,11 +8,20 @@
   cursor: pointer;
 }
 
-.button {
+.nav-button {
+  color: var(--colour-background-text-disabled);
+}
+
+.button,
+.nav-button.enabled {
   background-color: var(--colour-primary);
   color: var(--colour-primary-text);
 
   font-weight: 500;
+}
+
+.nav-button.enabled {
+  cursor: default;
 }
 
 .button:hover {
@@ -23,17 +32,6 @@
   background-color: var(--colour-primary-active);
 }
 
-.nav-button {
-  color: var(--colour-background-text-disabled);
-}
-
-.nav-button:hover {
+.nav-button:hover:not(.enabled) {
   background-color: var(--colour-primary-disabled);
-}
-
-.nav-button.enabled {
-  background-color: var(--colour-primary);
-  color: var(--colour-primary-text);
-
-  cursor: default;
 }

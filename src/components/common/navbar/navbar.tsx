@@ -10,15 +10,17 @@ export const Navbar: Component = () => {
       <nav>
         <ul>
           <li>
-            <ButtonNavLink href="/" isActive>
-              About
+            <ButtonNavLink href="/">About</ButtonNavLink>
+          </li>
+          <li>
+            <ButtonNavLink href="/docs" match="/docs/*">
+              Docs
             </ButtonNavLink>
           </li>
           <li>
-            <ButtonNavLink href="/docs">Docs</ButtonNavLink>
-          </li>
-          <li>
-            <ButtonNavLink href="/blog">Blog</ButtonNavLink>
+            <ButtonNavLink href="/blog" match="/blog/*">
+              Blog
+            </ButtonNavLink>
           </li>
         </ul>
       </nav>
