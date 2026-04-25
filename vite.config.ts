@@ -41,4 +41,9 @@ export default defineConfig({
       "#types": path.resolve(import.meta.dirname, "./src/types"),
     },
   },
+  css: {
+    modules: {
+      localsConvention: "camelCaseOnly",
+    },
+  },
 });
