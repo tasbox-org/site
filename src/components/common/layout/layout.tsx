@@ -8,6 +8,5 @@ export const Layout: ParentComponent = (props) => (
       <Navbar />
     </header>
     <main id="main-content">{props.children}</main>
-    <footer>This is a footer</footer>
   </>
 );

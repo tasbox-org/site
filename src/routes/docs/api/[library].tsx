@@ -2,6 +2,7 @@ import { type RouteSectionProps, useParams } from "@solidjs/router";
 import { DocsSidebar } from "#components/docs/sidebar";
 import { useDocLibrarySidebarSections } from "#hooks/use-doc-library";
 import type { PathParams } from "#types/path-params";
+import styles from "./[library].module.css";
 
 const LibraryLayout = (props: RouteSectionProps) => {
   const params = useParams<PathParams["/api/[library]"]>();
@@ -15,7 +16,7 @@ const LibraryLayout = (props: RouteSectionProps) => {
         matchUrl="/docs/api/:library/:any/*"
         sections={sidebarSections() ?? []}
       />
-      {props.children}
+      <div class={styles.container}>{props.children}</div>
     </>
   );
 };

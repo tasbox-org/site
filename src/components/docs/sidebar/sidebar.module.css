@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
 
+  max-height: calc(100vh - var(--navbar-height));
   padding: var(--spacing-21) 0;
 
   border-right: var(--spacing-1) solid var(--colour-border);
+  overflow: hidden;
 }
 
 .container.any-active {
@@ -26,6 +28,7 @@
 
 .scroll {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .section-title {
@@ -84,7 +87,7 @@
     width: 50px;
     height: 50px;
 
-    transform: translateY(calc(-100% + 1px));
+    transform: translateY(calc(-100% + 1px)) translateX(1px);
   }
 
   .list-item-pseudo-anchor::after {
@@ -96,7 +99,7 @@
     width: 50px;
     height: 50px;
 
-    transform: translateY(calc(100% - 1px)) scaleY(-1);
+    transform: translateY(calc(100% - 1px)) translateX(1px) scaleY(-1);
   }
 }
 
