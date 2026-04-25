@@ -15,6 +15,7 @@
     "types": ["@solidjs/start/env"],
     "isolatedModules": true,
     "paths": {
+      "~/*": ["./src/*"],
       "#components/*": ["./src/components/*"],
       "#theme/*": ["./src/theme/*"],
       "#data/*": ["./src/data/*"],
