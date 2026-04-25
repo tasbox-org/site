@@ -4,7 +4,7 @@ import { Suspense } from "solid-js";
 import { StyleRegistry } from "solid-styled";
 import { FileRoutesPlus } from "#components/common/file-routes-plus";
 import { Layout } from "#components/common/layout";
-import { CssReset } from "#theme/css-reset";
+import { GlobalStyles } from "#theme/global-styles";
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
       root={(props) => (
         <MetaProvider>
           <StyleRegistry auto>
-            <CssReset />
+            <GlobalStyles />
             <Layout>
               <Suspense>{props.children}</Suspense>
             </Layout>
