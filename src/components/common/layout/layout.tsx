@@ -1,7 +1,7 @@
 import type { ParentComponent } from "solid-js";
 import { Navbar } from "#components/common/navbar";
+import "./layout.module.css";
 
-// TODO: Add skip link to main content
 export const Layout: ParentComponent = (props) => (
   <>
     <header>

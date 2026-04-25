@@ -6,6 +6,9 @@
 
   width: 100%;
   padding: var(--spacing-13) var(--spacing-21);
+
+  background-color: var(--colour-background);
+  border-bottom: var(--spacing-1) solid var(--colour-border);
 }
 
 ul {
