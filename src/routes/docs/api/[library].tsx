@@ -9,7 +9,12 @@ const LibraryLayout = (props: RouteSectionProps) => {
 
   return (
     <>
-      <DocsSidebar variant="secondary" isSearchable sections={sidebarSections() ?? []} />
+      <DocsSidebar
+        variant="secondary"
+        isSearchable
+        matchUrl="/docs/api/:library/:any/*"
+        sections={sidebarSections() ?? []}
+      />
       {props.children}
     </>
   );

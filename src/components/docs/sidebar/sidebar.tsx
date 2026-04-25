@@ -1,5 +1,7 @@
+import { useMatch } from "@solidjs/router";
 import { createMemo, createSignal, For, Show } from "solid-js";
 import { useSearch } from "#hooks/use-search";
+import styles from "./sidebar.module.css";
 
 export interface DocsSidebarItem {
   title: string;
@@ -14,6 +16,7 @@ export interface DocsSidebarSection {
 export interface DocsSidebarProps {
   variant: "primary" | "secondary";
   isSearchable?: boolean;
+  matchUrl: string;
   sections: readonly DocsSidebarSection[];
 }
 
@@ -41,7 +44,31 @@ const getSectionsMatchingSearchResults = (
     .filter((section) => section !== undefined);
 };
 
+const getVariantClass = (variant: "primary" | "secondary") => {
+  switch (variant) {
+    case "primary":
+      return styles.primary;
+    case "secondary":
+      return styles.secondary;
+  }
+};
+
+const ListItem = (props: DocsSidebarItem) => {
+  const match = useMatch(() => `${props.href}/*`);
+
+  return (
+    <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
+      <a class={styles.link} href={props.href}>
+        {props.title}
+      </a>
+      <div class={styles.listItemPseudoAnchor} />
+    </li>
+  );
+};
+
 export const DocsSidebar = (props: DocsSidebarProps) => {
+  const match = useMatch(() => props.matchUrl);
+
   const [searchTerm, setSearchTerm] = createSignal("");
 
   const searchResults = useSearch(() => getItemsForSearch(props.sections), searchTerm, {
@@ -54,26 +81,25 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
   );
 
   return (
-    <nav aria-label="Documentation">
+    <nav
+      aria-label="Documentation"
+      class={`${styles.container} ${getVariantClass(props.variant)} ${match() ? styles.anyActive : ""}`}
+    >
       <Show when={props.isSearchable ?? false}>
-        <input type="text" onInput={(e) => setSearchTerm(e.target.value)} />
+        <input class={styles.search} type="text" onInput={(e) => setSearchTerm(e.target.value)} />
       </Show>
-      <For each={visibleSections()}>
-        {(section) => (
-          <>
-            <h1>{section.title}</h1>
-            <ul>
-              <For each={section.items}>
-                {(item) => (
-                  <li>
-                    <a href={item.href}>{item.title}</a>
-                  </li>
-                )}
-              </For>
-            </ul>
-          </>
-        )}
-      </For>
+      <div class={styles.scroll}>
+        <For each={visibleSections()}>
+          {(section) => (
+            <>
+              <h1 class={styles.sectionTitle}>{section.title}</h1>
+              <ul class={styles.list}>
+                <For each={section.items}>{(item) => <ListItem {...item} />}</For>
+              </ul>
+            </>
+          )}
+        </For>
+      </div>
     </nav>
   );
 };

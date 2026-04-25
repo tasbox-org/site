@@ -1,7 +1,10 @@
 :root {
   /* Backgrounds */
   --colour-background: light-dark(#f2e3cd, black);
-  --colour-surface: light-dark(#7e483b, #7e483b);
+
+  --colour-surface: light-dark(#cbae9d, black);
+  --colour-surface-hovered: rgba(from var(--colour-surface) r g b / 0.4);
+
   --colour-border: light-dark(#ded0bd, black);
 
   /* Accents */

@@ -7,6 +7,7 @@ const DocsLayout = (props: ParentProps) => (
   <div class={style.container}>
     <DocsSidebar
       variant="primary"
+      matchUrl="/docs/:any/*"
       sections={[
         {
           title: "Guides",
