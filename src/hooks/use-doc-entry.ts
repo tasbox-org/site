@@ -27,7 +27,7 @@ const getDocEntry = query(
   "docEntry",
 );
 
-export const useDocEntry = <Key extends EntryKey>(libraryName: string, entryKey: Key, entryName: string) =>
+export const useDocEntry = <Key extends EntryKey>(libraryName: () => string, entryKey: Key, entryName: () => string) =>
   createAsync<ElementOf<Library[Key]>>(
-    () => getDocEntry(libraryName, entryKey, entryName) as Promise<ElementOf<Library[Key]>>,
+    () => getDocEntry(libraryName(), entryKey, entryName()) as Promise<ElementOf<Library[Key]>>,
   );

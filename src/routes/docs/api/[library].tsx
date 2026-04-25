@@ -1,11 +1,17 @@
-import type { RouteSectionProps } from "@solidjs/router";
+import { type RouteSectionProps, useParams } from "@solidjs/router";
+import { DocsSidebar } from "#components/docs/sidebar";
+import { useDocLibrarySidebarSections } from "#hooks/use-doc-library";
+import type { PathParams } from "#types/path-params";
 
 const LibraryLayout = (props: RouteSectionProps) => {
+  const params = useParams<PathParams["/api/[library]"]>();
+  const sidebarSections = useDocLibrarySidebarSections(() => params.library);
+
   return (
-    <div>
-      <div>Library layout</div>
+    <>
+      <DocsSidebar sections={sidebarSections() ?? []} />
       {props.children}
-    </div>
+    </>
   );
 };
 
