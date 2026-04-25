@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import styles from "./navbar.module.scss";
+import styles from "./navbar.module.css";
 
 // TODO: Add skip link to main content
 export const Navbar: Component = () => {

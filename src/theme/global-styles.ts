@@ -1,4 +1,4 @@
-import "./colours.scss";
-import "./css-reset.scss";
-import "./fonts.scss";
-import "./spacing.scss";
+import "./colours.css";
+import "./css-reset.css";
+import "./fonts.css";
+import "./spacing.css";

@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: var(--spacing-13) var(--spacing-21);
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--spacing-13);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
