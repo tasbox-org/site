@@ -8,8 +8,6 @@ dist
 .vinxi
 .nitro
 app.config.timestamp_*.js
-worker-configuration.d.ts
-src/routeTree.gen.ts
 
 # Environment
 .env

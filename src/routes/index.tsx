@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/solid-router";
+import { Title } from "@solidjs/meta";
 
-const HomePage = () => {
+export default function Home() {
   return (
     <>
+      <Title>Hello World</Title>
       <h1>Hello world!</h1>
       <p>
         Visit{" "}
@@ -13,8 +14,4 @@ const HomePage = () => {
       </p>
     </>
   );
-};
-
-export const Route = createFileRoute("/")({
-  component: HomePage,
-});
+}
