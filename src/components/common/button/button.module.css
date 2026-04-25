@@ -2,13 +2,25 @@
 .nav-button {
   padding: var(--spacing-5) var(--spacing-13);
   border-radius: 999999px;
+  border: none;
 
   text-decoration: none;
+  cursor: pointer;
 }
 
 .button {
   background-color: var(--colour-primary);
   color: var(--colour-primary-text);
+
+  font-weight: 500;
+}
+
+.button:hover {
+  background-color: var(--colour-primary-hovered);
+}
+
+.button:active {
+  background-color: var(--colour-primary-active);
 }
 
 .nav-button {
@@ -19,10 +31,9 @@
   background-color: var(--colour-primary-disabled);
 }
 
-.enabled,
-.enabled:hover {
+.nav-button.enabled {
   background-color: var(--colour-primary);
   color: var(--colour-primary-text);
 
-  font-weight: 500;
+  cursor: default;
 }

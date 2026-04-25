@@ -3,7 +3,11 @@ import styles from "./button.module.css";
 
 export const Button = (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
-    <button {...props} class={`${props.class} ${styles.button} ${styles.enabled}`}>
+    <button
+      {...props}
+      type={props.type ?? "button"}
+      class={`${props.class} ${styles.button} ${props.disabled ? "" : styles.enabled}`}
+    >
       {props.children}
     </button>
   );

@@ -6,6 +6,8 @@
   /* Accents */
   --colour-primary: light-dark(#7e483b, #7e483b);
   --colour-primary-disabled: rgba(from var(--colour-primary) r g b / 0.2);
+  --colour-primary-hovered: rgba(from var(--colour-primary) r g b / 0.8);
+  --colour-primary-active: rgba(from var(--colour-primary) r g b / 0.9);
 
   --colour-secondary: light-dark(orange, coral);
   --colour-tertiary: light-dark(orange, coral);
