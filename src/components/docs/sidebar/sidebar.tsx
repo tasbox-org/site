@@ -11,6 +11,7 @@ export interface DocsSidebarSection {
 }
 
 export interface DocsSidebarProps {
+  level: "primary" | "secondary";
   sections: DocsSidebarSection[];
 }
 
