@@ -1,3 +1,26 @@
 :root {
-  color-scheme: light dark;
+  /* Backgrounds */
+  --colour-background: light-dark(#f2e3cd, black);
+  --colour-surface: light-dark(#7e483b, #7e483b);
+
+  /* Accents */
+  --colour-primary: light-dark(#7e483b, #7e483b);
+  --colour-primary-disabled: rgba(from var(--colour-primary) r g b / 0.2);
+
+  --colour-secondary: light-dark(orange, coral);
+  --colour-tertiary: light-dark(orange, coral);
+
+  /* Text */
+  --colour-background-text: light-dark(black, white);
+  --colour-background-text-disabled: rgba(from var(--colour-background-text) r g b / 0.7);
+
+  --colour-surface-text: light-dark(black, black);
+
+  --colour-primary-text: light-dark(white, white);
+  --colour-secondary-text: var(--colour-primary-text);
+  --colour-tertiary-text: var(--colour-primary-text);
+}
+
+body {
+  background-color: var(--colour-background);
 }

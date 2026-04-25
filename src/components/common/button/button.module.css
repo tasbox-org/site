@@ -1,0 +1,28 @@
+.button,
+.nav-button {
+  padding: var(--spacing-5) var(--spacing-13);
+  border-radius: 999999px;
+
+  text-decoration: none;
+}
+
+.button {
+  background-color: var(--colour-primary);
+  color: var(--colour-primary-text);
+}
+
+.nav-button {
+  color: var(--colour-background-text-disabled);
+}
+
+.nav-button:hover {
+  background-color: var(--colour-primary-disabled);
+}
+
+.enabled,
+.enabled:hover {
+  background-color: var(--colour-primary);
+  color: var(--colour-primary-text);
+
+  font-weight: 500;
+}

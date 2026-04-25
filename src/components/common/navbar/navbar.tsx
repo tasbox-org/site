@@ -1,4 +1,5 @@
 import type { Component } from "solid-js";
+import { ButtonNavLink } from "#components/common/button";
 import styles from "./navbar.module.css";
 
 // TODO: Add skip link to main content
@@ -9,13 +10,15 @@ export const Navbar: Component = () => {
       <nav>
         <ul>
           <li>
-            <a href="/">About</a>
+            <ButtonNavLink href="/" isActive>
+              About
+            </ButtonNavLink>
           </li>
           <li>
-            <a href="/docs">Docs</a>
+            <ButtonNavLink href="/docs">Docs</ButtonNavLink>
           </li>
           <li>
-            <a href="/blog">Blog</a>
+            <ButtonNavLink href="/blog">Blog</ButtonNavLink>
           </li>
         </ul>
       </nav>
