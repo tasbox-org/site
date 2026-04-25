@@ -1,5 +1,8 @@
 {
+  "include": ["./src"],
+  "exclude": ["node_modules", "dist", ".output"],
   "compilerOptions": {
+    "rootDir": "./src",
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -10,10 +13,12 @@
     "allowJs": true,
     "strict": true,
     "noEmit": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
     "types": ["@solidjs/start/env"],
     "isolatedModules": true,
     "paths": {
-      "~/*": ["./src/*"],
       "#components/*": ["./src/components/*"],
       "#theme/*": ["./src/theme/*"],
       "#data/*": ["./src/data/*"],

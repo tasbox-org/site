@@ -8,6 +8,7 @@ dist
 .vinxi
 .nitro
 app.config.timestamp_*.js
+worker-configuration.d.ts
 
 # Environment
 .env
