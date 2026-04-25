@@ -1,8 +1,10 @@
 import type { Component } from "solid-js";
+import styles from "./navbar.module.scss";
 
+// TODO: Add skip link to main content
 export const Navbar: Component = () => {
   return (
-    <header>
+    <div class={styles.navbar}>
       <a href="/">TASBox</a>
       <nav>
         <ul>
@@ -17,7 +19,9 @@ export const Navbar: Component = () => {
           </li>
         </ul>
       </nav>
-      <button type="button">Light/Dark</button>
-    </header>
+      <div>
+        <button type="button">Light/Dark</button>
+      </div>
+    </div>
   );
 };

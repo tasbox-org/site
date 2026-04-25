@@ -4,12 +4,8 @@ import { solidStart } from "@solidjs/start/config";
 import { nitroV2Plugin } from "@solidjs/vite-plugin-nitro-2";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
-import solidStyled from "unplugin-solid-styled";
 import { defineConfig } from "vite";
-import {
-  blogPostsGenerator,
-  blogPostsStaticAssetCopy,
-} from "./config/blog-posts-plugin";
+import { blogPostsGenerator, blogPostsStaticAssetCopy } from "./config/blog-posts-plugin";
 import { mdxPrism } from "./config/mdx-prism";
 
 export default defineConfig({
@@ -31,12 +27,6 @@ export default defineConfig({
       preset: "cloudflare-pages",
       rollupConfig: {
         external: ["__STATIC_CONTENT_MANIFEST", "node:async_hooks"],
-      },
-    }),
-    solidStyled.vite({
-      filter: {
-        include: "src/**/*.tsx",
-        exclude: "node_modules/**/*.{ts,js}",
       },
     }),
     blogPostsGenerator(),

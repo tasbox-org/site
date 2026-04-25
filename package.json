@@ -19,9 +19,7 @@
     "remark-gfm": "^4.0.1",
     "solid-js": "^1.9.5",
     "solid-mdx": "^0.0.7",
-    "solid-styled": "^0.12.0",
-    "unist-util-visit": "^5.0.0",
-    "unplugin-solid-styled": "^0.12.0"
+    "unist-util-visit": "^5.0.0"
   },
   "engines": {
     "node": ">=22"
@@ -30,6 +28,7 @@
     "@biomejs/biome": "^2.4.13",
     "@solidjs/vite-plugin-nitro-2": "^0.1.0",
     "@types/node": "^25.0.3",
+    "sass-embedded": "^1.99.0",
     "to-vfile": "^8.0.0",
     "typescript": "^6.0.3",
     "vfile-matter": "^5.0.1",
