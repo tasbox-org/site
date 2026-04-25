@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
@@ -10,6 +10,8 @@
     "allowJs": true,
     "strict": true,
     "noEmit": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
     "types": ["@solidjs/start/env"],
     "isolatedModules": true,
     "paths": {

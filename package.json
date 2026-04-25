@@ -1,38 +1,43 @@
 {
   "name": "@tasbox/site",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
-    "start": "vite preview"
+    "build": "vite build && tsc --noEmit",
+    "start": "vite preview",
+    "cf-typegen": "wrangler types",
+    "postinstall": "npm run cf-typegen"
   },
   "dependencies": {
     "@mdx-js/mdx": "^2.3.0",
     "@mdx-js/rollup": "^3.1.1",
-    "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.0",
-    "@solidjs/start": "^2.0.0-alpha.2",
+    "@tanstack/solid-router": "^1.168.21",
+    "@tanstack/solid-router-devtools": "^1.166.13",
+    "@tanstack/solid-start": "^1.167.43",
     "@tasbox-org/docs": "^1.0.4",
     "hast-util-to-string": "^3.0.1",
     "refractor": "^5.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
-    "solid-js": "^1.9.5",
+    "solid-js": "^1.9.12",
     "solid-mdx": "^0.0.7",
     "unist-util-visit": "^5.0.0"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
-    "@solidjs/vite-plugin-nitro-2": "^0.1.0",
+    "@cloudflare/vite-plugin": "^1.33.2",
     "@types/node": "^25.0.3",
     "sass-embedded": "^1.99.0",
     "to-vfile": "^8.0.0",
     "typescript": "^6.0.3",
     "vfile-matter": "^5.0.1",
-    "vite": "^7.3.1",
-    "vite-plugin-static-copy": "^3.2.0"
+    "vite": "^8.0.10",
+    "vite-plugin-solid": "^2.11.12",
+    "vite-plugin-static-copy": "^3.2.0",
+    "wrangler": "^4.85.0"
   }
 }

@@ -1,7 +1,8 @@
 {
   "name": "tasbox",
   "compatibility_date": "2026-04-25",
-  "compatibility_flags": ["nodejs_compat_v2"],
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/solid-start/server-entry",
   "observability": {
     "enabled": true
   }
