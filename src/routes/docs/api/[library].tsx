@@ -9,7 +9,7 @@ const LibraryLayout = (props: RouteSectionProps) => {
 
   return (
     <>
-      <DocsSidebar level="secondary" sections={sidebarSections() ?? []} />
+      <DocsSidebar level="secondary" isSearchable sections={sidebarSections() ?? []} />
       {props.children}
     </>
   );
