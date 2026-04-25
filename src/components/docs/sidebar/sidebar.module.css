@@ -3,7 +3,7 @@
   flex-direction: column;
 
   max-height: calc(100vh - var(--navbar-height));
-  padding: var(--spacing-21) 0;
+  padding-bottom: var(--spacing-21);
 
   border-right: var(--spacing-1) solid var(--colour-border);
   overflow: hidden;
@@ -23,16 +23,33 @@
 }
 
 .search {
-  margin: 0 var(--spacing-21);
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--spacing-13) var(--spacing-21);
+  border-bottom: var(--spacing-1) solid var(--colour-border);
+
+  input {
+    padding: var(--spacing-5) var(--spacing-8);
+
+    color: var(--colour-input-text);
+    background-color: var(--colour-input);
+
+    border-radius: 999999px;
+    border: var(--spacing-1) solid var(--colour-border);
+  }
 }
 
 .scroll {
   overflow-y: scroll;
   overflow-x: hidden;
+
+  height: 100%;
 }
 
 .section-title {
   padding: 0 var(--spacing-21);
+  margin-top: var(--spacing-5);
 }
 
 .list {
@@ -64,7 +81,7 @@
   padding: var(--spacing-3) var(--spacing-21);
   padding-left: calc(var(--spacing-21) + var(--spacing-8));
 
-  color: var(--colour-surface-text);
+  color: var(--colour-background-text-disabled);
 }
 
 .link:hover {
@@ -73,7 +90,9 @@
 
 .active {
   .link {
+    color: var(--colour-surface-text);
     background-color: var(--colour-surface);
+
     cursor: default;
     font-weight: 500;
   }
@@ -90,6 +109,7 @@
     transform: translateY(calc(-100% + 1px)) translateX(1px);
   }
 
+  /* TODO: Fix pseudo element causing additional scroll */
   .list-item-pseudo-anchor::after {
     content: url("./active-blend.svg");
 
@@ -116,5 +136,10 @@
 .secondary {
   .section-title {
     font-size: 1rem;
+  }
+
+  .link {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
   }
 }

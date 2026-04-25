@@ -80,13 +80,16 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
     props.isSearchable ? getSectionsMatchingSearchResults(props.sections, searchResults()) : props.sections,
   );
 
+  // TODO: Merge all docs into a single searchable sidebar
   return (
     <nav
       aria-label="Documentation"
       class={`${styles.container} ${getVariantClass(props.variant)} ${match() ? styles.anyActive : ""}`}
     >
       <Show when={props.isSearchable ?? false}>
-        <input class={styles.search} type="text" onInput={(e) => setSearchTerm(e.target.value)} />
+        <div class={styles.search}>
+          <input type="text" placeholder="Search..." onInput={(e) => setSearchTerm(e.target.value)} />
+        </div>
       </Show>
       <div class={styles.scroll}>
         <For each={visibleSections()}>

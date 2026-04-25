@@ -5,6 +5,8 @@
   --colour-surface: light-dark(#cbae9d, black);
   --colour-surface-hovered: rgba(from var(--colour-surface) r g b / 0.4);
 
+  --colour-input: light-dark(#e8d9c3, black);
+
   --colour-border: light-dark(#ded0bd, black);
 
   /* Accents */
@@ -21,6 +23,8 @@
   --colour-background-text-disabled: rgba(from var(--colour-background-text) r g b / 0.7);
 
   --colour-surface-text: light-dark(black, black);
+
+  --colour-input-text: light-dark(black, white);
 
   --colour-primary-text: light-dark(white, white);
   --colour-secondary-text: var(--colour-primary-text);
