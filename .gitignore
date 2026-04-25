@@ -6,6 +6,7 @@ dist
 .vercel
 .netlify
 .vinxi
+.nitro
 app.config.timestamp_*.js
 
 # Environment

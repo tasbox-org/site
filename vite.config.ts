@@ -26,7 +26,7 @@ export default defineConfig({
     nitroV2Plugin({
       preset: "cloudflare-pages",
       rollupConfig: {
-        external: ["__STATIC_CONTENT_MANIFEST", "node:async_hooks"],
+        external: ["node:async_hooks"],
       },
     }),
     blogPostsGenerator(),
