@@ -28,6 +28,11 @@ const mapToDocItems = <TItem extends { name: string | number; section?: string }
 
 export const useDocSidebarApiItems = (): DocsSidebarItem[] =>
   allLibraries.flatMap((library): DocsSidebarItem[] => [
+    {
+      icon: "documentation",
+      breadcrumbs: [library.name, "Overview"],
+      href: `/docs/api/${library.name}`,
+    },
     ...mapToDocItems({
       library,
       items: library.constants,

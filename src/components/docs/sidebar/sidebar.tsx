@@ -19,7 +19,7 @@ export interface DocsSidebarProps {
 }
 
 const LeafListItem = (props: DocsSidebarItem) => {
-  const match = useMatch(() => `${props.href}/*`);
+  const match = useMatch(() => props.href);
 
   const prefix = () => props.breadcrumbs.slice(0, props.breadcrumbs.length - 1).join(" > ");
   const hasPrefix = () => prefix().length > 0;
