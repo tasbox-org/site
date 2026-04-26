@@ -28,11 +28,13 @@ const LeafListItem = (props: DocsSidebarItem) => {
     <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
       <a class={styles.link} href={props.href}>
         <Icon name={props.icon} />{" "}
-        <Show when={hasPrefix()}>
-          {prefix()}
-          {" > "}
-        </Show>{" "}
-        {props.breadcrumbs.at(-1)}
+        <span style={{ display: "block" }}>
+          <Show when={hasPrefix()}>
+            {prefix()}
+            {" > "}
+          </Show>{" "}
+          {props.breadcrumbs.at(-1)}
+        </span>
       </a>
     </li>
   );

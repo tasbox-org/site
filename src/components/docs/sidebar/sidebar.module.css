@@ -3,6 +3,8 @@
   flex-direction: column;
 
   max-height: calc(100vh - var(--navbar-height));
+  min-width: min-content;
+
   padding-bottom: var(--spacing-21);
 
   border-right: var(--spacing-1) solid var(--colour-border);
@@ -29,8 +31,6 @@
 
 .scroll {
   overflow-y: scroll;
-  overflow-x: hidden;
-
   height: 100%;
 }
 
@@ -48,15 +48,12 @@
   flex-direction: row;
 }
 
-.list-item-pseudo-anchor {
-  width: 0;
-
-  position: relative;
-  right: 0;
-}
-
 .link {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+
   text-decoration: none;
   white-space: nowrap;
 

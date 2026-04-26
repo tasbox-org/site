@@ -11,13 +11,14 @@ import eventIcon from "./event/event.svg";
 import eventIconDark from "./event/event_dark.svg";
 import functionIcon from "./function/function.svg";
 import functionIconDark from "./function/function_dark.svg";
+import styles from "./index.module.css";
 
 export type IconName = "class" | "constant" | "documentation" | "enum" | "event" | "function";
 
 // TODO: Dark mode
 const IconVariant = (props: { light: string; dark: string; alt: string }) => (
   <>
-    <svg width={16} height={16} aria-label={props.alt}>
+    <svg class={styles.icon} width={16} height={16} aria-label={props.alt}>
       <image href={props.light} width={16} height={16} />
     </svg>
   </>
