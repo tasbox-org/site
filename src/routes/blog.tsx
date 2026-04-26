@@ -41,8 +41,9 @@ const BlogPost = (props: RouteSectionProps) => {
       <p>{post()?.description}</p>
       <img src="social.png" alt={post()?.thumbnailAltText} />
 
-      {/* TODO: Custom Markdown components. See https://github.com/andi23rosca/andi.dev/blob/main/src/components/Markdown.tsx */}
-      <MDXProvider>{props.children}</MDXProvider>
+      <div class="markdown">
+        <MDXProvider>{props.children}</MDXProvider>
+      </div>
 
       <footer>TODO prev/next buttons, tags, and link to edit on github</footer>
     </article>
