@@ -98,7 +98,7 @@ const Group = (props: { heading: string; allItems: readonly DocsSidebarItem[]; s
     <Show when={hasResults()}>
       <div>
         <h1>{props.heading}</h1>
-        <Show when={hasSearchTerm} fallback={<UnfilteredDocsItems items={props.allItems} />}>
+        <Show when={hasSearchTerm()} fallback={<UnfilteredDocsItems items={props.allItems} />}>
           <FilteredDocsItems items={searchResults()} />
         </Show>
       </div>
