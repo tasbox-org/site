@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
+  gap: var(--spacing-21);
 }
 
 .contents {
