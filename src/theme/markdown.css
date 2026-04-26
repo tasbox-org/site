@@ -7,7 +7,6 @@
   pre {
     padding: var(--spacing-13);
 
-    background-color: white;
     border: var(--spacing-1) solid var(--colour-border);
     border-radius: 1rem;
   }

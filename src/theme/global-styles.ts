@@ -1,3 +1,4 @@
+import "./prisma/gruvbox.css";
 import "./colours.css";
 import "./css-reset.css";
 import "./fonts.css";

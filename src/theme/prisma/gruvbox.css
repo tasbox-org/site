@@ -1,0 +1,157 @@
+/**
+ * Gruvbox light theme
+ *
+ * Based on Gruvbox: https://github.com/morhetz/gruvbox
+ * Adapted from PrismJS gruvbox-dark theme: https://github.com/schnerring/prism-themes/blob/master/themes/prism-gruvbox-dark.css
+ *
+ * @author Michael Schnerring (https://schnerring.net)
+ * @version 1.0
+ *
+ * ===========
+ *
+ * Gruvbox dark theme
+ *
+ * Adapted from a theme based on:
+ * Vim Gruvbox dark Theme (https://github.com/morhetz/gruvbox)
+ *
+ * @author Azat S. <to@azat.io>
+ * @version 1.0
+ *
+ * ===========
+ *
+ * Further modified for TASBox (removing language- selectors, changing font family to JetBrains Mono, merging light/dark)
+ */
+
+code,
+pre {
+  color: light-dark(#3c3836, #ebdbb2); /* fg1 / fg */
+  font-family: "JetBrains Mono", monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre::-moz-selection,
+pre ::-moz-selection,
+code::-moz-selection,
+code ::-moz-selection {
+  color: light-dark(#282828, #fbf1c7); /* fg0 */
+  background: light-dark(#a89984, #7c6f64); /* bg4 */
+}
+
+pre::selection,
+pre ::selection,
+code::selection,
+code ::selection {
+  color: light-dark(#282828, #fbf1c7); /* fg0 */
+  background: light-dark(#a89984, #7c6f64); /* bg4 */
+}
+
+/* Code blocks */
+pre {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code,
+pre {
+  background: light-dark(#f9f5d7, #1d2021); /* bg0_h */
+}
+
+/* Inline code */
+:not(pre) > code {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: light-dark(#7c6f64, #a89984); /* fg4 / gray1 */
+}
+
+.token.delimiter,
+.token.boolean,
+.token.keyword,
+.token.selector,
+.token.important,
+.token.atrule {
+  color: light-dark(#9d0006, #fb4934); /* red2 */
+}
+
+.token.operator,
+.token.punctuation,
+.token.attr-name {
+  color: light-dark(#7c6f64, #a89984); /* fg4 / gray1 */
+}
+
+.token.tag,
+.token.tag .punctuation,
+.token.doctype,
+.token.builtin {
+  color: light-dark(#b57614, #fabd2f); /* yellow2 */
+}
+
+.token.entity,
+.token.number,
+.token.symbol {
+  color: light-dark(#8f3f71, #d3869b); /* purple2 */
+}
+
+.token.property,
+.token.constant,
+.token.variable {
+  color: light-dark(#9d0006, #fb4934); /* red2 */
+}
+
+.token.string,
+.token.char {
+  color: light-dark(#797403, #b8bb26); /* green2 */
+}
+
+.token.attr-value,
+.token.attr-value .punctuation {
+  color: light-dark(#7c6f64, #a89984); /* fg4 / gray1 */
+}
+
+.token.url {
+  color: light-dark(#797403, #b8bb26); /* green2 */
+  text-decoration: underline;
+}
+
+.token.function {
+  color: light-dark(#b57614, #fabd2f); /* yellow2 */
+}
+
+.token.regex {
+  background: light-dark(#797403, #b8bb26); /* green2 */
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.inserted {
+  background: light-dark(#7c6f64, #a89984); /* fg4 / gray1 */
+}
+
+.token.deleted {
+  background: light-dark(#9d0006, #fb4934); /* red2 */
+}
