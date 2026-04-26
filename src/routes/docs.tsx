@@ -13,7 +13,7 @@ const DocsLayout = (props: ParentProps) => {
         guides={[{ icon: "documentation", breadcrumbs: ["TODO"], href: "#" }]}
         api={apiItems}
       />
-      <div class={styles.contents}>{props.children}</div>
+      {props.children}
     </div>
   );
 };
