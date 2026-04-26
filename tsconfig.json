@@ -22,7 +22,8 @@
       "#theme/*": ["./src/theme/*"],
       "#data/*": ["./src/data/*"],
       "#hooks/*": ["./src/hooks/*"],
-      "#types/*": ["./src/types/*"]
+      "#types/*": ["./src/types/*"],
+      "#helpers/*": ["./src/helpers/*"]
     }
   }
 }

@@ -1,26 +1,22 @@
-import { allLibraries } from "@tasbox-org/docs";
 import type { ParentProps } from "solid-js";
 import { DocsSidebar } from "#components/docs/sidebar";
-import style from "./docs.module.css";
+import { useDocSidebarApiItems } from "#hooks/use-doc-sidebar-items";
+import styles from "./docs.module.css";
 
-const DocsLayout = (props: ParentProps) => (
-  <div class={style.container}>
-    <DocsSidebar
-      variant="primary"
-      matchUrl="/docs/:any/*"
-      sections={[
-        {
-          title: "Guides",
-          items: [{ title: "TODO", href: "#" }],
-        },
-        {
-          title: "API",
-          items: allLibraries.map((library) => ({ title: library.name, href: `/docs/api/${library.name}` })),
-        },
-      ]}
-    />
-    {props.children}
-  </div>
-);
+const DocsLayout = (props: ParentProps) => {
+  const apiItems = useDocSidebarApiItems();
+
+  return (
+    <div class={styles.container}>
+      <DocsSidebar
+        variant="primary"
+        matchUrl="/docs/:any/*"
+        guides={[{ type: "document", breadcrumbs: ["TODO"], href: "#" }]}
+        api={apiItems}
+      />
+      <div class={styles.contents}>{props.children}</div>
+    </div>
+  );
+};
 
 export default DocsLayout;

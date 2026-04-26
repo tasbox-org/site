@@ -3,3 +3,8 @@
   flex-direction: row;
   min-height: calc(100vh - var(--navbar-height));
 }
+
+.contents {
+  max-height: calc(100vh - var(--navbar-height));
+  overflow-y: scroll;
+}

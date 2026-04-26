@@ -3,46 +3,20 @@ import { createMemo, createSignal, For, Show } from "solid-js";
 import { useSearch } from "#hooks/use-search";
 import styles from "./sidebar.module.css";
 
-export interface DocsSidebarItem {
-  title: string;
-  href: string;
-}
+export type DocsSidebarItemType = "constant" | "function" | "enum" | "class" | "event" | "document";
 
-export interface DocsSidebarSection {
-  title: string;
-  items: readonly DocsSidebarItem[];
+export interface DocsSidebarItem {
+  type: DocsSidebarItemType;
+  breadcrumbs: readonly string[];
+  href: string;
 }
 
 export interface DocsSidebarProps {
   variant: "primary" | "secondary";
-  isSearchable?: boolean;
   matchUrl: string;
-  sections: readonly DocsSidebarSection[];
+  guides: readonly DocsSidebarItem[];
+  api: readonly DocsSidebarItem[];
 }
-
-interface SearchableItem extends DocsSidebarItem {
-  sectionTitle: string;
-}
-
-const getItemsForSearch = (sections: readonly DocsSidebarSection[]): readonly SearchableItem[] =>
-  sections.flatMap((section) => section.items.map((item) => ({ sectionTitle: section.title, ...item })));
-
-const getSectionsMatchingSearchResults = (
-  sections: readonly DocsSidebarSection[],
-  results: readonly SearchableItem[],
-) => {
-  const resultsBySection = Object.groupBy(results, (result) => result.sectionTitle);
-
-  return sections
-    .map((section) => {
-      if (!resultsBySection[section.title]) {
-        return undefined;
-      }
-
-      return { ...section, items: resultsBySection[section.title] };
-    })
-    .filter((section) => section !== undefined);
-};
 
 const getVariantClass = (variant: "primary" | "secondary") => {
   switch (variant) {
@@ -53,55 +27,115 @@ const getVariantClass = (variant: "primary" | "secondary") => {
   }
 };
 
-const ListItem = (props: DocsSidebarItem) => {
-  const match = useMatch(() => `${props.href}/*`);
+// const ListItem = (props: DocsSidebarItem) => {
+//   const match = useMatch(() => `${props.href}/*`);
+//
+//   return (
+//     <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
+//       <a class={styles.link} href={props.href}>
+//         {props.title}
+//       </a>
+//       <div class={styles.listItemPseudoAnchor} />
+//     </li>
+//   );
+// };
+
+const UnfilteredDocsItems = (props: { items: readonly DocsSidebarItem[] }) => {
+  const leafItems = createMemo(() => props.items.filter((item) => item.breadcrumbs.length === 1));
+  const groupedItems = createMemo(() => {
+    const grouped = Object.groupBy(
+      props.items.filter((item) => item.breadcrumbs.length > 1),
+      // biome-ignore lint/style/noNonNullAssertion: Length guaranteed by filter
+      (item) => item.breadcrumbs[0]!,
+    );
+
+    return Object.entries(grouped)
+      .map(([key, values]): { key: string; values: DocsSidebarItem[] } => ({
+        key,
+        values: values?.map((value) => ({ ...value, breadcrumbs: value.breadcrumbs.slice(1) })) ?? [],
+      }))
+      .filter(({ values }) => values.length > 0)
+      .toSorted((a, b) => a.key.localeCompare(b.key));
+  });
 
   return (
-    <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
-      <a class={styles.link} href={props.href}>
-        {props.title}
-      </a>
-      <div class={styles.listItemPseudoAnchor} />
-    </li>
+    <ul>
+      <For each={groupedItems()}>
+        {(group) => (
+          <li>
+            <div>{group.key}</div>
+            <UnfilteredDocsItems items={group.values} />
+          </li>
+        )}
+      </For>
+      <For each={leafItems()}>
+        {(item) => (
+          <li>
+            {item.type} {item.breadcrumbs[0]}
+          </li>
+        )}
+      </For>
+    </ul>
   );
 };
+
+const FilteredDocsItems = (props: { items: readonly DocsSidebarItem[] }) => (
+  <ol>
+    <For each={props.items}>
+      {(item) => (
+        <li>
+          {item.type} {item.breadcrumbs.join(" > ")}
+        </li>
+      )}
+    </For>
+  </ol>
+);
+
+const Group = (props: {
+  heading: string;
+  allItems: readonly DocsSidebarItem[];
+  searchResults: readonly DocsSidebarItem[];
+  hasSearchTerm: boolean;
+}) => (
+  <div>
+    <h1>{props.heading}</h1>
+    <Show when={props.hasSearchTerm} fallback={<UnfilteredDocsItems items={props.allItems} />}>
+      <FilteredDocsItems items={props.searchResults} />
+    </Show>
+  </div>
+);
 
 export const DocsSidebar = (props: DocsSidebarProps) => {
   const match = useMatch(() => props.matchUrl);
 
   const [searchTerm, setSearchTerm] = createSignal("");
+  const hasSearchTerm = () => searchTerm().trim().length > 0;
 
-  const searchResults = useSearch(() => getItemsForSearch(props.sections), searchTerm, {
-    keys: ["sectionTitle", "title"],
-    threshold: 0.2,
+  const guideResults = useSearch(() => props.guides, searchTerm, {
+    keys: ["type", "breadcrumbs"],
+    threshold: 0.6,
+  });
+  const apiResults = useSearch(() => props.api, searchTerm, {
+    keys: ["type", "breadcrumbs"],
+    threshold: 0.6,
   });
 
-  const visibleSections = createMemo(() =>
-    props.isSearchable ? getSectionsMatchingSearchResults(props.sections, searchResults()) : props.sections,
-  );
-
-  // TODO: Merge all docs into a single searchable sidebar
   return (
     <nav
       aria-label="Documentation"
       class={`${styles.container} ${getVariantClass(props.variant)} ${match() ? styles.anyActive : ""}`}
     >
-      <Show when={props.isSearchable ?? false}>
-        <div class={styles.search}>
-          <input type="text" placeholder="Search..." onInput={(e) => setSearchTerm(e.target.value)} />
-        </div>
-      </Show>
+      <div class={styles.search}>
+        <input type="text" placeholder="Search..." onInput={(e) => setSearchTerm(e.target.value)} />
+      </div>
       <div class={styles.scroll}>
-        <For each={visibleSections()}>
-          {(section) => (
-            <>
-              <h1 class={styles.sectionTitle}>{section.title}</h1>
-              <ul class={styles.list}>
-                <For each={section.items}>{(item) => <ListItem {...item} />}</For>
-              </ul>
-            </>
-          )}
-        </For>
+        <Group
+          heading="Guides"
+          allItems={props.guides}
+          searchResults={guideResults()}
+          hasSearchTerm={hasSearchTerm()}
+        />
+        <Group heading="API" allItems={props.api} searchResults={apiResults()} hasSearchTerm={hasSearchTerm()} />
       </div>
     </nav>
   );
