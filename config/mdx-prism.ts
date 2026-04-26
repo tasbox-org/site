@@ -3,8 +3,10 @@ import { refractor } from "refractor";
 import lua from "refractor/lua";
 import type { Node, Parent } from "unist";
 import { visit } from "unist-util-visit";
+import { moonjuice } from "../src/theme/prisma/moonjuice";
 
 refractor.register(lua);
+refractor.register(moonjuice);
 
 const visitor = (node: Node, index: number | undefined, parent: Parent | undefined) => {
   if (node.type !== "element" || (node as any).tagName !== "code") {
