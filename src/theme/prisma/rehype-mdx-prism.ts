@@ -3,7 +3,7 @@ import { refractor } from "refractor";
 import lua from "refractor/lua";
 import type { Node, Parent } from "unist";
 import { visit } from "unist-util-visit";
-import { moonjuice } from "../src/theme/prisma/moonjuice";
+import { moonjuice } from "./moonjuice";
 
 refractor.register(lua);
 refractor.register(moonjuice);
@@ -27,7 +27,7 @@ const visitor = (node: Node, index: number | undefined, parent: Parent | undefin
   (node as any).children = result.children;
 };
 
-export const mdxPrism = () => {
+export const rehypeMdxPrism = () => {
   return (tree: Node) => {
     visit(tree, "element", visitor);
   };

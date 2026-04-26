@@ -6,7 +6,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import { defineConfig } from "vite";
 import { blogPostsGenerator, blogPostsStaticAssetCopy } from "./config/blog-posts-plugin";
-import { mdxPrism } from "./config/mdx-prism";
+import { rehypeMdxPrism } from "./src/theme/prisma/rehype-mdx-prism";
 
 export default defineConfig({
   plugins: [
@@ -16,7 +16,7 @@ export default defineConfig({
         jsxImportSource: "solid-js",
         providerImportSource: "solid-mdx",
         remarkPlugins: [remarkGfm, remarkFrontmatter],
-        rehypePlugins: [mdxPrism],
+        rehypePlugins: [rehypeMdxPrism],
       }),
       enforce: "pre",
     },
