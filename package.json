@@ -21,6 +21,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "solid-js": "^1.9.5",
+    "solid-markdown": "^2.1.1",
     "solid-mdx": "^0.0.7",
     "unist-util-visit": "^5.0.0"
   },

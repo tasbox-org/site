@@ -47,4 +47,7 @@ export default defineConfig({
       localsConvention: "camelCaseOnly",
     },
   },
+  optimizeDeps: {
+    include: ["solid-markdown > micromark", "solid-markdown > unified"],
+  },
 });
