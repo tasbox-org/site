@@ -1,6 +1,7 @@
 import { useMatch } from "@solidjs/router";
 import { createMemo, createSignal, For, Show } from "solid-js";
-import { Icon, type IconName } from "#components/icons";
+import { Breadcrumbs } from "#components/docs/breadcrumbs";
+import type { IconName } from "#components/icons";
 import { useSearch } from "#hooks/use-search";
 import styles from "./sidebar.module.css";
 
@@ -16,33 +17,13 @@ export interface DocsSidebarProps {
   api: readonly DocsSidebarItem[];
 }
 
-const BreadcrumbsSeparator = () => <span aria-hidden>{" > "}</span>;
-
 const LeafListItem = (props: DocsSidebarItem) => {
   const match = useMatch(() => props.href);
-
-  const prefix = () => props.breadcrumbs.slice(0, props.breadcrumbs.length - 1);
-  const hasPrefix = () => prefix().length > 0;
-
-  const name = () => props.breadcrumbs.at(-1);
 
   return (
     <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
       <a class={styles.link} href={props.href}>
-        <Icon name={props.icon} />{" "}
-        <span style={{ display: "block" }}>
-          <Show when={hasPrefix()}>
-            <For each={prefix()}>
-              {(breadcrumb) => (
-                <>
-                  {breadcrumb}
-                  <BreadcrumbsSeparator />
-                </>
-              )}
-            </For>
-          </Show>{" "}
-          {name()}
-        </span>
+        <Breadcrumbs icon={props.icon} segments={props.breadcrumbs} />
       </a>
     </li>
   );

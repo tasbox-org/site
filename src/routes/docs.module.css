@@ -5,5 +5,13 @@
 }
 
 .contents {
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  padding: calc(var(--spacing-8) + var(--spacing-2)) 0;
+
+  color: var(--colour-background-text-disabled);
+  font-style: italic;
 }
