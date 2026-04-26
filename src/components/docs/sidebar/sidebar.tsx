@@ -4,8 +4,6 @@ import { Icon, type IconName } from "#components/icons";
 import { useSearch } from "#hooks/use-search";
 import styles from "./sidebar.module.css";
 
-export type DocsSidebarItemType = "constant" | "function" | "enum" | "class" | "event" | "document";
-
 export interface DocsSidebarItem {
   icon: IconName;
   breadcrumbs: readonly string[];
@@ -18,10 +16,12 @@ export interface DocsSidebarProps {
   api: readonly DocsSidebarItem[];
 }
 
+const BreadcrumbsSeparator = () => <span aria-hidden>{" > "}</span>;
+
 const LeafListItem = (props: DocsSidebarItem) => {
   const match = useMatch(() => props.href);
 
-  const prefix = () => props.breadcrumbs.slice(0, props.breadcrumbs.length - 1).join(" > ");
+  const prefix = () => props.breadcrumbs.slice(0, props.breadcrumbs.length - 1);
   const hasPrefix = () => prefix().length > 0;
 
   const name = () => props.breadcrumbs.at(-1);
@@ -32,8 +32,14 @@ const LeafListItem = (props: DocsSidebarItem) => {
         <Icon name={props.icon} />{" "}
         <span style={{ display: "block" }}>
           <Show when={hasPrefix()}>
-            {prefix()}
-            {" > "}
+            <For each={prefix()}>
+              {(breadcrumb) => (
+                <>
+                  {breadcrumb}
+                  <BreadcrumbsSeparator />
+                </>
+              )}
+            </For>
           </Show>{" "}
           {name()}
         </span>
