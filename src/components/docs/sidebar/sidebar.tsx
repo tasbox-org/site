@@ -98,12 +98,12 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
   const hasSearchTerm = () => searchTerm().trim().length > 0;
 
   const guideResults = useSearch(() => props.guides, searchTerm, {
-    keys: ["type", "breadcrumbs"],
-    threshold: 0.6,
+    keys: ["icon", "breadcrumbs"],
+    threshold: 0.3,
   });
   const apiResults = useSearch(() => props.api, searchTerm, {
-    keys: ["type", "breadcrumbs"],
-    threshold: 0.6,
+    keys: ["icon", "breadcrumbs"],
+    threshold: 0.3,
   });
 
   return (
