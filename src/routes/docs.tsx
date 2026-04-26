@@ -10,7 +10,7 @@ const DocsLayout = (props: ParentProps) => {
     <div class={styles.container}>
       <DocsSidebar
         matchUrl="/docs/:any/*"
-        guides={[{ type: "document", breadcrumbs: ["TODO"], href: "#" }]}
+        guides={[{ icon: "documentation", breadcrumbs: ["TODO"], href: "#" }]}
         api={apiItems}
       />
       <div class={styles.contents}>{props.children}</div>

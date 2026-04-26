@@ -1,25 +1,28 @@
 import { allLibraries, type Library } from "@tasbox-org/docs";
-import type { DocsSidebarItem, DocsSidebarItemType } from "#components/docs/sidebar";
+import type { DocsSidebarItem } from "#components/docs/sidebar";
+import type { IconName } from "#components/icons";
 import { whereNotNull } from "#helpers/where-not-null";
 
 interface MapToSectionProps<TItem> {
   library: Library;
   items: TItem[] | undefined;
-  itemType: DocsSidebarItemType;
+  icon: IconName;
+  pathSegment: string;
 }
 
 const mapToDocItems = <TItem extends { name: string | number; section?: string }>({
   library,
   items,
-  itemType,
+  icon,
+  pathSegment,
 }: MapToSectionProps<TItem>): DocsSidebarItem[] =>
   items?.map((item): DocsSidebarItem => {
     const title = item.name.toString();
 
     return {
-      type: itemType,
+      icon,
       breadcrumbs: whereNotNull([library.name, item.section, title]),
-      href: `/docs/api/${library.name}/${itemType}/${title}`,
+      href: `/docs/api/${library.name}/${pathSegment}/${title}`,
     };
   }) ?? [];
 
@@ -28,26 +31,31 @@ export const useDocSidebarApiItems = (): DocsSidebarItem[] =>
     ...mapToDocItems({
       library,
       items: library.constants,
-      itemType: "constant",
+      icon: "constant",
+      pathSegment: "constant",
     }),
     ...mapToDocItems({
       library,
       items: library.functions,
-      itemType: "function",
+      icon: "function",
+      pathSegment: "function",
     }),
     ...mapToDocItems({
       library,
       items: library.enums,
-      itemType: "enum",
+      icon: "enum",
+      pathSegment: "enum",
     }),
     ...mapToDocItems({
       library,
       items: library.classes,
-      itemType: "class",
+      icon: "class",
+      pathSegment: "class",
     }),
     ...mapToDocItems({
       library,
       items: library.events,
-      itemType: "event",
+      icon: "event",
+      pathSegment: "event",
     }),
   ]);

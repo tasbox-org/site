@@ -1,12 +1,13 @@
 import { useMatch } from "@solidjs/router";
 import { createMemo, createSignal, For, Show } from "solid-js";
+import { Icon, type IconName } from "#components/icons";
 import { useSearch } from "#hooks/use-search";
 import styles from "./sidebar.module.css";
 
 export type DocsSidebarItemType = "constant" | "function" | "enum" | "class" | "event" | "document";
 
 export interface DocsSidebarItem {
-  type: DocsSidebarItemType;
+  icon: IconName;
   breadcrumbs: readonly string[];
   href: string;
 }
@@ -26,7 +27,7 @@ const LeafListItem = (props: DocsSidebarItem) => {
   return (
     <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
       <a class={styles.link} href={props.href}>
-        {props.type}{" "}
+        <Icon name={props.icon} />{" "}
         <Show when={hasPrefix()}>
           {prefix()}
           {" > "}
