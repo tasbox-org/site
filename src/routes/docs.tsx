@@ -9,7 +9,6 @@ const DocsLayout = (props: ParentProps) => {
   return (
     <div class={styles.container}>
       <DocsSidebar
-        variant="primary"
         matchUrl="/docs/:any/*"
         guides={[{ type: "document", breadcrumbs: ["TODO"], href: "#" }]}
         api={apiItems}

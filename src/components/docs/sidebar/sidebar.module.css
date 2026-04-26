@@ -9,19 +9,6 @@
   overflow: hidden;
 }
 
-.container.any-active {
-  border-right: var(--spacing-5) solid var(--colour-surface);
-}
-
-.primary.container {
-  min-width: 16rem;
-  max-width: 16rem;
-}
-.secondary.container {
-  min-width: 20rem;
-  max-width: 20rem;
-}
-
 .search {
   display: flex;
   flex-direction: column;
@@ -45,11 +32,6 @@
   overflow-x: hidden;
 
   height: 100%;
-}
-
-.section-title {
-  padding: 0 var(--spacing-21);
-  margin-top: var(--spacing-5);
 }
 
 .list {
@@ -76,6 +58,7 @@
 .link {
   display: flex;
   text-decoration: none;
+  white-space: nowrap;
 
   width: 100%;
   padding: var(--spacing-3) var(--spacing-21);
@@ -95,51 +78,5 @@
 
     cursor: default;
     font-weight: 500;
-  }
-
-  .list-item-pseudo-anchor::before {
-    content: url("./active-blend.svg");
-
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 50px;
-
-    transform: translateY(calc(-100% + 1px)) translateX(1px);
-  }
-
-  /* TODO: Fix pseudo element causing additional scroll */
-  .list-item-pseudo-anchor::after {
-    content: url("./active-blend.svg");
-
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-
-    transform: translateY(calc(100% - 1px)) translateX(1px) scaleY(-1);
-  }
-}
-
-.primary {
-  .section-title {
-    font-size: 1.5rem;
-  }
-
-  .link {
-    font-size: 1.1rem;
-  }
-}
-
-.secondary {
-  .section-title {
-    font-size: 1rem;
-  }
-
-  .link {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.8rem;
   }
 }

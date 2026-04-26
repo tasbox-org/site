@@ -12,33 +12,30 @@ export interface DocsSidebarItem {
 }
 
 export interface DocsSidebarProps {
-  variant: "primary" | "secondary";
   matchUrl: string;
   guides: readonly DocsSidebarItem[];
   api: readonly DocsSidebarItem[];
 }
 
-const getVariantClass = (variant: "primary" | "secondary") => {
-  switch (variant) {
-    case "primary":
-      return styles.primary;
-    case "secondary":
-      return styles.secondary;
-  }
-};
+const LeafListItem = (props: DocsSidebarItem) => {
+  const match = useMatch(() => `${props.href}/*`);
 
-// const ListItem = (props: DocsSidebarItem) => {
-//   const match = useMatch(() => `${props.href}/*`);
-//
-//   return (
-//     <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
-//       <a class={styles.link} href={props.href}>
-//         {props.title}
-//       </a>
-//       <div class={styles.listItemPseudoAnchor} />
-//     </li>
-//   );
-// };
+  const prefix = () => props.breadcrumbs.slice(0, props.breadcrumbs.length).join(" > ");
+  const hasPrefix = () => prefix().length > 0;
+
+  return (
+    <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
+      <a class={styles.link} href={props.href}>
+        {props.type}{" "}
+        <Show when={hasPrefix()}>
+          {prefix()}
+          {" > "}
+        </Show>{" "}
+        {props.breadcrumbs.at(-1)}
+      </a>
+    </li>
+  );
+};
 
 const UnfilteredDocsItems = (props: { items: readonly DocsSidebarItem[] }) => {
   const leafItems = createMemo(() => props.items.filter((item) => item.breadcrumbs.length === 1));
@@ -59,35 +56,23 @@ const UnfilteredDocsItems = (props: { items: readonly DocsSidebarItem[] }) => {
   });
 
   return (
-    <ul>
+    <ul class={styles.list}>
       <For each={groupedItems()}>
         {(group) => (
-          <li>
+          <li class={styles.list}>
             <div>{group.key}</div>
             <UnfilteredDocsItems items={group.values} />
           </li>
         )}
       </For>
-      <For each={leafItems()}>
-        {(item) => (
-          <li>
-            {item.type} {item.breadcrumbs[0]}
-          </li>
-        )}
-      </For>
+      <For each={leafItems()}>{(item) => <LeafListItem {...item} />}</For>
     </ul>
   );
 };
 
 const FilteredDocsItems = (props: { items: readonly DocsSidebarItem[] }) => (
-  <ol>
-    <For each={props.items}>
-      {(item) => (
-        <li>
-          {item.type} {item.breadcrumbs.join(" > ")}
-        </li>
-      )}
-    </For>
+  <ol class={styles.list}>
+    <For each={props.items}>{(item) => <LeafListItem {...item} />}</For>
   </ol>
 );
 
@@ -106,8 +91,6 @@ const Group = (props: {
 );
 
 export const DocsSidebar = (props: DocsSidebarProps) => {
-  const match = useMatch(() => props.matchUrl);
-
   const [searchTerm, setSearchTerm] = createSignal("");
   const hasSearchTerm = () => searchTerm().trim().length > 0;
 
@@ -121,10 +104,7 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
   });
 
   return (
-    <nav
-      aria-label="Documentation"
-      class={`${styles.container} ${getVariantClass(props.variant)} ${match() ? styles.anyActive : ""}`}
-    >
+    <nav aria-label="Documentation" class={styles.container}>
       <div class={styles.search}>
         <input type="text" placeholder="Search..." onInput={(e) => setSearchTerm(e.target.value)} />
       </div>
