@@ -92,13 +92,17 @@ const Group = (props: { heading: string; allItems: readonly DocsSidebarItem[]; s
     },
   );
 
+  const hasResults = () => !hasSearchTerm() || searchResults().length > 0;
+
   return (
-    <div>
-      <h1>{props.heading}</h1>
-      <Show when={hasSearchTerm} fallback={<UnfilteredDocsItems items={props.allItems} />}>
-        <FilteredDocsItems items={searchResults()} />
-      </Show>
-    </div>
+    <Show when={hasResults()}>
+      <div>
+        <h1>{props.heading}</h1>
+        <Show when={hasSearchTerm} fallback={<UnfilteredDocsItems items={props.allItems} />}>
+          <FilteredDocsItems items={searchResults()} />
+        </Show>
+      </div>
+    </Show>
   );
 };
 
