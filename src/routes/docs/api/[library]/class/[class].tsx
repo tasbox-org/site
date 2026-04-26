@@ -1,4 +1,6 @@
 import { useParams } from "@solidjs/router";
+import { Description } from "#components/docs/description";
+import { RealmHeading } from "#components/docs/realm-heading";
 import { useDocEntry } from "#hooks/use-doc-entry";
 import type { PathParams } from "#types/path-params";
 
@@ -10,7 +12,12 @@ const ClassPage = () => {
     () => params.class,
   );
 
-  return <div>Class: {JSON.stringify(cls(), null, 2)}</div>;
+  return (
+    <div>
+      <RealmHeading realms={cls()?.realms} name={cls()?.name} />
+      <Description value={cls()?.description} />
+    </div>
+  );
 };
 
 export default ClassPage;

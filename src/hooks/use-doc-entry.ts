@@ -22,7 +22,7 @@ const getDocEntry = query(
       throw redirect("/404", { status: 404 });
     }
 
-    return entry;
+    return { ...entry, realms: entry.realms ?? library.realms };
   },
   "docEntry",
 );

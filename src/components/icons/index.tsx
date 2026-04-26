@@ -13,6 +13,8 @@ import functionIcon from "./function/function.svg";
 import functionIconDark from "./function/function_dark.svg";
 import styles from "./index.module.css";
 
+export * from "./realm";
+
 export type IconName = "class" | "constant" | "documentation" | "enum" | "event" | "function";
 
 // TODO: Dark mode
