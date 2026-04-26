@@ -65,8 +65,12 @@ const UnfilteredDocsItems = (props: { items: readonly DocsSidebarItem[] }) => {
       <For each={groupedItems()}>
         {(group) => (
           <li class={styles.list}>
-            <div>{group.key}</div>
-            <UnfilteredDocsItems items={group.values} />
+            <details class={styles.details}>
+              <summary>{group.key}</summary>
+              <div class={styles.detailsContents}>
+                <UnfilteredDocsItems items={group.values} />
+              </div>
+            </details>
           </li>
         )}
       </For>
