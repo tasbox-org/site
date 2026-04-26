@@ -24,6 +24,8 @@ const LeafListItem = (props: DocsSidebarItem) => {
   const prefix = () => props.breadcrumbs.slice(0, props.breadcrumbs.length - 1).join(" > ");
   const hasPrefix = () => prefix().length > 0;
 
+  const name = () => props.breadcrumbs.at(-1);
+
   return (
     <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
       <a class={styles.link} href={props.href}>
@@ -33,7 +35,7 @@ const LeafListItem = (props: DocsSidebarItem) => {
             {prefix()}
             {" > "}
           </Show>{" "}
-          {props.breadcrumbs.at(-1)}
+          {name()}
         </span>
       </a>
     </li>
@@ -96,11 +98,13 @@ const Group = (props: { heading: string; allItems: readonly DocsSidebarItem[]; s
 
   return (
     <Show when={hasResults()}>
-      <div>
-        <h1>{props.heading}</h1>
-        <Show when={hasSearchTerm()} fallback={<UnfilteredDocsItems items={props.allItems} />}>
-          <FilteredDocsItems items={searchResults()} />
-        </Show>
+      <div class={styles.group}>
+        <h1 class={styles.groupHeader}>{props.heading}</h1>
+        <div class={styles.groupItems}>
+          <Show when={hasSearchTerm()} fallback={<UnfilteredDocsItems items={props.allItems} />}>
+            <FilteredDocsItems items={searchResults()} />
+          </Show>
+        </div>
       </div>
     </Show>
   );
@@ -115,8 +119,10 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
         <input type="text" placeholder="Search..." onInput={(e) => setSearchTerm(e.target.value)} />
       </div>
       <div class={styles.scroll}>
-        <Group heading="Guides" allItems={props.guides} searchTerm={searchTerm()} />
-        <Group heading="API" allItems={props.api} searchTerm={searchTerm()} />
+        <div class={styles.groups}>
+          <Group heading="Guides" allItems={props.guides} searchTerm={searchTerm()} />
+          <Group heading="API" allItems={props.api} searchTerm={searchTerm()} />
+        </div>
       </div>
     </nav>
   );

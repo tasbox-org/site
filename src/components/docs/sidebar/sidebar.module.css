@@ -5,9 +5,9 @@
   max-height: calc(100vh - var(--navbar-height));
   min-width: min-content;
 
-  padding-bottom: var(--spacing-21);
+  padding: var(--spacing-13) 0;
+  padding-left: var(--spacing-21);
 
-  border-right: var(--spacing-1) solid var(--colour-border);
   overflow: hidden;
 }
 
@@ -15,8 +15,7 @@
   display: flex;
   flex-direction: column;
 
-  padding: var(--spacing-13) var(--spacing-21);
-  border-bottom: var(--spacing-1) solid var(--colour-border);
+  padding-right: var(--spacing-21);
 
   input {
     padding: var(--spacing-5) var(--spacing-8);
@@ -32,13 +31,33 @@
 .scroll {
   overflow-y: scroll;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-right: var(--spacing-21);
+  margin: var(--spacing-3);
+}
+
+.scroll::before {
+  content: "";
+  position: sticky;
+  top: 0;
+  width: 100%;
+  min-height: var(--spacing-21);
+
+  background: linear-gradient(to bottom, var(--colour-background) var(--spacing-8), transparent 100%);
+
+  z-index: 999;
+  pointer-events: none;
 }
 
 .list {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-3);
 
-  padding: 0;
+  padding-left: var(--spacing-3);
 }
 
 .list-item {
@@ -58,8 +77,8 @@
   white-space: nowrap;
 
   width: 100%;
-  padding: var(--spacing-3) var(--spacing-21);
-  padding-left: calc(var(--spacing-21) + var(--spacing-8));
+  border-radius: 999999px;
+  padding: var(--spacing-3) var(--spacing-5);
 
   color: var(--colour-background-text-disabled);
 }
@@ -76,4 +95,36 @@
     cursor: default;
     font-weight: 500;
   }
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.group {
+  border: var(--spacing-1) solid var(--colour-border);
+  border-radius: var(--spacing-13);
+
+  padding: var(--spacing-8);
+  padding-top: 0;
+  margin-top: var(--spacing-8);
+}
+
+.group-header {
+  position: relative;
+  top: 0;
+  transform: translateY(-50%);
+
+  width: min-content;
+  padding: 0 var(--spacing-3);
+  margin-left: var(--spacing-5);
+
+  font-size: 1.5rem;
+  background-color: var(--colour-background);
+}
+
+.group-items {
+  margin-top: calc(-1 * var(--spacing-13));
 }
