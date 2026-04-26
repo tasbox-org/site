@@ -10,13 +10,6 @@
   --navbar-height: calc((60.8 / 16) * 1rem + var(--spacing-13));
 }
 
-html,
-body,
-#app {
-  height: 100%;
-  min-height: 100%;
-}
-
 html {
   overflow-y: scroll;
 }
