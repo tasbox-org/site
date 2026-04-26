@@ -79,32 +79,31 @@ const FilteredDocsItems = (props: { items: readonly DocsSidebarItem[] }) => (
   </ol>
 );
 
-const Group = (props: {
-  heading: string;
-  allItems: readonly DocsSidebarItem[];
-  searchResults: readonly DocsSidebarItem[];
-  hasSearchTerm: boolean;
-}) => (
-  <div>
-    <h1>{props.heading}</h1>
-    <Show when={props.hasSearchTerm} fallback={<UnfilteredDocsItems items={props.allItems} />}>
-      <FilteredDocsItems items={props.searchResults} />
-    </Show>
-  </div>
-);
+const Group = (props: { heading: string; allItems: readonly DocsSidebarItem[]; searchTerm: string }) => {
+  const hasSearchTerm = () => props.searchTerm.trim().length > 0;
+
+  const searchResults = useSearch(
+    () => props.allItems,
+    () => props.searchTerm,
+    {
+      useTokenSearch: true,
+      keys: ["icon", "breadcrumbs"],
+      threshold: 0.3,
+    },
+  );
+
+  return (
+    <div>
+      <h1>{props.heading}</h1>
+      <Show when={hasSearchTerm} fallback={<UnfilteredDocsItems items={props.allItems} />}>
+        <FilteredDocsItems items={searchResults()} />
+      </Show>
+    </div>
+  );
+};
 
 export const DocsSidebar = (props: DocsSidebarProps) => {
   const [searchTerm, setSearchTerm] = createSignal("");
-  const hasSearchTerm = () => searchTerm().trim().length > 0;
-
-  const guideResults = useSearch(() => props.guides, searchTerm, {
-    keys: ["icon", "breadcrumbs"],
-    threshold: 0.3,
-  });
-  const apiResults = useSearch(() => props.api, searchTerm, {
-    keys: ["icon", "breadcrumbs"],
-    threshold: 0.3,
-  });
 
   return (
     <nav aria-label="Documentation" class={styles.container}>
@@ -112,13 +111,8 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
         <input type="text" placeholder="Search..." onInput={(e) => setSearchTerm(e.target.value)} />
       </div>
       <div class={styles.scroll}>
-        <Group
-          heading="Guides"
-          allItems={props.guides}
-          searchResults={guideResults()}
-          hasSearchTerm={hasSearchTerm()}
-        />
-        <Group heading="API" allItems={props.api} searchResults={apiResults()} hasSearchTerm={hasSearchTerm()} />
+        <Group heading="Guides" allItems={props.guides} searchTerm={searchTerm()} />
+        <Group heading="API" allItems={props.api} searchTerm={searchTerm()} />
       </div>
     </nav>
   );
