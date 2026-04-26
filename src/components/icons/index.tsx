@@ -14,6 +14,7 @@ import functionIconDark from "./function/function_dark.svg";
 
 export type IconName = "class" | "constant" | "documentation" | "enum" | "event" | "function";
 
+// TODO: Dark mode
 const IconVariant = (props: { light: string; dark: string; alt: string }) => (
   <>
     <svg width={16} height={16} aria-label={props.alt}>
