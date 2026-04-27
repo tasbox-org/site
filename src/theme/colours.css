@@ -20,7 +20,7 @@
   --colour-tertiary: light-dark(red, red);
 
   /* Text */
-  --colour-background-text: light-dark(black, white);
+  --colour-background-text: light-dark(#1b2126, white);
   --colour-background-text-disabled: rgba(from var(--colour-background-text) r g b / 0.7);
 
   --colour-surface-text: light-dark(black, black);
@@ -37,4 +37,5 @@
 
 body {
   background-color: var(--colour-background);
+  color: var(--colour-background-text);
 }

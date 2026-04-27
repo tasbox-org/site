@@ -4,6 +4,7 @@ import { CodeBlock } from "#components/common/code-block/code-block";
 import { Description } from "#components/docs/description";
 import { PropertyTable } from "#components/docs/property-table";
 import { RealmHeading } from "#components/docs/realm-heading";
+import { SecondaryHeading } from "#components/docs/secondary-heading";
 import { renderType } from "#helpers/render-type";
 import { useDocEntry } from "#hooks/use-doc-entry";
 import type { PathParams } from "#types/path-params";
@@ -36,7 +37,7 @@ const ClassPage = () => {
       <RealmHeading realms={cls()?.realms} name={cls()?.name} />
       <Description value={cls()?.description} />
       <CodeBlock language="moonjuice">{`type ${cls()?.name} = ${renderClassMoonJuice(cls()?.properties ?? [])}`}</CodeBlock>
-      <h2>Properties</h2>
+      <SecondaryHeading>Properties</SecondaryHeading>
       <PropertyTable properties={cls()?.properties ?? []} nameColumnHeader="Field" />
     </div>
   );

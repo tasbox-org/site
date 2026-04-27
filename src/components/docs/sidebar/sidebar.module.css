@@ -153,8 +153,8 @@
 .details[open] {
   > summary {
     background-color: var(--colour-surface-hovered);
+    color: var(--colour-surface-text);
 
-    color: var(--colour-background-text);
     font-weight: 500;
   }
 }
