@@ -9,12 +9,3 @@
 
   --navbar-height: calc((60.8 / 16) * 1rem + var(--spacing-13));
 }
-
-html {
-  overflow-y: scroll;
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-}

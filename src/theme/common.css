@@ -1,0 +1,58 @@
+html {
+  overflow-y: scroll;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+pre {
+  width: 100%;
+
+  padding: var(--spacing-13);
+
+  border: var(--spacing-1) solid var(--colour-border);
+  border-radius: 1rem;
+
+  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 rgba(0, 0, 0, 0.1);
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 1rem;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 1rem;
+}
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 1rem;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 1rem;
+}
+
+th,
+td {
+  padding: var(--spacing-8) var(--spacing-13);
+
+  border: var(--spacing-1) solid var(--colour-border);
+  border-top: none;
+  border-left: none;
+}
+
+table tr:first-child th {
+  border-top: var(--spacing-1) solid var(--colour-border);
+}
+
+table th:first-child,
+table td:first-child {
+  border-left: var(--spacing-1) solid var(--colour-border);
+}

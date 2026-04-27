@@ -4,10 +4,3 @@
     margin-bottom: var(--spacing-8);
   }
 }
-
-pre {
-  padding: var(--spacing-13);
-
-  border: var(--spacing-1) solid var(--colour-border);
-  border-radius: 1rem;
-}
