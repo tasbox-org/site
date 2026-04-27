@@ -141,6 +141,8 @@
     padding: var(--spacing-3) var(--spacing-8);
 
     color: var(--colour-background-text-disabled);
+
+    cursor: pointer;
   }
 
   summary:hover {
