@@ -13,12 +13,14 @@ const renderClassMoonJuice = (properties: Property[]) => {
     return "{}";
   }
 
-  const stringifiedProperties = properties.map(
-    (property) =>
-      `${typeof property.name === "string" ? `.${property.name}` : `[${property.name}]`}: ${renderType(property.type)}${property.optional ? "?" : ""}`,
-  );
+  const stringifiedProperties = properties.map((property) => {
+    const key = typeof property.name === "string" ? `.${property.name}` : `[${property.name}]`;
+    const type = `${renderType(property.type)}${property.optional ? "?" : ""}`;
 
-  return `{\n    ${stringifiedProperties.join(",\n    ")},\n}`;
+    return `${key}: ${type}`;
+  });
+
+  return `{\n  ${stringifiedProperties.join(",\n  ")},\n}`;
 };
 
 const ClassPage = () => {
