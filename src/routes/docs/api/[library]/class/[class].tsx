@@ -18,7 +18,7 @@ const renderClassMoonJuice = (properties: Property[]) => {
       `${typeof property.name === "string" ? `.${property.name}` : `[${property.name}]`}: ${renderType(property.type)}${property.optional ? "?" : ""}`,
   );
 
-  return `{ ${stringifiedProperties.join(", ")} }`;
+  return `{\n    ${stringifiedProperties.join(",\n    ")},\n}`;
 };
 
 const ClassPage = () => {
