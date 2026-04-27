@@ -1,7 +1,6 @@
-import { toJsxRuntime } from "hast-util-to-jsx-runtime";
+import { toHtml } from "hast-util-to-html";
 import { refractor } from "refractor";
 import { createMemo } from "solid-js";
-import { Fragment, jsx, jsxs } from "solid-js/h/jsx-runtime";
 
 export interface CodeBlockProps {
   language: "lua" | "moonjuice";
@@ -12,12 +11,12 @@ export const CodeBlock = (props: CodeBlockProps) => {
   const resolved = createMemo(() => {
     const ast = refractor.highlight(props.children ?? "", props.language);
 
-    return toJsxRuntime(ast, { Fragment, jsxs, jsx, elementAttributeNameCase: "html", stylePropertyNameCase: "css" });
+    return toHtml(ast);
   });
 
   return (
     <pre>
-      <code class={`language-${props.language}`}>{resolved()}</code>
+      <code class={`language-${props.language}`} innerHTML={resolved()} />
     </pre>
   );
 };
