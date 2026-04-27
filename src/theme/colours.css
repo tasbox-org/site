@@ -1,6 +1,7 @@
 :root {
   /* Backgrounds */
   --colour-background: light-dark(#f2e3cd, black);
+  --colour-background-alt: light-dark(#f1dec6, black);
 
   --colour-surface: light-dark(#cbae9d, black);
   --colour-surface-hovered: rgba(from var(--colour-surface) r g b / 0.4);
@@ -29,6 +30,9 @@
   --colour-primary-text: light-dark(white, white);
   --colour-secondary-text: var(--colour-primary-text);
   --colour-tertiary-text: var(--colour-primary-text);
+
+  /* Other */
+  --colour-shadow: rgba(0, 0, 0, 0.1);
 }
 
 body {

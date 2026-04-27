@@ -15,7 +15,7 @@ pre {
   border: var(--spacing-1) solid var(--colour-border);
   border-radius: 1rem;
 
-  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 var(--colour-shadow);
 }
 
 table {
@@ -41,7 +41,7 @@ table tr:first-child th:last-child {
 
 th,
 td {
-  padding: var(--spacing-8) var(--spacing-13);
+  padding: var(--spacing-13) var(--spacing-21);
 
   border: var(--spacing-1) solid var(--colour-border);
   border-top: none;
@@ -55,4 +55,13 @@ table tr:first-child th {
 table th:first-child,
 table td:first-child {
   border-left: var(--spacing-1) solid var(--colour-border);
+}
+
+table tr:last-child td {
+  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 var(--colour-shadow);
+}
+
+th,
+table tbody tr:nth-child(even) td {
+  background-color: var(--colour-background-alt);
 }
