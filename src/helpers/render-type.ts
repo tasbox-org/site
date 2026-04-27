@@ -16,7 +16,11 @@ const isFunctionType = (type: Type): type is FunctionType => {
   return type.type === "function";
 };
 
-export const renderType = (type: Type): string => {
+export const renderType = (type: Type | undefined): string => {
+  if (type === undefined) {
+    return "";
+  }
+
   if (isUnionType(type)) {
     return type.map(renderType).join(" | ");
   }
