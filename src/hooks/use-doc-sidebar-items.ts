@@ -1,4 +1,5 @@
 import { allLibraries, type Library } from "@tasbox-org/docs";
+import uniqBy from "lodash/uniqBy";
 import type { DocsSidebarItem } from "#components/docs/sidebar";
 import type { IconName } from "#components/icons";
 import { whereNotNull } from "#helpers/where-not-null";
@@ -15,8 +16,12 @@ const mapToDocItems = <TItem extends { name: string | number; section?: string }
   items,
   icon,
   pathSegment,
-}: MapToSectionProps<TItem>): DocsSidebarItem[] =>
-  items?.map((item): DocsSidebarItem => {
+}: MapToSectionProps<TItem>): DocsSidebarItem[] => {
+  if (items === undefined) {
+    return [];
+  }
+
+  const allSidebarItems = items.map((item): DocsSidebarItem => {
     const title = item.name.toString();
 
     return {
@@ -24,7 +29,10 @@ const mapToDocItems = <TItem extends { name: string | number; section?: string }
       breadcrumbs: whereNotNull([library.name, item.section, title]),
       href: `/docs/api/${library.name}/${pathSegment}/${title}`,
     };
-  }) ?? [];
+  });
+
+  return uniqBy(allSidebarItems, (item) => item.breadcrumbs.join("."));
+};
 
 export const useDocSidebarApiItems = (): DocsSidebarItem[] =>
   allLibraries.flatMap((library): DocsSidebarItem[] => [

@@ -9,25 +9,29 @@ const getDocEntry = query(
     libraryName: string,
     entryKey: EntryKey,
     entryName: string,
-  ): Promise<ElementOf<Library[Key]>> => {
+  ): Promise<ElementOf<Library[Key]>[]> => {
     const library = allLibraries.find((library) => library.name === libraryName);
     if (library === undefined) {
       throw redirect("/404", { status: 404 });
     }
 
     const entries = library[entryKey];
-    const entry = entries?.find((event) => event.name === entryName) as ElementOf<Library[Key]> | undefined;
+    const entriesForKey = entries?.filter((event) => event.name === entryName) as ElementOf<Library[Key]>[] | undefined;
 
-    if (entry === undefined) {
+    if (entriesForKey === undefined) {
       throw redirect("/404", { status: 404 });
     }
 
-    return { ...entry, realms: entry.realms ?? library.realms };
+    return entriesForKey.map((entry) => ({ ...entry, realms: entry.realms ?? library.realms }));
   },
   "docEntry",
 );
 
-export const useDocEntry = <Key extends EntryKey>(libraryName: () => string, entryKey: Key, entryName: () => string) =>
-  createAsync<ElementOf<Library[Key]>>(
-    () => getDocEntry(libraryName(), entryKey, entryName()) as Promise<ElementOf<Library[Key]>>,
+export const useDocEntries = <Key extends EntryKey>(
+  libraryName: () => string,
+  entryKey: Key,
+  entryName: () => string,
+) =>
+  createAsync<ElementOf<Library[Key]>[]>(
+    () => getDocEntry(libraryName(), entryKey, entryName()) as Promise<ElementOf<Library[Key]>[]>,
   );

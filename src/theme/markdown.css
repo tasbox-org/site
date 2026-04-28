@@ -1,5 +1,7 @@
 .markdown {
-  p {
+  p,
+  ol,
+  ul {
     margin-top: var(--spacing-5);
     margin-bottom: var(--spacing-8);
   }
