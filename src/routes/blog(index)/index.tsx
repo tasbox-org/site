@@ -1,4 +1,5 @@
 import { type Component, For } from "solid-js";
+import { BlogPostCard } from "#components/blog/blog-post-card";
 import { Metadata } from "#components/common/metadata";
 import { blogPosts } from "#data/blog-posts";
 
@@ -10,7 +11,7 @@ const BlogList: Component = () => (
       description="TASBox progress updates, sneak peaks, technical deep dives and more."
       url="/blog"
     />
-    <For each={blogPosts}>{(post) => <a href={`/blog/${post.slug}`}>{post.title}</a>}</For>
+    <For each={blogPosts}>{(post) => <BlogPostCard {...post} />}</For>
   </>
 );
 
