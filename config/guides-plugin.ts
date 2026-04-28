@@ -6,7 +6,11 @@ import type { Plugin } from "vite";
 
 interface Guide {
   breadcrumbs: readonly string[];
-  path: string;
+  href: string;
+}
+
+interface Matter {
+  breadcrumbs: readonly string[];
 }
 
 const GUIDES_DIRECTORY = "src/routes/docs/guides";
@@ -14,20 +18,25 @@ const DATA_DIRECTORY = "src/data";
 
 const OUTPUT_FILE = path.join(DATA_DIRECTORY, "guides.json");
 
-const toGuides = (path: string): Guide[] => {
+const toGuides = (filePath: string): Guide[] => {
   try {
-    if (fs.statSync(path).isDirectory()) {
-      return readGuides(path);
+    if (fs.statSync(filePath).isDirectory()) {
+      return readGuides(filePath);
     }
 
-    if (!path.endsWith(".mdx") && !path.endsWith(".md")) {
+    if (!filePath.endsWith(".mdx") && !filePath.endsWith(".md")) {
       return [];
     }
 
-    const file = readSync(path);
+    const file = readSync(filePath);
     parseMatter(file);
 
-    return [file.data.matter as Guide];
+    return [
+      {
+        ...(file.data.matter as Matter),
+        href: `/${path.relative(GUIDES_DIRECTORY, filePath).replace(/\.[^/.]+$/, "")}`,
+      } as Guide,
+    ];
   } catch {
     return [];
   }
@@ -36,10 +45,7 @@ const toGuides = (path: string): Guide[] => {
 const readGuides = (directory: string) => {
   const contents = fs.readdirSync(directory);
 
-  return contents
-    .filter((subpath) => subpath !== "~" && subpath !== "." && subpath !== "..")
-    .map((subpath) => path.join(directory, subpath))
-    .flatMap(toGuides);
+  return contents.map((subpath) => path.join(directory, subpath)).flatMap(toGuides);
 };
 
 const processFiles = () => {

@@ -78,5 +78,5 @@ export const useDocSidebarGuideItems = (): DocsSidebarItem[] =>
   guides.map((guide) => ({
     icon: "documentation",
     breadcrumbs: guide.breadcrumbs,
-    href: `/docs/guides${guide.path}`,
+    href: `/docs/guides${guide.href}`,
   }));
