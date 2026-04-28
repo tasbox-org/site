@@ -1,10 +1,8 @@
-import { Base, Meta, Title } from "@solidjs/meta";
 import type { RouteSectionProps } from "@solidjs/router";
-import { For } from "solid-js";
 // @ts-expect-error
 import { MDXProvider } from "solid-mdx";
+import { Metadata } from "#components/common/metadata";
 import { blogPosts } from "#data/blog-posts";
-import { getUrl } from "#hooks/get-url";
 
 const pathRegex = /\/?blog\/(?<slug>[\w-]+)\/?/;
 
@@ -12,25 +10,21 @@ const BlogPost = (props: RouteSectionProps) => {
   const slug = () => pathRegex.exec(props.location.pathname)?.groups?.slug;
   const post = () => blogPosts.find((post) => post.slug === slug());
 
-  const rootUrl = () => `${getUrl().origin}/blog/${slug()}/`;
-  const rootImageUrl = () => `${rootUrl()}/social.png`;
+  const url = () => `/blog/${slug()}/` as const;
+  const imageUrl = () => `${url()}social.png` as const;
 
   return (
     // TODO: Sidebar with all posts sorted by release
     <article>
-      <Title>TASBox - {post()?.title}</Title>
-      <Meta name="description" content={post()?.description} />
-      <Meta name="og:title" content={post()?.title} />
-      <Meta name="og:description" content={post()?.description} />
-      <Meta name="og:image" content={rootImageUrl()} />
-      <Meta name="og:image:alt" content={post()?.thumbnailAltText} />
-      <Meta name="og:url" content={rootUrl()} />
-      <Meta name="og:site_name" content="TASBox" />
-      <Meta name="og:type" content="article" />
-      {/* TODO: Add article published time (same as shown below) */}
-      <For each={post()?.authors}>{(author) => <Meta name="article:author" content={author} />}</For>
-      <For each={post()?.tags}>{(tag) => <Meta name="article:tag" content={tag} />}</For>
-      <Base href={rootUrl()} />
+      <Metadata
+        type="article"
+        title={post()?.title ?? ""}
+        description={post()?.description ?? ""}
+        url={url()}
+        image={{ url: imageUrl(), alt: post()?.thumbnailAltText ?? "" }}
+        authors={post()?.authors ?? []}
+        tags={post()?.tags ?? []}
+      />
 
       <header>
         <h1>{post()?.title}</h1>
