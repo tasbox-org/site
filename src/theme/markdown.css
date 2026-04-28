@@ -5,4 +5,14 @@
     margin-top: var(--spacing-5);
     margin-bottom: var(--spacing-8);
   }
+
+  a {
+    color: var(--colour-link-text);
+    text-decoration: none;
+    font-weight: 450;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }

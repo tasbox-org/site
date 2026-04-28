@@ -31,6 +31,8 @@
   --colour-secondary-text: var(--colour-primary-text);
   --colour-tertiary-text: var(--colour-primary-text);
 
+  --colour-link-text: light-dark(#7e483b, mediumpurple);
+
   /* Other */
   --colour-shadow: rgba(0, 0, 0, 0.1);
 }
