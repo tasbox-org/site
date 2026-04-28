@@ -1,8 +1,8 @@
 import { useParams } from "@solidjs/router";
-import type { ClassProperty, FunctionParameter, Property } from "@tasbox-org/docs";
-import { For, Show } from "solid-js";
+import type { Property } from "@tasbox-org/docs";
 import { CodeBlock } from "#components/common/code-block/code-block";
 import { Description } from "#components/docs/description";
+import { PropertyList } from "#components/docs/property-list";
 import { RealmHeading } from "#components/docs/realm-heading";
 import { SecondaryHeading } from "#components/docs/secondary-heading";
 import { renderType } from "#helpers/render-type";
@@ -24,18 +24,6 @@ const renderClassMoonJuice = (properties: Property[]) => {
   return `{\n  ${stringifiedProperties.join(",\n  ")},\n}`;
 };
 
-const renderDefaultValue = ({ type, defaultValue }: FunctionParameter | ClassProperty) => {
-  if (type === "string") {
-    return `"${defaultValue}"`;
-  }
-
-  if (defaultValue === undefined) {
-    return "nil";
-  }
-
-  return defaultValue.toString();
-};
-
 const ClassPage = () => {
   const params = useParams<PathParams["/api/[library]/class/[class]"]>();
   const cls = useDocEntry(
@@ -50,27 +38,7 @@ const ClassPage = () => {
       <Description value={cls()?.description} />
       <CodeBlock language="moonjuice">{`type ${cls()?.name} = ${renderClassMoonJuice(cls()?.properties ?? [])}`}</CodeBlock>
       <SecondaryHeading>Properties</SecondaryHeading>
-
-      <dl>
-        <For each={cls()?.properties}>
-          {(property) => (
-            <>
-              <dt>{property.name}</dt>
-              <dd>
-                Type: <code>{renderType(property.type)}</code>
-              </dd>
-              <Show when={property.defaultValue !== undefined}>
-                <dd>
-                  Default: <code>{renderDefaultValue(property)}</code>
-                </dd>
-              </Show>
-              <dd>
-                <Description value={property.description} />
-              </dd>
-            </>
-          )}
-        </For>
-      </dl>
+      <PropertyList properties={cls()?.properties ?? []} />
     </div>
   );
 };
