@@ -7,8 +7,8 @@ import { PropertyList } from "#components/docs/property-list";
 import { RealmHeading } from "#components/docs/realm-heading";
 import { SecondaryHeading } from "#components/docs/secondary-heading";
 import { renderType } from "#helpers/render-type";
+import { useDocEntries } from "#hooks/use-doc-entries";
 import type { PathParams } from "#types/path-params";
-import { useDocEntries } from "../../../../../hooks/use-doc-entries";
 
 const renderClassMoonJuice = (properties: Property[]) => {
   if (properties.length < 1) {

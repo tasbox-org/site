@@ -4,8 +4,8 @@ import { CodeBlock } from "#components/common/code-block/code-block";
 import { Description } from "#components/docs/description";
 import { RealmHeading } from "#components/docs/realm-heading";
 import { renderType } from "#helpers/render-type";
+import { useDocEntries } from "#hooks/use-doc-entries";
 import type { PathParams } from "#types/path-params";
-import { useDocEntries } from "../../../../../hooks/use-doc-entries";
 
 const ConstantPage = () => {
   const params = useParams<PathParams["/api/[library]/constant/[constant]"]>();

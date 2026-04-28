@@ -2,8 +2,8 @@ import { useParams } from "@solidjs/router";
 import { For } from "solid-js";
 import { Description } from "#components/docs/description";
 import { RealmHeading } from "#components/docs/realm-heading";
+import { useDocEntries } from "#hooks/use-doc-entries";
 import type { PathParams } from "#types/path-params";
-import { useDocEntries } from "../../../../../hooks/use-doc-entries";
 
 const EnumPage = () => {
   const params = useParams<PathParams["/api/[library]/enum/[enum]"]>();

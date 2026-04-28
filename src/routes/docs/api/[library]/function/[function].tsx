@@ -3,7 +3,7 @@ import { For } from "solid-js";
 import { Description } from "#components/docs/description";
 import { RealmHeading } from "#components/docs/realm-heading";
 import type { PathParams } from "#types/path-params";
-import { useDocEntries } from "../../../../../hooks/use-doc-entries";
+import { useDocEntries } from "#hooks/use-doc-entries";
 
 const FunctionPage = () => {
   const params = useParams<PathParams["/api/[library]/function/[function]"]>();
