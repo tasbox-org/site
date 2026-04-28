@@ -143,6 +143,7 @@
     color: var(--colour-background-text-disabled);
 
     cursor: pointer;
+    user-select: none;
   }
 
   summary:hover {
