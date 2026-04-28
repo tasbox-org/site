@@ -13,7 +13,7 @@ export const Navbar: Component = () => {
             <ButtonNavLink href="/">About</ButtonNavLink>
           </li>
           <li class={styles.listItem}>
-            <ButtonNavLink href="/docs" match="/docs/*">
+            <ButtonNavLink href="/docs/guides/introduction" match="/docs/*">
               Docs
             </ButtonNavLink>
           </li>

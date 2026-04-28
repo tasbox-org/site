@@ -2,6 +2,7 @@ import { allLibraries, type Library } from "@tasbox-org/docs";
 import uniqBy from "lodash/uniqBy";
 import type { DocsSidebarItem } from "#components/docs/sidebar";
 import type { IconName } from "#components/icons";
+import { guides } from "#data/guides";
 import { whereNotNull } from "#helpers/where-not-null";
 
 interface MapToSectionProps<TItem> {
@@ -72,3 +73,10 @@ export const useDocSidebarApiItems = (): DocsSidebarItem[] =>
       pathSegment: "event",
     }),
   ]);
+
+export const useDocSidebarGuideItems = (): DocsSidebarItem[] =>
+  guides.map((guide) => ({
+    icon: "documentation",
+    breadcrumbs: guide.breadcrumbs,
+    href: `/docs/guides${guide.path}`,
+  }));

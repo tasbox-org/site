@@ -6,6 +6,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import { defineConfig } from "vite";
 import { blogPostsGenerator, blogPostsStaticAssetCopy } from "./config/blog-posts-plugin";
+import { guidesGenerator } from "./config/guides-plugin";
 import { rehypeMdxPrism } from "./src/theme/prisma/rehype-mdx-prism";
 
 export default defineConfig({
@@ -31,6 +32,7 @@ export default defineConfig({
     }),
     blogPostsGenerator(),
     blogPostsStaticAssetCopy(),
+    guidesGenerator(),
   ],
   resolve: {
     alias: {

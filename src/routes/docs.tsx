@@ -4,14 +4,15 @@ import { createMemo, type ParentProps } from "solid-js";
 import { Metadata } from "#components/common/metadata";
 import { Breadcrumbs } from "#components/docs/breadcrumbs";
 import { DocsSidebar } from "#components/docs/sidebar";
-import { useDocSidebarApiItems } from "#hooks/use-doc-sidebar-items";
+import { useDocSidebarApiItems, useDocSidebarGuideItems } from "#hooks/use-doc-sidebar-items";
 import styles from "./docs.module.css";
 
 const DocsLayout = (props: ParentProps) => {
   const location = useLocation();
+  const guideItems = useDocSidebarGuideItems();
   const apiItems = useDocSidebarApiItems();
 
-  const activeItem = createMemo(() => apiItems.find((item) => item.href === location.pathname));
+  const activeItem = createMemo(() => [...guideItems, ...apiItems].find((item) => item.href === location.pathname));
 
   return (
     <>
@@ -23,11 +24,7 @@ const DocsLayout = (props: ParentProps) => {
         url={location.pathname as `/${string}`}
       />
       <div class={styles.container}>
-        <DocsSidebar
-          matchUrl="/docs/:any/*"
-          guides={[{ icon: "documentation", breadcrumbs: ["TODO"], href: "#" }]}
-          api={apiItems}
-        />
+        <DocsSidebar matchUrl="/docs/:any/*" guides={guideItems} api={apiItems} />
         <div class={styles.contents}>
           <div class={styles.breadcrumbs}>
             <Breadcrumbs icon={activeItem()?.icon} segments={activeItem()?.breadcrumbs ?? []} />
