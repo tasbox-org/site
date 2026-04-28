@@ -1,7 +1,7 @@
 .properties {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-21);
+  gap: var(--spacing-8);
 }
 
 .property {
@@ -23,6 +23,7 @@
   padding: calc(var(--spacing-13) + var(--spacing-3));
   padding-top: var(--spacing-21);
   padding-bottom: 0;
+  margin-top: var(--spacing-13);
 }
 
 .name {
