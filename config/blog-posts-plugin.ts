@@ -1,14 +1,15 @@
-import type { Plugin } from "vite";
-import path from "node:path";
 import fs from "node:fs";
+import path from "node:path";
 import { readSync } from "to-vfile";
 import { matter as parseMatter } from "vfile-matter";
+import type { Plugin } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 interface BlogPost {
   authors: string[];
   tags: string[];
   filesystemPath: string;
+  date: Date;
   [key: string]: any;
 }
 
@@ -16,6 +17,8 @@ const BLOG_DIRECTORY = "src/routes/blog";
 const DATA_DIRECTORY = "src/data";
 
 const OUTPUT_FILE = path.join(DATA_DIRECTORY, "blog-posts.json");
+
+const BLOG_POST_FOLDER_REGEX = /^\/?(?<blogPost>(?<date>\d{4}-\d{2}-\d{2})-(\w+-)*\w+)/;
 
 const normaliseStringArray = (value: unknown): string[] => {
   if (!value) {
@@ -42,13 +45,17 @@ const toBlogPost = (directory: string): BlogPost => {
   const file = readSync(path.join(directory, "index.mdx"));
   parseMatter(file);
 
+  const directoryName = path.basename(directory);
+
   const matter = file.data.matter as any;
+  const date = BLOG_POST_FOLDER_REGEX.exec(directoryName)?.groups?.date ?? "";
 
   return {
     ...matter,
-    filesystemPath: path.basename(directory),
+    filesystemPath: directoryName,
     authors: normaliseStringArray(matter.authors),
     tags: normaliseStringArray(matter.tags),
+    date,
   };
 };
 
@@ -82,14 +89,12 @@ export const blogPostsGenerator = (): Plugin => ({
   },
 });
 
-const blogPostDirectoryRegex = /^\/?(?<blogPost>\d{4}-\d{2}-\d{2}-(\w+-)*\w+)/;
-
 const renameStaticAsset = (fileName: string, fileExtension: string, fullPath: string): string => {
   const absoluteBlogDirectory = path.resolve(BLOG_DIRECTORY);
   const { dir: absoluteFileDirectory } = path.parse(fullPath);
 
   const relativeFileDirectory = absoluteFileDirectory.replace(absoluteBlogDirectory, "");
-  const blogPostDirectory = blogPostDirectoryRegex.exec(relativeFileDirectory)?.groups?.blogPost;
+  const blogPostDirectory = BLOG_POST_FOLDER_REGEX.exec(relativeFileDirectory)?.groups?.blogPost;
 
   if (blogPostDirectory === undefined) {
     throw new Error(`Failed to transform blog post static asset: ${fullPath}`);
@@ -106,7 +111,7 @@ const renameStaticAsset = (fileName: string, fileExtension: string, fullPath: st
     throw new Error(`Blog post does not have slug: ${blogPostDirectory}`);
   }
 
-  const newRelativeFileDirectory = relativeFileDirectory.replace(blogPostDirectoryRegex, blogPost.slug);
+  const newRelativeFileDirectory = relativeFileDirectory.replace(BLOG_POST_FOLDER_REGEX, blogPost.slug);
 
   return path.join(newRelativeFileDirectory, `${fileName}.${fileExtension}`);
 };

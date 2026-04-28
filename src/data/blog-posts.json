@@ -10,7 +10,8 @@
     "tags": [
       "developer-preview"
     ],
-    "filesystemPath": "2025-01-01-developer-preview"
+    "filesystemPath": "2025-01-01-developer-preview",
+    "date": "2025-01-01"
   },
   {
     "slug": "daxa",
@@ -24,7 +25,8 @@
       "developer-preview",
       "renderer"
     ],
-    "filesystemPath": "2025-04-20-daxa"
+    "filesystemPath": "2025-04-20-daxa",
+    "date": "2025-04-20"
   },
   {
     "slug": "monthly-update-june-2025",
@@ -38,7 +40,8 @@
       "monthly-updates",
       "developer-preview"
     ],
-    "filesystemPath": "2025-06-15-monthly-update"
+    "filesystemPath": "2025-06-15-monthly-update",
+    "date": "2025-06-15"
   },
   {
     "slug": "monthly-update-august-2025",
@@ -52,7 +55,8 @@
       "monthly-updates",
       "developer-preview"
     ],
-    "filesystemPath": "2025-09-02-monthly-update"
+    "filesystemPath": "2025-09-02-monthly-update",
+    "date": "2025-09-02"
   },
   {
     "slug": "monthly-update-september-2025",
@@ -66,7 +70,8 @@
       "monthly-updates",
       "developer-preview"
     ],
-    "filesystemPath": "2025-09-25-monthly-update"
+    "filesystemPath": "2025-09-25-monthly-update",
+    "date": "2025-09-25"
   },
   {
     "slug": "monthly-update-october-2025",
@@ -80,7 +85,8 @@
       "monthly-updates",
       "developer-preview"
     ],
-    "filesystemPath": "2025-11-03-monthly-update"
+    "filesystemPath": "2025-11-03-monthly-update",
+    "date": "2025-11-03"
   },
   {
     "slug": "monthly-update-november-2025",
@@ -94,7 +100,8 @@
       "monthly-updates",
       "developer-preview"
     ],
-    "filesystemPath": "2025-12-07-monthly-update"
+    "filesystemPath": "2025-12-07-monthly-update",
+    "date": "2025-12-07"
   },
   {
     "slug": "monthly-update-december-2025",
@@ -108,7 +115,8 @@
       "monthly-updates",
       "developer-preview"
     ],
-    "filesystemPath": "2025-12-30-monthly-update"
+    "filesystemPath": "2025-12-30-monthly-update",
+    "date": "2025-12-30"
   },
   {
     "slug": "monthly-update-january-2026",
@@ -122,6 +130,7 @@
       "monthly-updates",
       "developer-preview"
     ],
-    "filesystemPath": "2026-02-08-monthly-update"
+    "filesystemPath": "2026-02-08-monthly-update",
+    "date": "2026-02-08"
   }
 ]

@@ -1,6 +1,6 @@
 import JsonPosts from "./blog-posts.json" with { type: "json" };
 
-interface BlogPost {
+export interface BlogPost {
   filesystemPath: string;
   slug: string;
   title: string;
@@ -8,6 +8,9 @@ interface BlogPost {
   thumbnailAltText: string;
   authors: string[];
   tags: string[];
+  date: Date;
 }
 
-export const blogPosts: BlogPost[] = JsonPosts;
+export const blogPosts: BlogPost[] = JsonPosts.map((post) => ({ ...post, date: new Date(post.date) })).sort((a, b) =>
+  a.date < b.date ? 1 : -1,
+);
