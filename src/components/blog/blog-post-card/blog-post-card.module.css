@@ -1,14 +1,33 @@
 .link {
   color: var(--colour-link-text);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .link:hover {
   text-decoration: underline;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-13);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-13);
+}
+
 .title {
   font-size: 2.5rem;
+}
+
+.time {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: var(--colour-background-text-disabled);
 }
 
 .thumbnail {
@@ -21,8 +40,6 @@
 
   justify-content: space-between;
   align-items: center;
-
-  margin-top: var(--spacing-13);
 
   font-weight: bold;
 }

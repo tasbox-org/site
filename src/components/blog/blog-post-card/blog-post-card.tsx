@@ -17,14 +17,14 @@ export const BlogPostCard = (props: BlogPostCardProps) => {
       .filter((author) => author !== undefined);
 
   return (
-    <div>
-      <header>
+    <div class={styles.card}>
+      <header class={styles.heading}>
         <h1 class={styles.title}>
           <a href={`/blog/${props.post.slug}`} class={styles.link}>
             {props.post.title}
           </a>
         </h1>
-        <time dateTime={props.post.date.toISOString()}>
+        <time dateTime={props.post.date.toISOString()} class={styles.time}>
           {props.post.date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}
         </time>
         <div>
