@@ -11,11 +11,12 @@ import eventIcon from "./event/event.svg";
 import eventIconDark from "./event/event_dark.svg";
 import functionIcon from "./function/function.svg";
 import functionIconDark from "./function/function_dark.svg";
+import githubIcon from "./github.svg";
 import styles from "./index.module.css";
 
 export * from "./realm";
 
-export type IconName = "class" | "constant" | "documentation" | "enum" | "event" | "function";
+export type IconName = "class" | "constant" | "documentation" | "enum" | "event" | "function" | "github";
 
 // TODO: Dark mode
 const IconVariant = (props: { light: string; dark: string; alt: string }) => (
@@ -45,6 +46,9 @@ export const Icon = (props: { name: IconName }) => (
     </Match>
     <Match when={props.name === "function"}>
       <IconVariant light={functionIcon} dark={functionIconDark} alt="function" />
+    </Match>
+    <Match when={props.name === "github"}>
+      <IconVariant light={githubIcon} dark={githubIcon} alt="github" />
     </Match>
   </Switch>
 );
