@@ -2,8 +2,21 @@
   p,
   ol,
   ul {
+    margin-top: var(--spacing-13);
+    margin-bottom: var(--spacing-21);
+
+    font-size: 1.1rem;
+  }
+
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin: 0;
+  }
+
+  li {
     margin-top: var(--spacing-5);
-    margin-bottom: var(--spacing-8);
   }
 
   a {
@@ -14,5 +27,19 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  pre {
+    margin-bottom: var(--spacing-34);
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-top: var(--spacing-21);
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    margin-top: var(--spacing-13);
   }
 }
