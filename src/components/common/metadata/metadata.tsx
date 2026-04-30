@@ -20,6 +20,7 @@ export interface ArticleMetadataProps extends MetadataProps {
   type: "article";
   authors: string[];
   tags: string[];
+  publishedTime?: Date;
 }
 
 export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => {
@@ -42,11 +43,13 @@ export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => 
       <Meta name="og:site_name" content="TASBox" />
       <Meta name="og:type" content={props.type} />
       <Show when={props.type === "article"}>
-        {/* TODO: Add article published time (same as shown below) */}
         <For each={(props as ArticleMetadataProps).authors}>
           {(author) => <Meta name="article:author" content={author} />}
         </For>
         <For each={(props as ArticleMetadataProps).tags}>{(tag) => <Meta name="article:tag" content={tag} />}</For>
+        <Show when={(props as ArticleMetadataProps).publishedTime}>
+          <Meta name="article:published_time" content={(props as ArticleMetadataProps).publishedTime?.toISOString()} />
+        </Show>
       </Show>
       <Base href={rootUrl()} />
     </>

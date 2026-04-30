@@ -29,11 +29,13 @@ const BlogPost = (props: RouteSectionProps) => {
         image={{ url: imageUrl(), alt: post()?.thumbnailAltText ?? "" }}
         authors={post()?.authors ?? []}
         tags={post()?.tags ?? []}
+        publishedTime={post()?.date}
       />
       <aside>
         <Sidebar groups={blogPostSidebarGroups} />
       </aside>
       <article class={styles.post}>
+        {/** biome-ignore lint/style/noNonNullAssertion: Fetch is synchronous, so always defined */}
         <BlogPostCard post={post()!} />
 
         <div class="markdown-full">
