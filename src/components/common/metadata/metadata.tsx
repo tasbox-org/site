@@ -28,7 +28,7 @@ export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => 
 
   return (
     <>
-      <Title>TASBox - {props.title}</Title>
+      <Title>{props.title} | TASBox</Title>
       <Meta name="description" content={props.description} />
       <Meta name="og:title" content={props.title} />
       <Meta name="og:description" content={props.description} />
