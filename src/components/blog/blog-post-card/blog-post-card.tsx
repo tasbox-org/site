@@ -1,5 +1,6 @@
 import { For, Show } from "solid-js";
 import { AuthorCard } from "#components/blog/author-card";
+import { TagList } from "#components/blog/tag-list";
 import { Markdown } from "#components/common/markdown";
 import { authors } from "#data/authors";
 import type { BlogPost } from "#data/blog-posts";
@@ -35,12 +36,7 @@ export const BlogPostCard = (props: BlogPostCardProps) => {
       <img src={`/blog/${props.post.slug}/social.png`} alt={props.post.thumbnailAltText} class={styles.thumbnail} />
       <Show when={props.showFooter}>
         <footer class={styles.footer}>
-          <div class={styles.tags}>
-            Tags:
-            <ul class={styles.tagList}>
-              <For each={props.post.tags}>{(tag) => <li class={styles.tag}>{tag}</li>}</For>
-            </ul>
-          </div>
+          <TagList tags={props.post.tags} />
           <a href={`/blog/${props.post.slug}`} class={styles.link}>
             Read more
           </a>

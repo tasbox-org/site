@@ -2,6 +2,7 @@ import type { RouteSectionProps } from "@solidjs/router";
 // @ts-expect-error
 import { MDXProvider } from "solid-mdx";
 import { BlogPostCard } from "#components/blog/blog-post-card";
+import { TagList } from "#components/blog/tag-list";
 import { Metadata } from "#components/common/metadata";
 import { Sidebar } from "#components/common/sidebar";
 import { blogPosts } from "#data/blog-posts";
@@ -42,7 +43,9 @@ const BlogPost = (props: RouteSectionProps) => {
           <MDXProvider>{props.children}</MDXProvider>
         </div>
 
-        <footer>TODO prev/next buttons, tags, and link to edit on github</footer>
+        <footer>
+          <TagList tags={post()?.tags ?? []} />
+        </footer>
       </article>
     </div>
   );
