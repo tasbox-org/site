@@ -6,3 +6,52 @@
 .post {
   min-width: 0;
 }
+
+.nav {
+  display: grid;
+  gap: var(--spacing-21);
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "newer older";
+}
+
+.newer,
+.older {
+  padding: var(--spacing-13);
+
+  border: var(--spacing-1) solid var(--colour-border);
+  border-radius: 1rem;
+
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.newer:hover,
+.older:hover {
+  border-color: var(--colour-primary);
+}
+
+.newer {
+  grid-area: newer;
+
+  .nav-post-title::before {
+    content: "« ";
+  }
+}
+
+.older {
+  grid-area: older;
+  text-align: right;
+
+  .nav-post-title::after {
+    content: " »";
+  }
+}
+
+.nav-heading {
+  color: var(--colour-background-text-disabled);
+}
+
+.nav-post-title {
+  color: var(--colour-link-text);
+}
