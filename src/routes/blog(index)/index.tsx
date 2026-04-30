@@ -20,7 +20,15 @@ const BlogList: Component = () => {
       <aside>
         <Sidebar groups={blogPostSidebarGroups} />
       </aside>
-      <For each={blogPosts}>{(post) => <BlogPostCard {...post} />}</For>
+      <div class={styles.list}>
+        <For each={blogPosts}>
+          {(post) => (
+            <article>
+              <BlogPostCard post={post} showFooter />
+            </article>
+          )}
+        </For>
+      </div>
     </div>
   );
 };

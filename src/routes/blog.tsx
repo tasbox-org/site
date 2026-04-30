@@ -1,6 +1,7 @@
 import type { RouteSectionProps } from "@solidjs/router";
 // @ts-expect-error
 import { MDXProvider } from "solid-mdx";
+import { BlogPostCard } from "#components/blog/blog-post-card";
 import { Metadata } from "#components/common/metadata";
 import { Sidebar } from "#components/common/sidebar";
 import { blogPosts } from "#data/blog-posts";
@@ -32,15 +33,8 @@ const BlogPost = (props: RouteSectionProps) => {
       <aside>
         <Sidebar groups={blogPostSidebarGroups} />
       </aside>
-      <article>
-        <header>
-          <h1>{post()?.title}</h1>
-        </header>
-
-        {/* TODO: Author card and datetime */}
-
-        <p>{post()?.description}</p>
-        <img src="social.png" alt={post()?.thumbnailAltText} />
+      <article class={styles.post}>
+        <BlogPostCard post={post()!} />
 
         <div class="markdown">
           <MDXProvider>{props.children}</MDXProvider>
