@@ -1,6 +1,6 @@
 import { allLibraries, type Library } from "@tasbox-org/docs";
 import uniqBy from "lodash/uniqBy";
-import type { DocsSidebarItem } from "#components/docs/sidebar";
+import type { SidebarItem } from "#components/common/sidebar";
 import type { IconName } from "#components/icons";
 import { guides } from "#data/guides";
 import { whereNotNull } from "#helpers/where-not-null";
@@ -17,12 +17,12 @@ const mapToDocItems = <TItem extends { name: string | number; section?: string }
   items,
   icon,
   pathSegment,
-}: MapToSectionProps<TItem>): DocsSidebarItem[] => {
+}: MapToSectionProps<TItem>): SidebarItem[] => {
   if (items === undefined) {
     return [];
   }
 
-  const allSidebarItems = items.map((item): DocsSidebarItem => {
+  const allSidebarItems = items.map((item): SidebarItem => {
     const title = item.name.toString();
 
     return {
@@ -35,8 +35,8 @@ const mapToDocItems = <TItem extends { name: string | number; section?: string }
   return uniqBy(allSidebarItems, (item) => item.breadcrumbs.join("."));
 };
 
-export const useDocSidebarApiItems = (): DocsSidebarItem[] =>
-  allLibraries.flatMap((library): DocsSidebarItem[] => [
+export const useDocSidebarApiItems = (): SidebarItem[] =>
+  allLibraries.flatMap((library): SidebarItem[] => [
     {
       icon: "documentation",
       breadcrumbs: [library.name, "Overview"],
@@ -74,7 +74,7 @@ export const useDocSidebarApiItems = (): DocsSidebarItem[] =>
     }),
   ]);
 
-export const useDocSidebarGuideItems = (): DocsSidebarItem[] =>
+export const useDocSidebarGuideItems = (): SidebarItem[] =>
   guides.map((guide) => ({
     icon: "documentation",
     breadcrumbs: guide.breadcrumbs,
