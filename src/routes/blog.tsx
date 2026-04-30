@@ -9,7 +9,7 @@ import { TagList } from "#components/blog/tag-list";
 import { Metadata } from "#components/common/metadata";
 import { Sidebar } from "#components/common/sidebar";
 import { Icon } from "#components/icons";
-import { blogPosts } from "#data/blog-posts";
+import { type BlogPost as BlogPostType, blogPosts } from "#data/blog-posts";
 import { useBlogSidebarGroups } from "#hooks/use-blog-sidebar-groups";
 import styles from "./blog.module.css";
 
@@ -19,9 +19,17 @@ const buildUrl = (slug: string | undefined) => `/blog/${slug}/` as const;
 
 const BlogPost = (props: RouteSectionProps) => {
   const slug = () => pathRegex.exec(props.location.pathname)?.groups?.slug;
-
-  // biome-ignore lint/style/noNonNullAssertion: Fetch is synchronous, so always defined
-  const post = () => blogPosts.find((post) => post.slug === slug())!;
+  const post = (): BlogPostType =>
+    blogPosts.find((post) => post.slug === slug()) ?? {
+      filesystemPath: "",
+      slug: "",
+      title: "",
+      description: "",
+      thumbnailAltText: "",
+      authors: [],
+      tags: [],
+      date: new Date(),
+    };
 
   const url = () => buildUrl(slug());
   const imageUrl = () => `${url()}social.png` as const;
