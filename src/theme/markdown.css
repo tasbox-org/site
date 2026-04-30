@@ -1,10 +1,8 @@
-.markdown {
+.markdown-full,
+.markdown-slim {
   p,
   ol,
   ul {
-    margin-top: var(--spacing-13);
-    margin-bottom: var(--spacing-21);
-
     font-size: 1.1rem;
   }
 
@@ -13,10 +11,6 @@
   ol ul,
   ol ol {
     margin: 0;
-  }
-
-  li {
-    margin-top: var(--spacing-5);
   }
 
   a {
@@ -29,17 +23,61 @@
     text-decoration: underline;
   }
 
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+  }
+}
+
+.markdown-full {
+  p,
+  ol,
+  ul {
+    margin-top: var(--spacing-13);
+    margin-bottom: var(--spacing-21);
+  }
+
+  li {
+    margin-top: var(--spacing-5);
+  }
+
   pre {
     margin-bottom: var(--spacing-34);
   }
 
   h2 {
-    font-size: 2rem;
     margin-top: var(--spacing-21);
   }
 
   h3 {
-    font-size: 1.6rem;
+    margin-top: var(--spacing-13);
+  }
+}
+
+.markdown-slim {
+  p,
+  ol,
+  ul {
+    margin-top: var(--spacing-5);
+    margin-bottom: var(--spacing-8);
+  }
+
+  li {
+    margin-top: var(--spacing-5);
+  }
+
+  pre {
+    margin-bottom: var(--spacing-13);
+  }
+
+  h2 {
+    margin-top: var(--spacing-13);
+  }
+
+  h3 {
     margin-top: var(--spacing-13);
   }
 }

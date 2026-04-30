@@ -1,6 +1,6 @@
 import { For, Show } from "solid-js";
 import { AuthorCard } from "#components/blog/author-card";
-import { Description } from "#components/docs/description";
+import { Markdown } from "#components/common/markdown";
 import { authors } from "#data/authors";
 import type { BlogPost } from "#data/blog-posts";
 import styles from "./blog-post-card.module.css";
@@ -31,7 +31,7 @@ export const BlogPostCard = (props: BlogPostCardProps) => {
           <For each={postAuthors()}>{(author) => <AuthorCard author={author} />}</For>
         </div>
       </header>
-      <Description value={props.post.description} />
+      <Markdown>{props.post.description}</Markdown>
       <img src={`/blog/${props.post.slug}/social.png`} alt={props.post.thumbnailAltText} class={styles.thumbnail} />
       <Show when={props.showFooter}>
         <footer class={styles.footer}>

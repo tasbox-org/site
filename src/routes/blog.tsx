@@ -36,7 +36,7 @@ const BlogPost = (props: RouteSectionProps) => {
       <article class={styles.post}>
         <BlogPostCard post={post()!} />
 
-        <div class="markdown">
+        <div class="markdown-full">
           <MDXProvider>{props.children}</MDXProvider>
         </div>
 
