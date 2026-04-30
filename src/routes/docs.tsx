@@ -1,4 +1,3 @@
-import { Title } from "@solidjs/meta";
 import { useLocation } from "@solidjs/router";
 import { createMemo, type ParentProps } from "solid-js";
 import { Metadata } from "#components/common/metadata";
@@ -27,7 +26,6 @@ const DocsLayout = (props: ParentProps) => {
 
   return (
     <>
-      <Title>TASBox - {activeItem()?.breadcrumbs.join(" - ")}</Title>
       <Metadata
         type="website"
         title={activeItem()?.breadcrumbs.join(" - ") ?? ""}
@@ -35,7 +33,9 @@ const DocsLayout = (props: ParentProps) => {
         url={location.pathname as `/${string}`}
       />
       <div class={styles.container}>
-        <Sidebar groups={groups} />
+        <aside>
+          <Sidebar groups={groups} />
+        </aside>
         <div class={styles.contents}>
           <div class={styles.breadcrumbs}>
             <Breadcrumbs icon={activeItem()?.icon} segments={activeItem()?.breadcrumbs ?? []} />

@@ -6,7 +6,7 @@ import { useSearch } from "#hooks/use-search";
 import styles from "./sidebar.module.css";
 
 export interface SidebarItem {
-  icon: IconName;
+  icon?: IconName;
   breadcrumbs: readonly string[];
   href: string;
 }

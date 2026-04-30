@@ -2,7 +2,10 @@ import type { RouteSectionProps } from "@solidjs/router";
 // @ts-expect-error
 import { MDXProvider } from "solid-mdx";
 import { Metadata } from "#components/common/metadata";
+import { Sidebar } from "#components/common/sidebar";
 import { blogPosts } from "#data/blog-posts";
+import { useBlogSidebarGroups } from "#hooks/use-blog-sidebar-groups";
+import styles from "./blog.module.css";
 
 const pathRegex = /\/?blog\/(?<slug>[\w-]+)\/?/;
 
@@ -13,9 +16,10 @@ const BlogPost = (props: RouteSectionProps) => {
   const url = () => `/blog/${slug()}/` as const;
   const imageUrl = () => `${url()}social.png` as const;
 
+  const blogPostSidebarGroups = useBlogSidebarGroups();
+
   return (
-    // TODO: Sidebar with all posts sorted by release
-    <article>
+    <div class={styles.container}>
       <Metadata
         type="article"
         title={post()?.title ?? ""}
@@ -25,22 +29,26 @@ const BlogPost = (props: RouteSectionProps) => {
         authors={post()?.authors ?? []}
         tags={post()?.tags ?? []}
       />
+      <aside>
+        <Sidebar groups={blogPostSidebarGroups} />
+      </aside>
+      <article>
+        <header>
+          <h1>{post()?.title}</h1>
+        </header>
 
-      <header>
-        <h1>{post()?.title}</h1>
-      </header>
+        {/* TODO: Author card and datetime */}
 
-      {/* TODO: Author card and datetime */}
+        <p>{post()?.description}</p>
+        <img src="social.png" alt={post()?.thumbnailAltText} />
 
-      <p>{post()?.description}</p>
-      <img src="social.png" alt={post()?.thumbnailAltText} />
+        <div class="markdown">
+          <MDXProvider>{props.children}</MDXProvider>
+        </div>
 
-      <div class="markdown">
-        <MDXProvider>{props.children}</MDXProvider>
-      </div>
-
-      <footer>TODO prev/next buttons, tags, and link to edit on github</footer>
-    </article>
+        <footer>TODO prev/next buttons, tags, and link to edit on github</footer>
+      </article>
+    </div>
   );
 };
 
