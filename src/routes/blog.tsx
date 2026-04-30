@@ -8,6 +8,7 @@ import { BlogPostCard } from "#components/blog/blog-post-card";
 import { TagList } from "#components/blog/tag-list";
 import { Metadata } from "#components/common/metadata";
 import { Sidebar } from "#components/common/sidebar";
+import { Icon } from "#components/icons";
 import { blogPosts } from "#data/blog-posts";
 import { useBlogSidebarGroups } from "#hooks/use-blog-sidebar-groups";
 import styles from "./blog.module.css";
@@ -60,8 +61,18 @@ const BlogPost = (props: RouteSectionProps) => {
           <MDXProvider>{props.children}</MDXProvider>
         </div>
 
-        <footer>
-          <TagList tags={post().tags} />
+        <footer class={styles.footer}>
+          <div class={styles.tagsAndEdit}>
+            <TagList tags={post().tags} />
+            <a
+              href={`https://github.com/tasbox-org/site/blob/master/src/routes/blog/${post().filesystemPath}/index.mdx`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={styles.editLink}
+            >
+              <Icon name="documentation" /> Edit this post
+            </a>
+          </div>
           <nav class={styles.nav}>
             <Show when={newerPost()}>
               <a href={buildUrl(newerPost()?.slug)} class={styles.newer}>
