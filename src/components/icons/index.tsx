@@ -22,7 +22,8 @@ export type IconName = "class" | "constant" | "documentation" | "enum" | "event"
 const IconVariant = (props: { light: string; dark: string; alt: string }) => (
   <>
     <svg class={styles.icon} width={16} height={16} aria-label={props.alt}>
-      <image href={props.light} width={16} height={16} />
+      <image href={props.light} width={16} height={16} class="light-mode-only" />
+      <image href={props.dark} width={16} height={16} class="dark-mode-only" />
     </svg>
   </>
 );
