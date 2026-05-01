@@ -24,7 +24,12 @@
   background-color: light-dark(#f1f4f6, #2a2b2d);
 }
 .admonition.note::before {
-  content: url("../../components/icons/octicons/info-16.svg") " Note";
+  @media (prefers-color-scheme: light) {
+    content: url("../../components/icons/octicons/info-16.svg") " Note";
+  }
+  @media (prefers-color-scheme: dark) {
+    content: url("../../components/icons/octicons/info-16-dark.svg") " Note";
+  }
 }
 
 .admonition.tip {
@@ -32,7 +37,12 @@
   background-color: light-dark(#eef3ec, #2f312e);
 }
 .admonition.tip::before {
-  content: url("../../components/icons/octicons/light-bulb-16.svg") " Tip";
+  @media (prefers-color-scheme: light) {
+    content: url("../../components/icons/octicons/light-bulb-16.svg") " Tip";
+  }
+  @media (prefers-color-scheme: dark) {
+    content: url("../../components/icons/octicons/light-bulb-16-dark.svg") " Tip";
+  }
 }
 
 .admonition.important {
@@ -40,7 +50,12 @@
   background-color: light-dark(#f4f1f6, #2c2b2d);
 }
 .admonition.important::before {
-  content: url("../../components/icons/octicons/report-16.svg") " Important";
+  @media (prefers-color-scheme: light) {
+    content: url("../../components/icons/octicons/report-16.svg") " Important";
+  }
+  @media (prefers-color-scheme: dark) {
+    content: url("../../components/icons/octicons/report-16-dark.svg") " Important";
+  }
 }
 
 .admonition.warning {
@@ -48,7 +63,12 @@
   background-color: light-dark(#f6f4f1, #2c2a29);
 }
 .admonition.warning::before {
-  content: url("../../components/icons/octicons/alert-16.svg") " Warning";
+  @media (prefers-color-scheme: light) {
+    content: url("../../components/icons/octicons/alert-16.svg") " Warning";
+  }
+  @media (prefers-color-scheme: dark) {
+    content: url("../../components/icons/octicons/alert-16-dark.svg") " Warning";
+  }
 }
 
 .admonition.caution {
@@ -56,5 +76,10 @@
   background-color: light-dark(#f6f1f1, #2a2727);
 }
 .admonition.caution::before {
-  content: url("../../components/icons/octicons/stop-16.svg") " Caution";
+  @media (prefers-color-scheme: light) {
+    content: url("../../components/icons/octicons/stop-16.svg") " Caution";
+  }
+  @media (prefers-color-scheme: dark) {
+    content: url("../../components/icons/octicons/stop-16-dark.svg") " Caution";
+  }
 }
