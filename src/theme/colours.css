@@ -41,3 +41,15 @@ body {
   background-color: var(--colour-background);
   color: var(--colour-background-text);
 }
+
+.light-mode-only {
+  @media (prefers-color-scheme: dark) {
+    display: none;
+  }
+}
+
+.dark-mode-only {
+  @media (prefers-color-scheme: light) {
+    display: none;
+  }
+}
