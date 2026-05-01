@@ -1,40 +1,35 @@
 :root {
   /* Backgrounds */
-  --colour-background: light-dark(#f2e3cd, black);
-  --colour-background-alt: light-dark(#f1dec6, black);
+  --colour-background: light-dark(#f2e3cd, #1f1d1b);
+  --colour-background-alt: light-dark(#f1dec6, #262320);
 
-  --colour-surface: light-dark(#cbae9d, black);
+  --colour-surface: light-dark(#cbae9d, #6e4731);
   --colour-surface-hovered: rgba(from var(--colour-surface) r g b / 0.4);
 
-  --colour-input: light-dark(#e8d9c3, black);
+  --colour-input: light-dark(#e8d9c3, #2d2925);
 
-  --colour-border: light-dark(#ded0bd, black);
+  --colour-border: light-dark(#ded0bd, #2c2926);
 
   /* Accents */
-  --colour-primary: light-dark(#7e483b, #7e483b);
+  --colour-primary: light-dark(#7e483b, #915342);
   --colour-primary-disabled: rgba(from var(--colour-primary) r g b / 0.2);
   --colour-primary-hovered: rgba(from var(--colour-primary) r g b / 0.8);
   --colour-primary-active: rgba(from var(--colour-primary) r g b / 0.9);
 
-  --colour-secondary: light-dark(red, red);
-  --colour-tertiary: light-dark(red, red);
-
   /* Text */
-  --colour-background-text: light-dark(#1b2126, white);
+  --colour-background-text: light-dark(#1b2126, #f1e9dd);
   --colour-background-text-disabled: rgba(from var(--colour-background-text) r g b / 0.7);
 
-  --colour-surface-text: light-dark(black, black);
+  --colour-surface-text: light-dark(#1b2126, #f1e9dd);
 
   --colour-input-text: light-dark(black, white);
 
   --colour-primary-text: light-dark(white, white);
-  --colour-secondary-text: var(--colour-primary-text);
-  --colour-tertiary-text: var(--colour-primary-text);
 
-  --colour-link-text: light-dark(#7e483b, mediumpurple);
+  --colour-link-text: light-dark(#7e483b, #bb6b54);
 
   /* Other */
-  --colour-shadow: rgba(0, 0, 0, 0.1);
+  --colour-shadow: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
 }
 
 body {
