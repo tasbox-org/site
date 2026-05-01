@@ -6,7 +6,9 @@ import styles from "./navbar.module.css";
 export const Navbar: Component = () => {
   return (
     <div class={styles.navbar}>
-      <a href="/">TASBox</a>
+      <a href="/">
+        <img src="/img/logo.svg" alt="TASBox" />
+      </a>
       <nav>
         <ul class={styles.list}>
           <li class={styles.listItem}>
