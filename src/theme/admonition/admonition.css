@@ -20,40 +20,40 @@
 }
 
 .admonition.note {
-  border-left-color: light-dark(#056bee, white);
-  background-color: light-dark(#f1f4f6, white);
+  border-left-color: light-dark(#056bee, #056bee);
+  background-color: light-dark(#f1f4f6, #2a2b2d);
 }
 .admonition.note::before {
   content: url("../../components/icons/octicons/info-16.svg") " Note";
 }
 
 .admonition.tip {
-  border-left-color: light-dark(#07b616, white);
-  background-color: light-dark(#eef3ec, white);
+  border-left-color: light-dark(#07b616, #07b616);
+  background-color: light-dark(#eef3ec, #2f312e);
 }
 .admonition.tip::before {
   content: url("../../components/icons/octicons/light-bulb-16.svg") " Tip";
 }
 
 .admonition.important {
-  border-left-color: light-dark(#8505ee, white);
-  background-color: light-dark(#f4f1f6, white);
+  border-left-color: light-dark(#8505ee, #8505ee);
+  background-color: light-dark(#f4f1f6, #2c2b2d);
 }
 .admonition.important::before {
   content: url("../../components/icons/octicons/report-16.svg") " Important";
 }
 
 .admonition.warning {
-  border-left-color: light-dark(#eeb805, white);
-  background-color: light-dark(#f6f4f1, white);
+  border-left-color: light-dark(#eeb805, #eeb805);
+  background-color: light-dark(#f6f4f1, #2c2a29);
 }
 .admonition.warning::before {
   content: url("../../components/icons/octicons/alert-16.svg") " Warning";
 }
 
 .admonition.caution {
-  border-left-color: light-dark(#ee0505, white);
-  background-color: light-dark(#f6f1f1, white);
+  border-left-color: light-dark(#ee0505, #ee0505);
+  background-color: light-dark(#f6f1f1, #2a2727);
 }
 .admonition.caution::before {
   content: url("../../components/icons/octicons/stop-16.svg") " Caution";
