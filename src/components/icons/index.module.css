@@ -1,4 +1,7 @@
 .icon {
   min-width: min-content;
   min-height: min-content;
+
+  display: inline;
+  vertical-align: center;
 }
