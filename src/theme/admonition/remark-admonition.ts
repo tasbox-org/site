@@ -19,7 +19,7 @@ export const remarkAdmonition = () => {
       const data = node.data ?? {};
 
       data.hName = "div";
-      data.hProperties = h("div", { class: `admonition ${node.name}` }).properties;
+      data.hProperties = h("div", { class: `markdown-slim admonition ${node.name}` }).properties;
 
       node.data = data;
     });
