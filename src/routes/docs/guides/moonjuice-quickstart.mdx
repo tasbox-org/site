@@ -1,0 +1,132 @@
+---
+breadcrumbs:
+  - MoonJuice Quickstart
+---
+
+# Quickstart to MoonJuice
+
+MoonJuice is a scripting language built on top of and transpiling to Luau. A lot of the syntax is inspired by Lua, so it is strongly recommended you come to it with a knowledge in Lua first.
+
+This article is written to introduce the fundamental syntax and differences of MoonJuice to someone familiar with Lua.
+
+```moonjuice
+-- Single-line comments are Lua-style
+
+--[[
+  Multi-line comments *require* two dashes before the closing ]], unlike Lua
+
+  Lua --[=[long string]=] comments are not supported
+--]]
+
+-- Constant variables are defined with `def`
+def num = 13
+def bigNum = 1_234_567.89 -- Underscores are allowed in number literals, for style/readability
+
+-- Mutable variables are defined with `mut`
+mut secretNum = 0b1101 -- Binary literals
+
+-- C-style bitwise operators are built-in
+secretNum = (secretNum << 2) ^ secretNum
+-- ~(unary not) & | ^ << >>
+
+-- Note that bitwise operators operate on 32-bit integers
+
+def toBeAssigned = nil -- Nil variable definitions must be explicit
+
+-- You can use `export` to define variables to export from the file when it's being required as a module
+export toBeExported = 'asdf'
+-- This works similar to returning a module table from the top scope in Lua
+
+--------------------------------
+-- Tables
+--------------------------------
+
+-- Table construction is mostly the same as Lua
+def arr = { 1, 2, 3 }
+
+-- Defining literal string keys starts with .
+def tab = { .name = 'MoonJuice', .abbreviation = 'mj' }
+
+def mixed = {
+  'mj',
+  .test = true,
+  [20 + 12] = 0x20, -- Using expressions for keys is the same as Lua
+
+  -- You can create a key storing a variable's value by putting it as a string key alone
+  .tab -- This is equal to .tab = tab
+}
+
+if tab?.key?.exists then -- ?. performs nil-checked table access
+  print('tab.key.exists exists')
+end
+
+print(tab.name ?? 'This does not print') -- ?? evaluates the right-hand value if the first is nil
+
+print(tab.someFunc?.(1, 2, 3)) -- Nil-checked function call
+print(tab?.[32]) -- Nil-checked array style table access
+
+
+--------------------------------
+-- Functions
+--------------------------------
+
+-- Functions are created using `fn`
+def printSum = fn(x, y)
+  def sum = x + y
+  print(x .. " + " .. y .. " = " .. sum)
+  sum -- The `return` keyword is optional, the last expression is treated as the return value
+end
+
+-- Closures work the same as Lua
+def adder = fn(x)
+  fn(y)
+    printSum(x, y)
+  end
+end
+
+def addFrom5 = adder(5)
+
+print(addFrom5(7))
+
+-- You can also pipe expressions into functions
+8 |> addFrom5 |> print
+
+def vectorLength = fn(vec)
+  def { .x, .y, .z } = vec -- You can destructure tables into variables definitions
+  return (x * x + y * y + z * z) |> math.sqrt
+end
+
+def vectorToColor = fn(vec)
+  -- You can rename the destructured table keys by "assigning" them with a name
+  def { .x = red, .y = green, .z = blue } = vec
+  { .red, .green, .blue, .alpha = 1 }
+end
+
+--------------------------------
+-- Blocks as expressions
+--------------------------------
+
+-- All blocks act like expressions and use their last statement as their value
+
+def doubleAll = fn(tbl)
+  -- This for loop will return a new table with every iteration's value
+  for _, value in tbl do
+    value * 2
+  end
+end
+
+def doubled = doubleAll({1, 2, 3})
+-- `doubled` will contain `{ 2, 4, 6 }`
+
+-- Naturally, you can use any block anywhere an expression is needed
+def complicatedColor = do
+  def rand8 = fn() math.random(0, 255) end
+
+  vectorToColor(do
+    def x, y, z = table.unpack(for _ in range(3) do
+      rand8() / 255
+    end)
+    { .x, .y, .z }
+  end)
+end
+```

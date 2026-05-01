@@ -1,0 +1,37 @@
+---
+breadcrumbs:
+  - Creating Packages
+---
+
+# Creating Packages
+
+:::warning
+
+This guide is a work in progress
+
+:::
+
+
+Learn how to create Games and Addons by defining a `package.json` and writing some MoonJuice.
+
+## Games vs. Addons
+
+User content in TASBox is split into two types: **Games** and **Addons**. These are collectively called **Packages**.
+
+- **Games** have access to the full scripting API, the [Menu realm](../core-concepts.md#realms) and the ability to modify the Addon sandbox.
+  Only one may be mounted at a time.
+- **Addons** have access to a limited scripting API defined by the loaded Game, and multiple can be mounted at the same time.
+
+## Folder structure
+
+## Creating a `package.json`
+
+## Writing MoonJuice
+
+### Defining the addon sandbox
+
+:::info
+
+This only applies to writing Games. Addons cannot modify the sandbox that they're run in.
+
+:::

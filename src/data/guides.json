@@ -1,8 +1,20 @@
 [
   {
     "breadcrumbs": [
+      "Creating Packages"
+    ],
+    "href": "/creating-packages"
+  },
+  {
+    "breadcrumbs": [
       "Introduction"
     ],
     "href": "/introduction"
+  },
+  {
+    "breadcrumbs": [
+      "MoonJuice Quickstart"
+    ],
+    "href": "/moonjuice-quickstart"
   }
 ]
