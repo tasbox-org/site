@@ -10,7 +10,7 @@ const LibraryPage = () => {
   return (
     <div>
       <h1>{library()?.name}</h1>
-      <Description value={library()?.description} />
+      <Description value={library()?.description} variant="full" />
     </div>
   );
 };
