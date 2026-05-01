@@ -23,7 +23,7 @@
         "noUnknownPseudoClass": {
           "level": "error",
           "options": {
-            "ignore": ["global"]
+            "ignore": ["global", "local"]
           }
         }
       },
@@ -34,7 +34,7 @@
         "noUnknownAtRules": {
           "level": "warn",
           "options": {
-            "ignore": ["global"]
+            "ignore": ["global", "local"]
           }
         }
       }

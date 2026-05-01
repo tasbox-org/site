@@ -1,7 +1,12 @@
 .icon {
   min-width: min-content;
   min-height: min-content;
+}
 
-  display: inline;
-  vertical-align: center;
+:global .markdown-slim,
+:global .markdown-full {
+  :local .icon {
+    display: inline;
+    vertical-align: center;
+  }
 }
