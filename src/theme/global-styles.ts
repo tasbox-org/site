@@ -1,5 +1,6 @@
 import "./css-reset.css";
 
+import "./admonition/admonition.css";
 import "./prisma/gruvbox.css";
 import "./colours.css";
 import "./common.css";

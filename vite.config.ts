@@ -2,11 +2,13 @@ import path from "node:path";
 import mdx from "@mdx-js/rollup";
 import { solidStart } from "@solidjs/start/config";
 import { nitroV2Plugin } from "@solidjs/vite-plugin-nitro-2";
+import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import { defineConfig } from "vite";
 import { blogPostsGenerator, blogPostsStaticAssetCopy } from "./config/blog-posts-plugin";
 import { guidesGenerator } from "./config/guides-plugin";
+import { remarkAdmonition } from "./src/theme/admonition/remark-admonition";
 import { rehypeMdxPrism } from "./src/theme/prisma/rehype-mdx-prism";
 
 export default defineConfig({
@@ -16,7 +18,7 @@ export default defineConfig({
         jsx: true,
         jsxImportSource: "solid-js",
         providerImportSource: "solid-mdx",
-        remarkPlugins: [remarkGfm, remarkFrontmatter],
+        remarkPlugins: [remarkGfm, remarkFrontmatter, remarkDirective, remarkAdmonition],
         rehypePlugins: [rehypeMdxPrism],
       }),
       enforce: "pre",
