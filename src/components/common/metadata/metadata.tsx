@@ -24,8 +24,10 @@ export interface ArticleMetadataProps extends MetadataProps {
 }
 
 export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => {
+  const image = () => props.image ?? { url: "/img/social-card.png", alt: "TASBox logo" };
+
   const rootUrl = () => `${getUrl().origin}${props.url}`;
-  const rootImageUrl = (imageUrl: string) => `${getUrl().origin}${imageUrl}`;
+  const rootImageUrl = () => `${getUrl().origin}${image().url}`;
 
   return (
     <>
@@ -33,12 +35,8 @@ export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => 
       <Meta name="description" content={props.description} />
       <Meta name="og:title" content={props.title} />
       <Meta name="og:description" content={props.description} />
-      <Show when={props.image}>
-        {/** biome-ignore lint/style/noNonNullAssertion: Narrowed by Show */}
-        <Meta name="og:image" content={rootImageUrl(props.image!.url)} />
-        {/** biome-ignore lint/style/noNonNullAssertion: Narrowed by Show */}
-        <Meta name="og:image:alt" content={props.image!.alt} />
-      </Show>
+      <Meta name="og:image" content={rootImageUrl()} />
+      <Meta name="og:image:alt" content={image().alt} />
       <Meta name="og:url" content={rootUrl()} />
       <Meta name="og:site_name" content="TASBox" />
       <Meta name="og:type" content={props.type} />
