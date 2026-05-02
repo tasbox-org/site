@@ -18,8 +18,8 @@ export const remarkAdmonition = () => {
 
       const data = node.data ?? {};
 
-      data.hName = "div";
-      data.hProperties = h("div", { class: `markdown-slim admonition ${node.name}` }).properties;
+      (data as any).hName = "div";
+      (data as any).hProperties = h("div", { class: `markdown-slim admonition ${node.name}` }).properties;
 
       node.data = data;
     });

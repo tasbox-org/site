@@ -1,7 +1,7 @@
 import path from "node:path";
 import mdx from "@mdx-js/rollup";
 import { solidStart } from "@solidjs/start/config";
-import { nitroV2Plugin } from "@solidjs/vite-plugin-nitro-2";
+import { nitro } from "nitro/vite";
 import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
@@ -29,8 +29,17 @@ export default defineConfig({
     solidStart({
       extensions: ["mdx", "md"],
     }),
-    nitroV2Plugin({
+    nitro({
       preset: "cloudflare-module",
+      cloudflare: {
+        wrangler: {
+          name: "tasbox",
+          compatibility_date: "2026-05-01",
+          observability: {
+            enabled: true,
+          },
+        },
+      },
     }),
   ],
   resolve: {
