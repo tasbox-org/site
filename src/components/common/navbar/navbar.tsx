@@ -1,6 +1,7 @@
 import { type Component, createEffect, createSignal } from "solid-js";
 import { isServer } from "solid-js/web";
-import { Button, ButtonNavLink } from "#components/common/button";
+import { ButtonNavLink } from "#components/common/button";
+import { Icon } from "#components/icons";
 import styles from "./navbar.module.css";
 
 // TODO: Add skip link to main content
@@ -40,12 +41,20 @@ export const Navbar: Component = () => {
         </ul>
       </nav>
       <div>
-        <Button class="light-mode-only" onClick={() => setThemeClass("is-dark")}>
-          Dark
-        </Button>
-        <Button class="dark-mode-only" onClick={() => setThemeClass("is-light")}>
-          Light
-        </Button>
+        <button
+          type="button"
+          class={`light-mode-only ${styles.lightDarkToggle}`}
+          onClick={() => setThemeClass("is-dark")}
+        >
+          <Icon name="dark-theme" size="fill" />
+        </button>
+        <button
+          type="button"
+          class={`dark-mode-only ${styles.lightDarkToggle}`}
+          onClick={() => setThemeClass("is-light")}
+        >
+          <Icon name="light-theme" size="fill" />
+        </button>
       </div>
     </div>
   );

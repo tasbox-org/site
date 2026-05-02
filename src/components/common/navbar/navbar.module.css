@@ -24,3 +24,23 @@
 .list-item {
   list-style: none;
 }
+
+.light-dark-toggle {
+  border: var(--spacing-1) solid var(--colour-border);
+  border-radius: 100%;
+
+  background: none;
+  padding: var(--spacing-8);
+
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.light-dark-toggle:hover {
+  border-color: var(--colour-primary);
+  background-color: var(--colour-surface-hovered);
+}
+
+.light-dark-toggle:active {
+  background-color: var(--colour-surface-active);
+}

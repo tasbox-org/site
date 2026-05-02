@@ -5,6 +5,7 @@
 
   --colour-surface: light-dark(#cbae9d, #6e4731);
   --colour-surface-hovered: rgba(from var(--colour-surface) r g b / 0.4);
+  --colour-surface-active: rgba(from var(--colour-surface) r g b / 0.6);
 
   --colour-input: light-dark(#e8d9c3, #2d2925);
 
