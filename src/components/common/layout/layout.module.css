@@ -3,13 +3,3 @@
   top: 0;
   z-index: 999;
 }
-
-.main {
-  width: 100%;
-  max-width: 1200px;
-
-  padding: 0 var(--spacing-21);
-  padding-bottom: var(--spacing-13);
-
-  margin: 0 auto;
-}

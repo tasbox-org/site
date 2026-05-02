@@ -1,0 +1,8 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--navbar-height));
+
+  align-items: center;
+  justify-content: center;
+}

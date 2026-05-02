@@ -7,8 +7,6 @@ export const Layout: ParentComponent = (props) => (
     <header class={styles.header}>
       <Navbar />
     </header>
-    <main id="main-content" class={styles.main}>
-      {props.children}
-    </main>
+    <main id="main-content">{props.children}</main>
   </>
 );

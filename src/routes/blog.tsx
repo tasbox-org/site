@@ -6,6 +6,7 @@ import { Show } from "solid-js";
 import { MDXProvider } from "solid-mdx";
 import { BlogPostCard } from "#components/blog/blog-post-card";
 import { TagList } from "#components/blog/tag-list";
+import { MaxContentWidth } from "#components/common/max-content-width";
 import { Metadata } from "#components/common/metadata";
 import { Sidebar } from "#components/common/sidebar";
 import { Icon } from "#components/icons";
@@ -48,56 +49,58 @@ const BlogPost = (props: RouteSectionProps) => {
     );
 
   return (
-    <div class={styles.container}>
-      <Metadata
-        type="article"
-        title={post().title}
-        description={post().description}
-        url={url()}
-        image={{ url: imageUrl(), alt: post().thumbnailAltText }}
-        authors={post().authors}
-        tags={post().tags}
-        publishedTime={post().date}
-      />
-      <aside>
-        <Sidebar groups={blogPostSidebarGroups} />
-      </aside>
-      <article class={styles.post}>
-        <BlogPostCard post={post()} />
+    <MaxContentWidth>
+      <div class={styles.container}>
+        <Metadata
+          type="article"
+          title={post().title}
+          description={post().description}
+          url={url()}
+          image={{ url: imageUrl(), alt: post().thumbnailAltText }}
+          authors={post().authors}
+          tags={post().tags}
+          publishedTime={post().date}
+        />
+        <aside>
+          <Sidebar groups={blogPostSidebarGroups} />
+        </aside>
+        <article class={styles.post}>
+          <BlogPostCard post={post()} />
 
-        <div class="markdown-full">
-          <MDXProvider>{props.children}</MDXProvider>
-        </div>
-
-        <footer class={styles.footer}>
-          <div class={styles.tagsAndEdit}>
-            <TagList tags={post().tags} />
-            <a
-              href={`https://github.com/tasbox-org/site/blob/master/src/routes/blog/${post().filesystemPath}/index.mdx`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={styles.editLink}
-            >
-              <Icon name="documentation" /> Edit this post
-            </a>
+          <div class="markdown-full">
+            <MDXProvider>{props.children}</MDXProvider>
           </div>
-          <nav class={styles.nav}>
-            <Show when={newerPost()}>
-              <a href={buildUrl(newerPost()?.slug)} class={styles.newer}>
-                <div class={styles.navHeading}>Newer post</div>
-                <div class={styles.navPostTitle}>{newerPost()?.title}</div>
+
+          <footer class={styles.footer}>
+            <div class={styles.tagsAndEdit}>
+              <TagList tags={post().tags} />
+              <a
+                href={`https://github.com/tasbox-org/site/blob/master/src/routes/blog/${post().filesystemPath}/index.mdx`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={styles.editLink}
+              >
+                <Icon name="documentation" /> Edit this post
               </a>
-            </Show>
-            <Show when={olderPost()}>
-              <a href={buildUrl(olderPost()?.slug)} class={styles.older}>
-                <div class={styles.navHeading}>Older post</div>
-                <div class={styles.navPostTitle}>{olderPost()?.title}</div>
-              </a>
-            </Show>
-          </nav>
-        </footer>
-      </article>
-    </div>
+            </div>
+            <nav class={styles.nav}>
+              <Show when={newerPost()}>
+                <a href={buildUrl(newerPost()?.slug)} class={styles.newer}>
+                  <div class={styles.navHeading}>Newer post</div>
+                  <div class={styles.navPostTitle}>{newerPost()?.title}</div>
+                </a>
+              </Show>
+              <Show when={olderPost()}>
+                <a href={buildUrl(olderPost()?.slug)} class={styles.older}>
+                  <div class={styles.navHeading}>Older post</div>
+                  <div class={styles.navPostTitle}>{olderPost()?.title}</div>
+                </a>
+              </Show>
+            </nav>
+          </footer>
+        </article>
+      </div>
+    </MaxContentWidth>
   );
 };
 

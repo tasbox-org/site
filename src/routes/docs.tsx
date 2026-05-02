@@ -1,5 +1,6 @@
 import { useLocation } from "@solidjs/router";
 import { createMemo, type ParentProps } from "solid-js";
+import { MaxContentWidth } from "#components/common/max-content-width";
 import { Metadata } from "#components/common/metadata";
 import { Sidebar, type SidebarGroup } from "#components/common/sidebar";
 import { Breadcrumbs } from "#components/docs/breadcrumbs";
@@ -25,7 +26,7 @@ const DocsLayout = (props: ParentProps) => {
   const activeItem = createMemo(() => [...guideItems, ...apiItems].find((item) => item.href === location.pathname));
 
   return (
-    <>
+    <MaxContentWidth>
       <Metadata
         type="website"
         title={activeItem()?.breadcrumbs.join(" - ") ?? ""}
@@ -43,7 +44,7 @@ const DocsLayout = (props: ParentProps) => {
           {props.children}
         </div>
       </div>
-    </>
+    </MaxContentWidth>
   );
 };
 
