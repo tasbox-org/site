@@ -33,7 +33,6 @@ export type IconName =
 
 export type IconSize = "16" | "fill";
 
-// TODO: Dark mode
 const IconVariant = (props: { light: string; dark: string; alt: string; size?: IconSize }) => {
   const size = () => {
     switch (props.size) {
