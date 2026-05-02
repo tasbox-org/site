@@ -12,7 +12,7 @@ export default function Home() {
       />
       <section class={styles.hero}>
         <div class={styles.overlay}>
-          <h1>
+          <h1 class={styles.heroImage}>
             <img src="/img/logo-dark.svg" alt="TASBox" class={styles.heroImage} />
           </h1>
           <div class={styles.heroText}>
