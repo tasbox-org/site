@@ -3,9 +3,9 @@
   flex-direction: column;
 
   position: sticky;
-  top: var(--navbar-height);
+  top: calc(var(--navbar-height) + var(--spacing-13));
 
-  max-height: calc(100vh - var(--navbar-height) - var(--spacing-13));
+  max-height: calc(100vh - var(--navbar-height) - 2 * var(--spacing-13));
   min-width: min-content;
 
   overflow: hidden;
