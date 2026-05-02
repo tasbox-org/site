@@ -1,6 +1,6 @@
 .button,
 .nav-button {
-  padding: var(--spacing-5) var(--spacing-13);
+  padding: var(--spacing-3) var(--spacing-13);
   border-radius: 999999px;
   border: none;
 
@@ -8,6 +8,10 @@
   cursor: pointer;
 
   white-space: nowrap;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .nav-button {

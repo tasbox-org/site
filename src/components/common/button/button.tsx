@@ -16,7 +16,7 @@ export const Button = (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => {
 
 export const ButtonLink = (props: JSX.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   return (
-    <a {...props} class={`${props.class} ${styles.button} ${styles.enabled}`}>
+    <a {...props} class={`${props.class ?? ""} ${styles.button} ${styles.enabled}`}>
       {props.children}
     </a>
   );
