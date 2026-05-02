@@ -20,7 +20,7 @@
   border: var(--spacing-1) solid var(--colour-border);
   border-radius: 1rem;
 
-  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 var(--colour-shadow);
+  box-shadow: var(--shadow-1);
 
   padding: calc(var(--spacing-13) + var(--spacing-3));
   padding-top: var(--spacing-21);

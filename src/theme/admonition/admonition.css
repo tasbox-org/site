@@ -4,7 +4,7 @@
   border-radius: 0.5rem;
 
   background: var(--colour-background-alt);
-  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 var(--colour-shadow);
+  box-shadow: var(--shadow-1);
 
   padding: var(--spacing-8) var(--spacing-21) var(--spacing-8);
   margin-top: var(--spacing-13);

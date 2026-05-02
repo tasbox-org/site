@@ -15,7 +15,7 @@ pre {
   border: var(--spacing-1) solid var(--colour-border);
   border-radius: 1rem;
 
-  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 var(--colour-shadow);
+  box-shadow: var(--shadow-1);
 }
 
 table {
@@ -58,7 +58,7 @@ table td:first-child {
 }
 
 table tr:last-child td {
-  box-shadow: 0 var(--spacing-1) var(--spacing-2) 0 var(--colour-shadow);
+  box-shadow: var(--shadow-1);
 }
 
 th,
