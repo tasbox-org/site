@@ -31,7 +31,7 @@
 .overlay {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-21);
+  gap: var(--spacing-34);
 
   align-items: center;
   justify-content: center;
@@ -43,7 +43,7 @@
   border-right-color: rgba(0, 0, 0, 0.1);
 
   border-radius: 2rem;
-  padding: 3rem 4rem;
+  padding: var(--spacing-34);
 }
 
 .hero-image {
