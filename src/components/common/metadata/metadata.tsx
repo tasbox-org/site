@@ -3,7 +3,7 @@ import { For, Show } from "solid-js";
 import { getUrl } from "#hooks/get-url";
 
 interface MetadataProps {
-  title: string;
+  title?: string;
   description: string;
   url: `/${string}`;
   image?: {
@@ -29,11 +29,14 @@ export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => 
   const rootUrl = () => `${getUrl().origin}${props.url}`;
   const rootImageUrl = () => `${getUrl().origin}${image().url}`;
 
+  const title = () => (props.title === undefined ? "TASBox" : `${props.title} | TASBox`);
+  const ogTitle = () => props.title ?? "TASBox";
+
   return (
     <>
-      <Title>{props.title} | TASBox</Title>
+      <Title>{title()}</Title>
       <Meta name="description" content={props.description} />
-      <Meta name="og:title" content={props.title} />
+      <Meta name="og:title" content={ogTitle()} />
       <Meta name="og:description" content={props.description} />
       <Meta name="og:image" content={rootImageUrl()} />
       <Meta name="og:image:alt" content={image().alt} />
