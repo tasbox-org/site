@@ -36,6 +36,7 @@ export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => 
     <>
       <Title>{title()}</Title>
       <Meta name="description" content={props.description} />
+
       <Meta name="og:title" content={ogTitle()} />
       <Meta name="og:description" content={props.description} />
       <Meta name="og:image" content={rootImageUrl()} />
@@ -52,6 +53,9 @@ export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => 
           <Meta name="article:published_time" content={(props as ArticleMetadataProps).publishedTime?.toISOString()} />
         </Show>
       </Show>
+
+      <Meta name="twitter:card" content="summary_large_image" />
+
       <Base href={rootUrl()} />
     </>
   );
