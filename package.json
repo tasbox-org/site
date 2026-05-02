@@ -4,9 +4,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "tsc --noEmit && vite build",
-    "preview": "npm run build && wrangler dev",
-    "cf-typegen": "wrangler types",
-    "postinstall": "npm run cf-typegen"
+    "preview": "npm run build && wrangler dev"
   },
   "dependencies": {
     "@mdx-js/mdx": "^2.3.0",
