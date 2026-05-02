@@ -2,6 +2,7 @@ import "./css-reset.css";
 
 import "./admonition/admonition.css";
 import "./prisma/gruvbox.css";
+import "./breakpoints.css";
 import "./colours.css";
 import "./common.css";
 import "./fonts.css";

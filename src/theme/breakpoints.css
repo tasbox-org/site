@@ -1,0 +1,2 @@
+@custom-media --breakpoint-tablet (min-width: calc(600 / 16 * 1rem));
+@custom-media --breakpoint-desktop (min-width: calc(1200 / 16 * 1rem));

@@ -1,14 +1,33 @@
 .navbar {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-content: space-between;
 
   width: 100%;
   padding: var(--spacing-13) var(--spacing-21);
 
   background-color: var(--colour-background);
   border-bottom: var(--spacing-1) solid var(--colour-border);
+
+  @media (--breakpoint-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.logo {
+  display: none;
+}
+
+@media (--breakpoint-tablet) {
+  .logo {
+    display: block;
+  }
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .list {
@@ -23,6 +42,12 @@
 
 .list-item {
   list-style: none;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .light-dark-toggle {

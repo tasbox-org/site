@@ -25,6 +25,9 @@
           "options": {
             "ignore": ["global", "local"]
           }
+        },
+        "noUnknownMediaFeatureName": {
+          "level": "off"
         }
       },
       "style": {
@@ -34,7 +37,7 @@
         "noUnknownAtRules": {
           "level": "warn",
           "options": {
-            "ignore": ["global", "local"]
+            "ignore": ["global", "local", "custom-media"]
           }
         }
       }

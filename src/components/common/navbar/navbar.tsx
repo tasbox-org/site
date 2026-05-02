@@ -19,11 +19,11 @@ export const Navbar: Component = () => {
 
   return (
     <div class={styles.navbar}>
-      <a href="/">
+      <a href="/" class={styles.logo}>
         <img src="/img/logo.svg" alt="TASBox" class="light-mode-only" />
         <img src="/img/logo-dark.svg" alt="TASBox" class="dark-mode-only" />
       </a>
-      <nav>
+      <nav class={styles.middle}>
         <ul class={styles.list}>
           <li class={styles.listItem}>
             <ButtonNavLink href="/">About</ButtonNavLink>
@@ -40,7 +40,7 @@ export const Navbar: Component = () => {
           </li>
         </ul>
       </nav>
-      <div>
+      <div class={styles.right}>
         <button
           type="button"
           class={`light-mode-only ${styles.lightDarkToggle}`}

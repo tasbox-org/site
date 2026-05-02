@@ -37,7 +37,7 @@
   text-decoration: underline;
 }
 
-.nav {
+.middle {
   display: grid;
   gap: var(--spacing-21);
 
