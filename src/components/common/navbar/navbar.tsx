@@ -19,7 +19,8 @@ export const Navbar: Component = () => {
   return (
     <div class={styles.navbar}>
       <a href="/">
-        <img src="/img/logo.svg" alt="TASBox" />
+        <img src="/img/logo.svg" alt="TASBox" class="light-mode-only" />
+        <img src="/img/logo-dark.svg" alt="TASBox" class="dark-mode-only" />
       </a>
       <nav>
         <ul class={styles.list}>
