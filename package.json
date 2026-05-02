@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "tsc --noEmit && vite build",
-    "start": "vite preview",
+    "preview": "npm run build && wrangler dev",
     "cf-typegen": "wrangler types",
     "postinstall": "npm run cf-typegen"
   },

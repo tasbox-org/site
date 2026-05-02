@@ -23,18 +23,15 @@ export default defineConfig({
       }),
       enforce: "pre",
     },
+    blogPostsGenerator(),
+    blogPostsStaticAssetCopy(),
+    guidesGenerator(),
     solidStart({
       extensions: ["mdx", "md"],
     }),
     nitroV2Plugin({
-      preset: "cloudflare-pages",
-      rollupConfig: {
-        external: ["node:async_hooks"],
-      },
+      preset: "cloudflare-module",
     }),
-    blogPostsGenerator(),
-    blogPostsStaticAssetCopy(),
-    guidesGenerator(),
   ],
   resolve: {
     alias: {
