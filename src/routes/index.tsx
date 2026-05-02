@@ -11,45 +11,49 @@ export default function Home() {
         url="/"
       />
       <div class={styles.hero}>
-        <h1>
-          <img src="/img/logo.svg" alt="TASBox" class={styles.heroImage} />
-        </h1>
-        <p>Next-generation physics sandbox game built by veterans of the genre</p>
-        <p>
-          Make games and addons using <a href="/docs/guides/introduction">our extensive modding API</a> or just have
-          some fun with friends
-        </p>
-        <p>
-          <em>
-            Forever{" "}
-            <a
-              href="https://en.wikipedia.org/wiki/Free_and_open-source_software"
+        <div class={styles.overlay}>
+          <h1>
+            <img src="/img/logo-dark.svg" alt="TASBox" class={styles.heroImage} />
+          </h1>
+          <div class={styles.heroText}>
+            <p>Next-generation physics sandbox game built by veterans of the genre</p>
+            <p>
+              Make games and addons using <a href="/docs/guides/introduction">our extensive modding API</a> or just have
+              some fun with friends
+            </p>
+            <p>
+              <em>
+                Forever{" "}
+                <a
+                  href="https://en.wikipedia.org/wiki/Free_and_open-source_software"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={styles.heroLink}
+                >
+                  FOSS.
+                </a>
+              </em>
+            </p>
+          </div>
+          <div class={styles.socials}>
+            <ButtonLink
+              href="https://discord.gg/QKQuGUUF7c"
               target="_blank"
               rel="noopener noreferrer"
-              class={styles.heroLink}
+              class={styles.discordButton}
             >
-              FOSS.
-            </a>
-          </em>
-        </p>
-        <div class={styles.socials}>
-          <ButtonLink
-            href="https://discord.gg/QKQuGUUF7c"
-            target="_blank"
-            rel="noopener noreferrer"
-            class={styles.discordButton}
-          >
-            <img src="/img/thirdparty/discord-logo-white.svg" alt="Discord" class={styles.brandImage} />
-          </ButtonLink>
+              <img src="/img/thirdparty/discord-logo-white.svg" alt="Discord" class={styles.brandImage} />
+            </ButtonLink>
 
-          <ButtonLink
-            href="https://github.com/tasbox-org"
-            target="_blank"
-            rel="noopener noreferrer"
-            class={styles.githubButton}
-          >
-            <img src="/img/thirdparty/github-lockup-black.svg" alt="GitHub" class={styles.brandImage} />
-          </ButtonLink>
+            <ButtonLink
+              href="https://github.com/tasbox-org"
+              target="_blank"
+              rel="noopener noreferrer"
+              class={styles.githubButton}
+            >
+              <img src="/img/thirdparty/github-lockup-black.svg" alt="GitHub" class={styles.brandImage} />
+            </ButtonLink>
+          </div>
         </div>
       </div>
     </>

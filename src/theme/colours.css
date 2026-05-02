@@ -27,7 +27,9 @@
 
   --colour-primary-text: light-dark(white, white);
 
-  --colour-link-text: light-dark(#7e483b, #bb6b54);
+  --colour-link-text-light: #7e483b;
+  --colour-link-text-dark: #bb6b54;
+  --colour-link-text: light-dark(var(--colour-link-text-light), var(--colour-link-text-dark));
 
   /* Other */
   --colour-shadow: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
