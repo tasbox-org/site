@@ -15,6 +15,11 @@ export default createHandler(() => (
           <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" sizes="180x180" />
           <meta name="apple-mobile-web-app-title" content="TASBox" />
           <link rel="manifest" href="/site.webmanifest" />
+          <style>
+            @import url(
+            "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            );
+          </style>
           {assets}
         </head>
         <body>
