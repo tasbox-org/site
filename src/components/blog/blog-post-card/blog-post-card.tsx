@@ -8,6 +8,7 @@ import styles from "./blog-post-card.module.css";
 
 export interface BlogPostCardProps {
   post: BlogPost;
+  enableHeaderLink?: boolean;
   showFooter?: boolean;
 }
 
@@ -21,9 +22,11 @@ export const BlogPostCard = (props: BlogPostCardProps) => {
     <div class={styles.card}>
       <header class={styles.heading}>
         <h1 class={styles.title}>
-          <a href={`/blog/${props.post.slug}`} class={styles.link}>
-            {props.post.title}
-          </a>
+          <Show when={props.enableHeaderLink} fallback={<span>{props.post.title}</span>}>
+            <a href={`/blog/${props.post.slug}`} class={styles.link}>
+              {props.post.title}
+            </a>
+          </Show>
         </h1>
         <time dateTime={props.post.date.toISOString()} class={styles.time}>
           {props.post.date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}

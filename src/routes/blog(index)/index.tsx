@@ -26,7 +26,7 @@ const BlogList: Component = () => {
           <For each={blogPosts}>
             {(post) => (
               <article>
-                <BlogPostCard post={post} showFooter />
+                <BlogPostCard post={post} enableHeaderLink showFooter />
               </article>
             )}
           </For>
