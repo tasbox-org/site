@@ -8,5 +8,5 @@
   --spacing-21: calc((21 / 16) * 1rem);
   --spacing-34: calc((34 / 16) * 1rem);
 
-  --navbar-height: calc((60.8 / 16) * 1rem + var(--spacing-13));
+  --navbar-height: calc((40 / 16) * 1rem + 2 * var(--spacing-13) + var(--spacing-13) + var(--spacing-1));
 }
