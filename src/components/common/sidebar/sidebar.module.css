@@ -5,7 +5,7 @@
   position: sticky;
   top: var(--navbar-height);
 
-  max-height: calc(100vh - var(--navbar-height));
+  max-height: calc(100vh - var(--navbar-height) - var(--spacing-13));
   min-width: min-content;
 
   overflow: hidden;
