@@ -24,7 +24,6 @@ export default defineConfig({
       enforce: "pre",
     },
     blogPostsGenerator(),
-    blogPostsStaticAssetCopy(),
     guidesGenerator(),
     solidStart({
       extensions: ["mdx", "md"],
@@ -41,6 +40,7 @@ export default defineConfig({
         },
       },
     }),
+    blogPostsStaticAssetCopy(),
   ],
   resolve: {
     alias: {

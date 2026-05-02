@@ -126,5 +126,11 @@ export const blogPostsStaticAssetCopy = () =>
         overwrite: true,
         rename: renameStaticAsset,
       },
+      {
+        src: path.join(BLOG_DIRECTORY, "**", "*.{png,mp4}"),
+        dest: "../.output/public/blog",
+        overwrite: true,
+        rename: renameStaticAsset,
+      },
     ],
   });
