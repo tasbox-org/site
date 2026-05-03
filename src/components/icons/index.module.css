@@ -6,6 +6,11 @@
 :global .markdown-full {
   :local .icon {
     display: inline;
+
     vertical-align: middle;
+
+    @supports (vertical-align: center) {
+      vertical-align: center;
+    }
   }
 }

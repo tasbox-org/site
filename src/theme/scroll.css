@@ -1,0 +1,24 @@
+*::-webkit-scrollbar {
+  width: 0.666rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--colour-shadow);
+  border-radius: 999999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--colour-primary);
+  border-radius: 999999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--colour-primary-hovered);
+  border-radius: 999999px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--colour-primary) var(--colour-shadow);
+  }
+}
