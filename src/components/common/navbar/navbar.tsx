@@ -1,3 +1,4 @@
+import { A } from "@solidjs/router";
 import { type Component, createEffect, createSignal } from "solid-js";
 import { isServer } from "solid-js/web";
 import { ButtonNavLink } from "#components/common/button";
@@ -19,10 +20,10 @@ export const Navbar: Component = () => {
 
   return (
     <div class={styles.navbar}>
-      <a href="/" class={styles.logo}>
+      <A href="/" class={styles.logo}>
         <img src="/img/logo.svg" alt="TASBox" class="light-mode-only" />
         <img src="/img/logo-dark.svg" alt="TASBox" class="dark-mode-only" />
-      </a>
+      </A>
       <nav class={styles.middle}>
         <ul class={styles.list}>
           <li class={styles.listItem}>

@@ -1,3 +1,4 @@
+import { A } from "@solidjs/router";
 import { ButtonLink } from "#components/common/button";
 import { Metadata } from "#components/common/metadata";
 import styles from "./index.module.css";
@@ -18,19 +19,19 @@ export default function Home() {
           <div class={styles.heroText}>
             <p>Next-generation physics sandbox game built by veterans of the genre</p>
             <p>
-              Make games and addons using <a href="/docs/guides/introduction">our extensive scripting API</a> or just
+              Make games and addons using <A href="/docs/guides/introduction">our extensive scripting API</A> or just
               have some fun with friends
             </p>
             <p>
               <em>
                 Forever{" "}
-                <a
+                <A
                   href="https://en.wikipedia.org/wiki/Free_and_open-source_software"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   FOSS.
-                </a>
+                </A>
               </em>
             </p>
           </div>

@@ -1,5 +1,6 @@
 import { Base, Meta, Title } from "@solidjs/meta";
 import { For, Show } from "solid-js";
+import { isServer } from "solid-js/web";
 import { getUrl } from "#hooks/get-url";
 
 interface MetadataProps {
@@ -31,6 +32,15 @@ export const Metadata = (props: WebsiteMetadataProps | ArticleMetadataProps) => 
 
   const title = () => (props.title === undefined ? "TASBox" : `${props.title} | TASBox`);
   const ogTitle = () => props.title ?? "TASBox";
+
+  // For some unknown reason, SolidMeta does not strip the server-side rendered <base/> tag when hydrating,
+  // specifically on the dynamic docs page routes but not others.
+  // This manually removes all SSR'd <base/> tags upon hydration
+  if (!isServer) {
+    document.querySelectorAll("base[data-sm]").forEach((element) => {
+      element.remove();
+    });
+  }
 
   return (
     <>

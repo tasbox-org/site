@@ -1,4 +1,4 @@
-import { useMatch } from "@solidjs/router";
+import { A, useMatch } from "@solidjs/router";
 import { createMemo, createSignal, For, Show } from "solid-js";
 import { Breadcrumbs } from "#components/docs/breadcrumbs";
 import type { IconName } from "#components/icons";
@@ -25,9 +25,9 @@ const LeafListItem = (props: SidebarItem) => {
 
   return (
     <li class={`${styles.listItem} ${match() ? styles.active : ""}`}>
-      <a class={styles.link} href={props.href}>
+      <A class={styles.link} href={props.href}>
         <Breadcrumbs icon={props.icon} segments={props.breadcrumbs} />
-      </a>
+      </A>
     </li>
   );
 };
