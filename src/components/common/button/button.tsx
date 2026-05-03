@@ -1,4 +1,4 @@
-import { useMatch } from "@solidjs/router";
+import { A, type AnchorProps, useMatch } from "@solidjs/router";
 import type { JSX, ParentProps } from "solid-js";
 import styles from "./button.module.css";
 
@@ -14,11 +14,11 @@ export const Button = (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => {
   );
 };
 
-export const ButtonLink = (props: JSX.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+export const ButtonLink = (props: AnchorProps) => {
   return (
-    <a {...props} class={`${props.class ?? ""} ${styles.button} ${styles.enabled}`}>
+    <A {...props} class={`${props.class ?? ""} ${styles.button} ${styles.enabled}`}>
       {props.children}
-    </a>
+    </A>
   );
 };
 
@@ -32,8 +32,8 @@ export const ButtonNavLink = (props: ButtonNavLinkProps) => {
   const match = useMatch(() => props.match ?? props.href);
 
   return (
-    <a {...props} class={`${props.class ?? ""} ${styles.navButton} ${match() ? styles.enabled : ""}`}>
+    <A {...props} class={`${props.class ?? ""} ${styles.navButton} ${match() ? styles.enabled : ""}`}>
       {props.children}
-    </a>
+    </A>
   );
 };

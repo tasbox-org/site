@@ -1,4 +1,4 @@
-import type { RouteSectionProps } from "@solidjs/router";
+import { A, type RouteSectionProps } from "@solidjs/router";
 import maxBy from "lodash/maxBy";
 import minBy from "lodash/minBy";
 import { Show } from "solid-js";
@@ -74,27 +74,27 @@ const BlogPost = (props: RouteSectionProps) => {
           <footer class={styles.footer}>
             <div class={styles.tagsAndEdit}>
               <TagList tags={post().tags} />
-              <a
+              <A
                 href={`https://github.com/tasbox-org/site/blob/master/src/routes/blog/${post().filesystemPath}/index.mdx`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class={styles.editLink}
               >
                 <Icon name="documentation" /> Edit this post
-              </a>
+              </A>
             </div>
             <nav class={styles.nav}>
               <Show when={newerPost()}>
-                <a href={buildUrl(newerPost()?.slug)} class={styles.newer}>
+                <A href={buildUrl(newerPost()?.slug)} class={styles.newer}>
                   <div class={styles.navHeading}>Newer post</div>
                   <div class={styles.navPostTitle}>{newerPost()?.title}</div>
-                </a>
+                </A>
               </Show>
               <Show when={olderPost()}>
-                <a href={buildUrl(olderPost()?.slug)} class={styles.older}>
+                <A href={buildUrl(olderPost()?.slug)} class={styles.older}>
                   <div class={styles.navHeading}>Older post</div>
                   <div class={styles.navPostTitle}>{olderPost()?.title}</div>
-                </a>
+                </A>
               </Show>
             </nav>
           </footer>
