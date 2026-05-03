@@ -1,12 +1,11 @@
 .icon {
-  min-width: min-content;
-  min-height: min-content;
+  max-width: initial;
 }
 
 :global .markdown-slim,
 :global .markdown-full {
   :local .icon {
     display: inline;
-    vertical-align: center;
+    vertical-align: middle;
   }
 }

@@ -1,7 +1,3 @@
-html {
-  overflow-y: scroll;
-}
-
 #app {
   display: flex;
   flex-direction: column;
