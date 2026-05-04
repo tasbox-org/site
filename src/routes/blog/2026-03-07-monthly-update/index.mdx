@@ -1,0 +1,149 @@
+---
+slug: monthly-update-february-2026
+title: Monthly Update - February 2026
+description: Arena Shooter progress, updated glTF support, MoonJuice enhancements, dedicated server package and more!
+thumbnailAltText: Sreenshot of the arena shooter gamemode on gm_construct. The text "Monthly Update February 2026" is overlaid
+authors: derpius
+tags: [monthly-updates, developer-preview]
+---
+
+import { YoutubeEmbed } from "#components/common/youtube-embed";
+
+## Arena Shooter
+
+Most of my time on TASBox in February was spent working on the Arena Shooter game.
+In fact, most of the new features listed below were added as and when they were needed for the Arena Shooter.
+
+<YoutubeEmbed videoId="tdyJc0Pqxpc" />
+
+<YoutubeEmbed videoId="PNxlj7ICIS4" />
+
+## glTF Support
+
+glTFs were the first asset format supported by TASBox over a year ago,
+however support gradually wained throughout development as it was far more
+convenient to leverage existing Source Engine assets while testing (which already support things like physics).
+
+The glTF loader has been all but rewritten to work across server and client realms,
+and supports everything in the base glTF spec for which TASBox has support (so no animations yet).
+TBD how we support defining physics properties like colliders and rigid-bodies,
+however there are a number of semi-official extensions we could use.
+
+The weapons, darts and targets shown in the video above are all glTF assets provided by [kenney.nl](https://kenney.nl/assets/blaster-kit).
+
+## MoonJuice Enhancements
+
+There's still a long road ahead to turn MoonJuice into the type-safe and immutable-first language I want it to be,
+but I did implement a few quick wins this month.
+
+Also, [Denneisk](https://github.com/Denneisk) wrote a great guide for getting started with MoonJuice,
+[go check it out](/docs/tutorials/moonjuice-quickstart)!
+
+### Optional Operators
+
+```moonjuice
+-- Optional coalesce:
+-- resolves to c if b is nil
+-- otherwise b
+def a = b ?? c
+
+-- Optional index:
+-- resolves to nil if b is nil
+-- otherwise the value of b.c
+def a = b?.c
+def a = b?.["c"]
+
+-- Optional call:
+-- resolves to nil if b is nil
+-- otherwise the result of calling b with c
+def a = b?.(c)
+```
+
+And these operators can of course be combined, for example:
+
+```moonjuice
+def notNil = { .baz = fn(n) n * 2 end }
+def keyNil = {}
+def variableNil = nil
+
+print(notNil?.baz?.(123)) -- Prints 246
+print(keyNil?.baz?.(123)) -- Prints nil
+print(variableNil?.baz?.(123)) -- Prints nil
+```
+
+### Table Definition Shorthand & Comma Fix
+
+```moonjuice
+-- Verbose:
+def foo = 5
+def tbl = { .foo = foo }
+
+-- Shorthand:
+def foo = 5
+def tbl = { .foo }
+```
+
+And a small fix to allow trailing commas in table unpack expressions (were already supported in table definition):
+
+```moonjuice
+-- Note comma after 3. This already worked
+def tbl = { 1, 2, 3, }
+
+-- Note comma after c. This previously errored
+def { a, b, c, } = tbl
+```
+
+## New Scripting API Features
+
+While working on the Arena Shooter game, I found a couple of gaps in the TASBox scripting API
+that made it difficult/impossible to implement basic features such as a projectile system.
+
+### Events
+
+The `Event` library provides a simple interface for creating _event dispatchers_,
+which can be used to build event-driven APIs in TASBox.
+This library is actually how the built-in events work now!
+
+```moonjuice
+def dispatcher = Event.createDispatcher({ "event1", "event2" })
+
+def handle = Event.addListener(dispatcher, "event1", fn(a, b)
+  print("event1 called:", a, b)
+end)
+
+Event.dispatch(dispatcher, "event1", "first arg", "second arg")
+
+Event.removeListener(dispatcher, "event1", handle)
+```
+
+Calling any of the methods taking an event name with a name that was not
+present in the list passed to `Event.createDispatcher` will result in an error.
+
+### Scene Query Enhancements
+
+A few additional `Physics` library features for working with scene queries:
+
+- `get/setSimulationEnabled` and `get/setSceneQueriesEnabled` to include/exclude a specific collider from collisions and scene queries respectively
+- `setSceneQueryResponse` to configure how a collider responds to scene queries on a given `SceneQueryChannel` (block, touch or ignore)
+  - Note that block has no effect for `overlap` queries
+- New options for `raycast`, `sweep` and `overlap` queries to select which `SceneQueryChannel` to use
+- Another new option for those queries to exclude specific colliders from the query (e.g. to avoid bullets hitting the player who shot them)
+
+The `SceneQueryChannel`s are defined by TASBox and semantically named,
+so that user-generated maps, games and addons are more interoperable.
+
+## Dedicated Server
+
+As part of releasing on Steam, we need to produce a dedicated server binary which contains only the assets for the server.
+This can then be published as a "tool" on Steam, to be downloaded by SteamCMD on servers.
+
+After some tweaks to the release CI/CD pipeline, we now publish a dedicated server binary to Steam alongside the client,
+and it's already available to download from SteamCMD!
+It's not really usable yet though, as it will try (and fail) to load GMod assets in a server environment,
+and has no way to change the loaded game/addons/map.
+
+## Networking Fixes & Improvements
+
+- Deleted entities are now networked (not removed components yet)
+- Primitive physics geometries (e.g. boxes) are now networked
+- Increased jitter, input and delta buffer sizes to accommodate latency up to ~300ms
