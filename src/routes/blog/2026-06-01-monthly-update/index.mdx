@@ -1,0 +1,77 @@
+---
+slug: monthly-update-may-2026
+title: Monthly Update - May 2026
+description: Enterprise-grade logging, Steam player usernames and some exciting MoonJuice developments
+thumbnailAltText: Two panes diagonally split, showing the MoonJuice editor support and logging in Grafana. The text "Monthly Update May 2026" is overlaid
+authors: derpius
+tags: [monthly-updates, developer-preview]
+---
+
+import { YoutubeEmbed } from "#components/common/youtube-embed";
+
+After a 2-month break where I wasn't available, we're now back into the swing of things
+with some major structural work leading up to the closed playtest.
+
+## Player usernames
+
+Starting with a contribution from [@yogwoggf](https://github.com/yogwoggf): The player usernames API.
+
+This is a small but impactful change which lets you implement core social features in games and addons, such as chat and name tags.
+You can find the documentation for these methods here: TODO
+
+## Production-ready logging
+
+One of the two major changes this month is a proper implementation of logging in the engine.
+Up until now we've been making do with simple prints to console throughout the codebase, but this has a number of issues:
+
+- Limited options for server operators when trying to use logs (best you can do is scrape stdout)
+- Lack of structure in the engine leads to inconsistency (how log messages are formatted, what log levels are available, etc.)
+- Lack of metadata/context information for log entries (all you get is what you can reasonably fit in the log line, and you have to duplicate the info each time)
+
+We'll also want to export logs to at minimum a debug interface in-game and to disk for clients so they can send us error logs.
+Enter stage left: OpenTelemetry.
+
+### What is OpenTelemetry?
+
+OpenTelemetry is an open standard for the collection of observability _signals_: logs, metrics and traces.
+It defines models for these signals, as well as implementing a consistent SDK across a number of languages for instrumenting libraries and applications,
+and most importantly it defines a consistent interface for upstream collectors such as Grafana.
+
+This means we can support one standard, and automatically be compatible with pretty much every
+modern piece of observability infrastructure on the market.
+It also paves a road for introducing metrics and traces, as opposed to libraries which only provide logging functionality.
+
+While OpenTelemetry is quite common in the enterprise web/app development space,
+I've not seen it integrated with a game engine before.
+
+### Here's how we're using it
+
+Almost all instances of writing directly to console have been replaced with a custom abstraction over the OTel C++ SDK
+(looks very similar to C#'s `ILogger`), and exporters are configured for both console output _and_ OTLP GRPC.
+
+Here's an example of logs in the console:
+
+![Screenshot of coloured logs from the TASBox server in a console](console-logs.png)
+
+Fairly standard, but something a bit more interesting is when you export these logs into a tool which supports structured logging:
+
+![Screenshot of structured logs from the TASBox server in Grafana. Right sidebar shows metadata for the selected log entry, including active game and addons](grafana-logs.png)
+
+This is using a locally running instance of the `grafana/otel-lgtm` Docker image to enhance development.
+You can see useful metadata above, both specific to that log entry (e.g. the missing game name) and
+scoped context information (like the active addons) which will be attached to all log entries in that scope.
+
+With support for proper telemetry collection tools, server operators should be able to gain deeper
+insights into the health of their server, and reduce the time needed to find and fix bugs.
+
+### What's next
+
+This is just the beginning for enterprise-grade observability in TASBox.
+In the future we'll be adding both metrics and tracing to the engine,
+and we'll expose at least a subset of this functionality to the scripting environment so packages can leverage it too.
+
+## MoonJuice goes Open Source!
+
+### New language features
+
+### LSP server and VSCode extension
