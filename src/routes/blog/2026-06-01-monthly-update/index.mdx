@@ -14,8 +14,16 @@ with some major structural changes leading up to the closed playtest.
 
 Starting with a contribution from [@yogwoggf](https://github.com/yogwoggf): The player usernames API.
 
-This is a small but impactful change which lets you implement core social features in games and addons, such as chat and name tags.
-You can find the documentation for these methods here: TODO
+This is a small but impactful change which lets you implement core social features in games and addons, including chat and name tags.
+You can find the documentation for this method here: [Player > getName](/docs/api/Player/function/getName)
+
+While the API is simple, an interesting technical challenge is that the Steamworks SDK provides no way AFAICT
+to get the username of a connected player from the server environment.
+Each connected client must instead send their name to the server manually.
+
+This makes it easy for a player to spoof their name on the server though.
+A future enhancement could be to have all players send all connected player names to the server,
+and choose the name with the most consensus for each SteamID.
 
 ## Production-ready logging
 
