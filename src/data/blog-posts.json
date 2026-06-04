@@ -137,7 +137,7 @@
     "slug": "monthly-update-february-2026",
     "title": "Monthly Update - February 2026",
     "description": "Arena Shooter progress, updated glTF support, MoonJuice enhancements, dedicated server package and more!",
-    "thumbnailAltText": "Sreenshot of the arena shooter gamemode on gm_construct. The text \"Monthly Update February 2026\" is overlaid",
+    "thumbnailAltText": "Screenshot of the arena shooter gamemode on gm_construct. The text \"Monthly Update February 2026\" is overlaid",
     "authors": [
       "derpius"
     ],
@@ -147,5 +147,20 @@
     ],
     "filesystemPath": "2026-03-07-monthly-update",
     "date": "2026-03-07"
+  },
+  {
+    "slug": "monthly-update-may-2026",
+    "title": "Monthly Update - May 2026",
+    "description": "Enterprise-grade logging, Steam player usernames and some exciting MoonJuice developments",
+    "thumbnailAltText": "Two panes vertically split, showing logging in Grafana and VSCode MoonJuice editor support. The text \"Monthly Update May 2026\" is overlaid",
+    "authors": [
+      "derpius"
+    ],
+    "tags": [
+      "monthly-updates",
+      "developer-preview"
+    ],
+    "filesystemPath": "2026-06-01-monthly-update",
+    "date": "2026-06-01"
   }
 ]

@@ -121,13 +121,13 @@ export const blogPostsStaticAssetCopy = () =>
     structured: false,
     targets: [
       {
-        src: path.join(BLOG_DIRECTORY, "**", "*.{png,mp4}"),
+        src: path.join(BLOG_DIRECTORY, "**", "*.{png,mp4,gif}"),
         dest: "blog",
         overwrite: true,
         rename: renameStaticAsset,
       },
       {
-        src: path.join(BLOG_DIRECTORY, "**", "*.{png,mp4}"),
+        src: path.join(BLOG_DIRECTORY, "**", "*.{png,mp4,gif}"),
         dest: "../.output/public/blog",
         overwrite: true,
         rename: renameStaticAsset,
