@@ -162,5 +162,20 @@
     ],
     "filesystemPath": "2026-06-01-monthly-update",
     "date": "2026-06-01"
+  },
+  {
+    "slug": "monthly-update-june-2026",
+    "title": "Monthly Update - June 2026",
+    "description": "Laying the foundations for ray traced rendering in TASBox",
+    "thumbnailAltText": "Screenshot of the Sponza test 3D asset with ray traced reflections. The text \"Monthly Update June 2026\" is overlaid",
+    "authors": [
+      "derpius"
+    ],
+    "tags": [
+      "monthly-updates",
+      "developer-preview"
+    ],
+    "filesystemPath": "2026-07-19-monthly-update",
+    "date": "2026-07-19"
   }
 ]
